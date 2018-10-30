@@ -14,7 +14,7 @@
     ,{
         "key": "ctrl+d",
         "command": "workbench.action.debug.restart",
-        "when": ""
+        "when": "!terminalFocus"
     }
     ,{
         "key": "ctrl+shift+d",
