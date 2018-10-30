@@ -39,7 +39,7 @@
     // Editor behaviors
     "editor.formatOnPaste": true,
     "files.autoGuessEncoding": true,
-    "files.insertFinalNewline": true,
+    "files.insertFinalNewline": false,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
 
@@ -101,4 +101,5 @@
     // Telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "git.autofetch": true,
 }
