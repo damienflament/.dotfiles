@@ -1,0 +1,102 @@
+{
+    "workbench.settings.editor": "json", // Settings style
+
+    // Theming
+    "editor.fontFamily": "'Consolas', 'monospace', monospace",
+    "terminal.integrated.fontFamily": "monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.suggestFontSize": 12,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.lineHeight": 1,
+
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.iconTheme": "vs-minimal",
+
+    // Components UI
+    "breadcrumbs.enabled": true,
+    "workbench.tree.horizontalScrolling": true,
+    "window.menuBarVisibility": "toggle",
+    "explorer.openEditors.visible": 0,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
+
+    // Editor UI
+    "editor.renderLineHighlight": "all",
+    "editor.renderControlCharacters": true,
+    "editor.rulers": [80, 120],
+
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 1,
+    "editor.cursorBlinking": "expand",
+
+    "editor.smoothScrolling": true,
+
+    "debug.inlineValues": true,
+
+    // Editor behaviors
+    "editor.formatOnPaste": true,
+    "files.autoGuessEncoding": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 60000,
+
+    // Suggestions
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.snippetSuggestions": "bottom",
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.acceptSuggestionOnEnter": "smart",
+
+    // Files associations
+    "files.associations": {},
+
+    // Hidden files
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+
+    // Files excluded from searching (inherit hidden files)
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true
+    },
+
+    // Files watching
+    "files.useExperimentalFileWatcher": true,
+
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true
+    },
+
+    // Diff
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    // Global debug launch configuration
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+
+    // Terminal
+    "terminal.external.linuxExec": "urxvt",
+    "terminal.integrated.drawBoldTextInBrightColors": true,
+    "terminal.integrated.fontWeightBold": "normal",
+    "terminal.integrated.scrollback": 10000,
+
+    // Telemetry
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+}

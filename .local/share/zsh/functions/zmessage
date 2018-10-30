@@ -1,0 +1,11 @@
+# zmessage message
+function zmessage
+{
+    local -r message=${1:?The message must be specified.}
+    
+    print -P "\n%K{white}%F{black} $message %f%k"
+}
+
+zmessage "$@"
+
+# vim: ft=zsh

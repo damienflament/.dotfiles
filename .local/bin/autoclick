@@ -1,0 +1,29 @@
+#! /bin/zsh
+
+zmodload zsh/zutil
+zparseopts -D -a opts -start -stop
+
+readonly USAGE="usage: $0 --start | --stop"
+readonly PREDELAY=250
+readonly INTERVAL=80
+readonly NUMBER=1000000
+
+if (( $#opts == 0 ))
+then
+  echo $USAGE >&2
+  exit 1
+else
+  if [[ $opts[(r)--start] == '--start' ]]
+  then
+    echo "Start auto clicking..."
+
+    cautoclick -p $PREDELAY -i $INTERVAL -n $NUMBER &
+  elif [[ $opts[(r)--stop] == '--stop' ]]
+  then
+    echo "Stop auto clicking."
+
+    pkill cautoclick
+  else
+    echo $USAGE >&2
+  fi
+fi

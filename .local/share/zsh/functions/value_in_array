@@ -1,0 +1,14 @@
+# value_in_array value name
+#
+# Checks if the value exists in the array name.
+function value_in_array
+{
+    local -r value=${1:?The searched value must be specified.}
+    local -r name=${2:?The array name must be specified.}
+
+    [[ "${(P)${name}[(re)$value]}" == "$value" ]]
+}
+
+value_in_array "$@"
+
+# vim: ft=zsh

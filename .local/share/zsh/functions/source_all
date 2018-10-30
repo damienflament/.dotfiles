@@ -1,0 +1,19 @@
+# source_all [ file ... ]
+#
+# Same as 'source', but accepts multiple files. Convenient when used
+# with file globs. But not any arguments can be specified.
+function source_all
+{
+    zmodload zsh/param/private
+
+    private file
+
+    for file in $@
+    do
+        source "$file"
+    done
+}
+
+source_all "$@"
+
+# vim: ft=zsh

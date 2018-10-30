@@ -1,0 +1,41 @@
+#! /bin/zsh
+
+[[ -n "$DISPLAY" ]] && $SHELL
+
+local -r names=(
+    "XMonad"
+    "Console"
+)
+local -r commands=(
+    "xstart xmonad"
+    "$SHELL"
+)
+
+function zdm
+{
+    autoload zerror
+    
+    local name command
+
+    name=${names[(Ie)$index]}
+    command=( $commands[$name] )
+}
+
+
+
+r=$(dialog  --stdout --no-items \
+            --backtitle 'Display manager' \
+            --menu 'Environments:' 0 0 2 ${ns} )
+s=$?
+
+clear
+
+(( $s != 0 )) && zerror "$0:t" 'Error while displaying menu' EXIT_FAILURE
+
+
+[[ -z "$c" ]] && zerror "$0:t" \
+                        'Can not finding corresponding command' \
+                        EXIT_FAILURE
+
+exec $c
+

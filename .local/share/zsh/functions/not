@@ -1,0 +1,20 @@
+# not command [ arg ... ]
+#
+# Returns 1 if the command returns 0, 1 otherwize.
+function not
+{
+    : ${1:?The command must be specified.}
+
+    $@
+
+    if (( $? == 0 ))
+    then
+        return 1
+    else
+        return 0
+    fi
+}
+
+not "$@"
+
+# vim: ft=zsh

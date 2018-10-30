@@ -1,0 +1,26 @@
+#! /bin/zsh
+
+readonly SOURCE=~/.xmonad/lib/My/Core.hs
+FORCE="False"
+
+function usage {
+  echo "usage: $1:t [force]" >&2
+  exit 1
+}
+
+if (( $# > 1 )) 
+then usage $0
+elif (( $# == 1 ))
+then if [[ $1 == 'force' ]]
+     then FORCE='True'
+     else usage $0
+     fi
+fi
+
+readonly FORCE
+
+ghci -v0 $SOURCE <<_COMMANDS_
+compile $FORCE
+_COMMANDS_
+
+

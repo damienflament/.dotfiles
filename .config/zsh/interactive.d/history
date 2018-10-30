@@ -1,0 +1,15 @@
+# Shell history #
+
+export HISTFILE="$XDG_CACHE_HOME/history"
+export SAVEHIST=10000
+export HISTSIZE=10500           # Keep 500 duplicates
+
+setopt inc_append_history       # Do not wait for shell exit to append to history file
+
+setopt hist_ignore_dups         # Don't add successive duplicates
+setopt hist_expire_dups_first   # Remove duplicates first when trimming the history file 
+setopt hist_reduce_blanks       # Remove superfuous blanks from command lines
+
+setopt hist_fcntl_lock          # Use system lock mechanism
+
+# vim: ft=zsh

@@ -1,0 +1,32 @@
+# check_available name [ name ... ]
+#
+# Checks the specified executables are available.
+#
+# Prints an error for each unavailable executable and returns EXIT_FAILURE.
+function check_available
+{
+    autoload not command_available zerror
+
+    local name not_available=false
+
+    : ${1?:At least one executable name must be specified.}
+
+    for name in "$@"
+    do
+        if not command_available "$name"
+        then
+            not_available=true
+            
+            zerror "executable not found: $name"
+        fi
+    done
+
+    if $not_available
+    then
+        return EXIT_FAILURE
+    fi
+}
+
+check_available "$@"
+
+# vim: ft=zsh

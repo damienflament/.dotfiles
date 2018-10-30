@@ -1,0 +1,5 @@
+# Make user configuration #
+
+export MAKEFLAGS="-j$(( $(nproc) - 1 ))"
+
+# vim: ft=zsh

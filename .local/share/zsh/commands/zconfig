@@ -1,0 +1,76 @@
+# zconfig COMMAND
+#
+# Handles the shell configuration.
+#
+# The shell configuration is usually customized by manually editing the
+# configuration files. But this command make some common tasks easilly
+# available from the interactive shell.
+#
+# The following commands are supported:
+#   reload: reloads the shell configuration
+#   recompile: recompiles the configuration files
+#   deploy: deploys the configuration to the root user
+function zconfig
+{
+    autoload zerror
+
+    local command=${1:?The command must be specified.}
+    
+    case "$command" in
+        (reload)
+            exec -l zsh
+            ;;
+        (recompile)
+            return
+            ;;
+        (deploy)
+            shift
+            zconfig-deploy "$@"
+            ;;
+        (*)
+            zerror "command '$command' not available"
+    esac
+}
+
+function zconfig-deploy
+{
+    autoload check_available zmessage
+
+    check_available sudo rsync || return $?
+
+    typeset -ga zconfig_deploy_targets=( $zconfig_deploy_targets )
+
+    local target destination parent
+    local -r destination_prefix=~root
+    local -a destinations=( ${zconfig_deploy_targets/#$HOME/$destination_prefix} )
+    
+    for target destination in ${zconfig_deploy_targets:^destinations}
+    do
+        zmessage "$target -> $destination"
+        parent=${destination:h}
+
+        [[ -e "$parent" ]] || sudo mkdir --parents "$parent"
+        sudo rsync --dirs --recursive --links --perms --delete --update --verbose "$target" "$parent"
+    done
+}
+
+# Completion
+autoload compdef
+
+compdef _zconfig zconfig
+
+function _zconfig
+{
+    local -a commands=(
+        'reload:reload the shell configuration'
+        'recompile:recompile the configuration files'
+        'deploy:deploy the configuration to the root user'
+    )
+
+    if (( CURRENT == 2 ))
+    then
+        _describe -t commands 'commands' commands 
+    fi
+}
+
+# vim: ft=zsh

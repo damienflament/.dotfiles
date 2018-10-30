@@ -1,0 +1,17 @@
+# key_in_array key name
+#
+# Checks if the key exists in the array name.
+function key_in_array
+{
+    autoload value_in_array
+
+    local -r key=${1:?The searched value must be specified.}
+    local -r name=${2:?The array name must be specified.}
+    local -r keys=( ${(kP)name} )
+    
+    value_in_array "$key" keys
+}
+
+key_in_array "$@"
+
+# vim: ft=zsh

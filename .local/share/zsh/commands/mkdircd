@@ -1,0 +1,18 @@
+# mkdircd [OPTION...] DIRECTORY...
+#
+# Creates a directory and move into it.
+#
+# The allowed options and arguments are the same as for the 'mkdir' command
+# which is used to create the directories. If it succeeds, it moves to the last
+# created directory using the 'cd' command.
+function mkdircd
+{
+    mkdir "$@"
+    
+    if (( $? == 0 ))
+    then
+        cd "${@[-1]}"
+    fi
+}
+
+# vim: ft=zsh

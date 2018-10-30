@@ -1,0 +1,46 @@
+# zpalette
+#
+# Displays the shell color palette.
+function zpalette
+{
+    autoload colors && colors
+
+    local -r names=( ${(k)fg} )
+    local name fg bg
+
+    function header
+    {
+        for name in $names
+        do
+            print -Pn " ${(r:5:)name}  "
+        done
+        
+        print
+    }
+
+    header
+
+    for fg in $names
+    do
+        for bg in $names
+        do
+            print -Pn "%K{$bg}%F{$fg} ${(r:5:)fg} %f%k "
+        done
+      
+        print "\u0008"
+    done
+
+    for fg in $names
+    do
+        for bg in $names
+        do
+            print -Pn "%K{$bg}%F{$fg}%B ${(r:5:)fg} %b%f%k "
+        done
+        
+        print "\u0008"
+    done
+
+    print
+}
+
+# vim: ft=zsh

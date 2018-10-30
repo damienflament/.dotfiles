@@ -1,0 +1,16 @@
+# command_available executable
+#
+# Checks if the specifified executable is available.
+function command_available
+{
+    local -r executable="${1:?The searched executable must be specified.}"
+   
+    whence "$executable" &>/dev/null
+    local r=$?
+
+    return $r
+}
+
+command_available "$@"
+
+# vim: ft=zsh

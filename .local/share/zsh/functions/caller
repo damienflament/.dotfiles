@@ -1,0 +1,18 @@
+# caller
+#
+# Gives the caller of the caller of this function.
+#
+# Caller infos are given like 'functrace' parameter from the 'zsh/parameter'
+# module; that is in the form 'name:line'.
+function caller
+{
+    zmodload zsh/parameter
+
+    # Index 1 is for the current line,
+    # index 2 is for the caller of this function (the one which ask for info about its caller),
+    # index 3 is for the caller of our caller.
+
+    print -n $functrace[3]
+}
+
+# vim: ft=zsh

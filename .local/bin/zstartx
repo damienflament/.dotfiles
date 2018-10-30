@@ -1,0 +1,222 @@
+#!/bin/zsh
+
+setopt no_aliases
+
+export DISPLAY=
+export XAUTHORITY="$XDG_CACHE_HOME/.Xauthority"
+
+local TEMP_DIR='/tmp/Xorg'
+local AUTH_FILE=
+local WAIT_SECONDS=10
+
+# xstart [CLIENT]
+#
+# Starts the X server and the given client.
+function zstartx
+{
+    autoload check_available zerror
+
+    check_available xterm X || return $? 
+
+    local -r default_client=( xterm -geometry "${COLUMNS}x${LINES}+18+18" )
+    local -r client=( ${@:-$default_client} )
+    local display_name magic_cookie auth_file server_pid
+    
+    # Setup signal handlers
+    trap 'kill_server' HUP INT QUIT ILL TRAP KILL BUS TERM
+
+    setup_display
+    setup_authentication
+
+    start_server &
+    wait_for_server $! $WAIT_SECONDS 
+
+    return EXIT_FAILURE
+}
+
+# setup_display
+#
+# Finds an unused display and sets the DISPLAY parameter.
+function setup_display
+{
+    DISPLAY=0
+
+    while [[ -e /tmp/.X${DISPLAY}-lock ]]
+    do
+        (( DISPLAY = $DISPLAY + 1 ))
+    done
+
+    DISPLAY=":$DISPLAY"
+
+    message "Found unused display '$DISPLAY'."
+}
+
+# setup_authentication
+#
+# Setups authentication using the XAUTHORITY file.
+function setup_authentication
+{
+    autoload check_available
+
+    check_available mcookie mktemp xauth || return $?
+   
+    local display_name magic_cookie
+    
+    display_name="$HOST/unix$DISPLAY"
+    message "Display name is '$display_name'."
+
+    magic_cookie="$(mcookie)"
+    message "Magic cookie generated."
+
+    # Authentication data for the server
+    mkdir --parents "$TEMP_DIR"
+    AUTH_FILE=$(mktemp --tmpdir="$TEMP_DIR" serverauth.XXXXXXXXXX)
+    xauth -f "$AUTH_FILE" add "$DISPLAY" . "$magic_cookie"
+
+    # Authentication data for the client
+    touch "$XAUTHORITY"
+    xauth -f "$XAUTHORITY" add "$HOST/unix$DISPLAY" . "$magic_cookie"
+
+    message "Authentication data set."
+}
+
+# cleanup_authentication
+#
+# Cleanups the authentication data 
+function cleanup_authentication
+{
+    autoload check_available
+
+    check_available xauth || return $?
+
+    xauth -f "$XAUTHORITY" remove "$HOST/unix$DISPLAY"
+    rm --force "$AUTH_FILE"
+    
+    message "Authentication data cleaned."
+}
+
+# start_server
+#
+# Starts the X server.
+function start_server
+{
+    autoload check_available
+
+    check_available X logger || return $?
+
+    trap '' USR1 # Set USR1 to SIG_IGN instead of SIG_DFL. It makes the server send USR1 signal when ready.
+    message "Starting server..."
+    exec X "$DISPLAY" "vt${XDG_VTNR}" -auth "$XAUTHORITY" -nolisten tcp -quiet -novtswitch -noreset
+}
+
+# wait_for_server PID SECONDS
+#
+# Wait for the server to start.
+#
+# Wait SECONDS seconds to be interrupted by a signal USR1 sent by the server
+# with pid PID.
+function wait_for_server
+{
+    trap server_ready USR1 # Wait USR1 signal from server 
+    message "Waiting for server to start..."
+
+    local -r server_pid=${1:?The PID of the server must be specified.}
+    local -r seconds=${2:?The seconds to wait must be specified.}
+
+    SECONDS=0
+    while (( $SECONDS < $seconds )); do; done
+
+    error "Server did not send ready signal within last $seconds seconds."
+    kill_server $server_pid
+}
+
+# kill_server PID
+#
+# Kills X server.
+function kill_server
+{
+    autoload check_available
+
+    check_available stty || return $?
+
+    local -r server_pid=${1:?The PID of the server must be specified.}
+
+    kill $server_pid
+    message "Server killed."
+  
+    # Reset signal handlers
+    trap -
+  
+    # Reset terminal
+    stty sane
+}
+
+# server_ready
+#
+# Executed when X server is ready.
+function server_ready
+{
+    message "Server ready."
+    
+    autoload check_available
+
+    check_available xrdb logger || return $?
+    
+    local -r resources=${XRESOURCES:-"$XDG_CONFIG_HOME/X/Xresources"}
+    local -r modmap=${XMODMAP:-"$XDG_CONFIG_HOME/X/Xmodmap"}
+    local server_pid status
+
+    # Save server PID to kill it
+    server_pid=$!
+
+    # Load resources
+    if [[ -f "$resources" ]]
+    then
+        message "Loading resources from '$resources'..."
+        xrdb -retain -I"${resources}.d" -load "$resources"
+    fi
+
+    # Start client
+    message "Starting client '$client'..."
+    $client |& logger --tag $client[1] --priority user.info
+    status=$?
+    message "Client exited with status $status."
+
+    kill_server $server_pid
+    cleanup_authentication
+
+    exit $status
+}
+
+# message MESSAGE
+#
+# Logs a message
+function message
+{
+    autoload check_available
+
+    check_available logger || return $?
+
+    local -r message=${1:?The message must be specified.}
+
+    echo "$message"
+    logger --tag 'zstartx' --priority user.info "$message"
+}
+
+# error MESSAGE
+#
+# Logs an error message
+function error
+{
+    autoload check_available zerror
+
+    check_available logger || return $?
+    
+    local -r message=${1:?The message must be specified.}
+
+    logger --tag 'zstartx' --stderr --priority user.err "$message"
+}
+
+
+zstartx "$@"
+

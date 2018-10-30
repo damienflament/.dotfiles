@@ -1,0 +1,13 @@
+# staticdir name path
+#
+# Registers a new Zsh static named directory located at given PATH and available
+# under the specified NAME.
+function staticdir
+{
+    local name="${1:?The name must be specified.}"
+    local path="${2:?The path must be specified.}"
+
+    hash -d "$name"="$path"
+}
+
+# vim: ft=zsh

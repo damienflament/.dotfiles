@@ -1,0 +1,45 @@
+! urxvt configuration resources !
+
+! Solarized color palette
+! base 03
+URxvt.color0: rgb:00/2b/36
+! red
+URxvt.color1: rgb:dc/32/2f
+! green
+URxvt.color2: rgb:85/99/00
+! yellow
+URxvt.color3: rgb:b5/89/00
+! blue
+URxvt.color4: rgb:26/8b/d2
+! magenta
+URxvt.color5: rgb:d3/36/82
+! cyan
+URxvt.color6: rgb:2a/a1/98
+! base2
+URxvt.color7: rgb:ee/e8/d5
+! base03
+URxvt.color8: rgb:00/2b/36
+! orange
+URxvt.color9: rgb:cb/4b/16
+! base01
+URxvt.color10: rgb:58/6e/75
+! base00
+URxvt.color11: rgb:65/7b/83
+! base0
+URxvt.color12: rgb:83/94/96
+! violet
+URxvt.color13: rgb:6c/71/c4
+! base1
+URxvt.color14: rgb:93/a1/a1
+! base3
+URxvt.color15: rgb:fd/f6/e3
+
+URxvt.foreground: 15
+URxvt.background: 0
+
+URxvt.scrollstyle: plain
+URxvt.scrollBar_floating: true
+URxvt.thickness: 1
+URxvt.scrollBar_right: true
+
+! vim: ft=xdefaults

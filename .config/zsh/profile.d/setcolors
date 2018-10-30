@@ -1,0 +1,12 @@
+# Linux console color palette #
+
+if [[ "$TERM" == 'linuxe' ]]
+then
+    autoload check_available
+
+    check_available setcolors || return $?
+
+    setcolors "$XDG_DATA_HOME/setcolors/solarized"
+fi
+
+# vim: ft=zsh

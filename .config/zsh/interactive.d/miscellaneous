@@ -1,0 +1,9 @@
+# Miscellaneous shell configuration #
+
+#setopt warn_create_global   # warn when a variable is implicitly made global within functions
+#setopt warn_nested_var      # warn when a variable from enclosing scope is set locally
+
+setopt auto_cd      # change directory without using the 'cd' command
+setopt cdable_vars  # allow usage of named directories without the '~' character 
+
+# vim: ft=zsh

@@ -1,0 +1,6 @@
+# XDG Base Directory specification compatibility #
+
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
+
+# vim: ft=zsh

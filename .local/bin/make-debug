@@ -1,0 +1,54 @@
+#! /bin/zsh
+
+readonly FUNCTIONS=$(<<- '_FUNCTIONS_'
+# show_variables <origin> [<title>]
+#
+# <origin> : 'default' | 'environment' | 'environment override' | 'file'
+#            | 'command line' | 'override' | 'automatic'
+define show_variables =
+  $(if $(filter undefined, $(origin 2)),,
+    $(info )
+    $(info # ${2} # )
+  )
+
+  $(foreach variable, $(sort ${.VARIABLES}),
+    $(if $(filter ${1}, $(origin ${variable})),
+      $(if $(filter ${variable}, $(0) .RECIPEPREFIX),,
+	      $(info $(variable) = $($(variable)) )
+      )
+	  )
+	)
+endef
+_FUNCTIONS_
+)
+
+for filename in GNUMakefile Makefile makefile
+do
+  if [[ -r "${filename}" ]]
+  then
+    makefilename="${filename}"
+    break
+  fi
+done
+
+readonly MAKEFILE="$(< ${makefilename})"
+
+makefile=$(<<- _MAKEFILE_
+${MAKEFILE}
+
+${FUNCTIONS}
+
+.RECIPEPREFIX := >
+
+debug-recipe:
+> \$(call show_variables,file,Local variables)
+> \$(call show_variables,command line,Command line)
+> \$(call show_variables,environment override,Environment override)
+
+_MAKEFILE_
+)
+
+#cat <<< "$makefile"
+
+make --dry-run --quiet --makefile=- debug-recipe <<< "$makefile"
+

@@ -1,0 +1,27 @@
+#! /bin/zsh
+
+zmodload zsh/pcre
+
+pcre_compile '^vscode://open\?url=file://([^&]+)(?:&line=([\d]+))?$'
+
+function url_decode
+{
+  local url=$1
+
+  url="${url:gs/+/ /}"
+  url="${url:gs/\\/\\\\/}"
+  printf '%b' "${url:gs/%/\\x/}"
+}
+
+url=`url_decode "$1"`
+
+if pcre_match "$url"
+then
+  file=$match[1]
+  line=$match[2]
+  
+  code --reuse-window --goto "$file:$line"
+else
+  return 1
+fi
+

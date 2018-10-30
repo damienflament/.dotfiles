@@ -1,0 +1,5 @@
+# Composer binaries #
+
+path=( "$HOME/.composer/vendor/bin" $path )
+
+# vim: ft=zsh

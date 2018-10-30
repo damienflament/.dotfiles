@@ -1,0 +1,11 @@
+# privileged
+#
+# Checks if the current shell is run privileged.
+function privileged
+{
+    [[ "$UID" -eq 0 || "$EUID" -eq 0 ]]
+}
+
+privileged "$@"
+
+# vim: ft=zsh

@@ -1,0 +1,51 @@
+# Shell aliases # 
+
+alias sudo='sudo '      # Make aliases available with sudo
+alias su='su --login'
+
+# Files listing
+alias ls='ls --color=auto --human-readable --group-directories-first -v'
+alias l='ls'
+alias lr='ls --recursive'
+alias ll='ls --format=long'
+alias llr='ll --recursive'
+alias la='ls --almost-all'
+alias laa='ls --all'
+alias lla='la --format=long'
+alias llaa='laa --format=long'
+
+# Files management
+alias rm='rm --interactive=once --verbose --preserve-root'
+alias mv='mv --interactive --verbose'
+alias cp='cp --interactive --verbose --preserve=all'
+alias ln='ln --interactive --verbose'
+alias rename='rename --verbose --no-overwrite'
+
+alias rmr='rm --recursive'
+alias cpr='cp --recursive'
+
+alias mkdir='mkdir --parents --verbose'
+alias touch='touch --no-create'
+alias mk='\touch'
+
+# Files rights management
+alias chmod='chmod --preserve-root --verbose'
+alias chown='chown --preserve-root --verbose'
+alias chgrp='chgrp --preserve-root --verbose'
+
+alias chmodr='chmod --recursive'
+alias chownr='chown --recursive'
+alias chgrpr='chgrp --recursive'
+
+# Utilities 
+alias mount='mount -v'
+alias grep='grep --color=auto --context=5'
+alias view='vim -R'
+alias make='make -j$(( $(nproc) - 1 ))'
+alias stack='stack --jobs $(( $(nproc) - 1 ))'
+
+# Shell utilities
+alias pager="${PAGER:?}"
+alias editor="${EDITOR:?}"
+
+# vim: ft=zsh

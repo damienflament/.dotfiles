@@ -1,0 +1,17 @@
+# Shell miscellaneous environment variables #
+
+autoload command_available
+
+export NULLCMD='cat'
+export PAGER='less'
+
+command_available 'vimpager' && PAGER='vimpager'
+command_available 'vimcat' && NULLCMD='vimcat'
+
+export READNULLCMD="$PAGER"
+
+export EDITOR='vim'
+
+unfunction command_available
+
+# vim: ft=zsh

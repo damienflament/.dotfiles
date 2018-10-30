@@ -1,0 +1,39 @@
+# Shell prompt #
+
+# Virtual terminal number
+function prompt_vtnr
+{
+    # Displayed only when in the linux console
+    if [[ "$TERM" == 'linux' ]]
+    then
+        echo "%K{magenta} VT${XDG_VTNR} %k"
+    fi
+}
+
+# Git 
+if source /usr/share/git/git-prompt.sh
+then
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM='auto'
+
+    function prompt_git { __git_ps1 "$@" }
+else
+    function prompt_git {}
+fi
+
+# Prompt configuration
+setopt prompt_subst         # Substitutions within prompt
+setopt prompt_cr            # Carriage return before the prompt
+setopt transient_rprompt    # Right prompt only visible on the current prompt 
+
+# Prompt
+PROMPT=$'\n%F{black}%(!.%K{red}.%K{green}) %n %K{magenta} %m %K{blue} %~ %k%f '
+RPROMPT='%F{black} $(prompt_git "%%K{magenta} %s %%k")%(0?..%K{red} %? %k)%(2L.%K{blue} %L %k.)$(prompt_vtnr)%f'
+
+# Timing
+export REPORTTIME=1
+export TIMEFMT=$(print -P "\n%F{black} %K{white} %%J %k %K{green} %%U %K{red} %%S %K{yellow} %%*E %k %K{blue} %%P %k%f")
+
+# vim: ft=zsh

@@ -1,0 +1,23 @@
+#! /bin/zsh
+# zmountblock <device>
+
+function zmountblock
+{
+    autoload zerror check_available
+
+    check_available sudo mkdir mount
+
+    local -r ZMOUNT_ROOT=/mnt/removable
+    local -r device=${1:?The device must be specified.}
+    local label mount_path
+
+    label=$(lsblk --noheadings --output=LABEL "$device" 2>/dev/null)
+    mount_path="$ZMOUNT_ROOT/$label"
+
+    sudo mkdir --parents "$mount_path"
+    sudo mount --options="uid=$UID,gid=$GID" "$device" "$mount_path"
+}
+
+zmountblock "$*"
+
+# vim: ft=zsh

@@ -1,0 +1,49 @@
+# Git ignore file for the dotfiles repository #
+
+# First, ignore all files, except this one.
+/*
+!/.gitignore
+# Then, allow selectively files to be versionned.
+
+# Main directories
+!/.config/
+/.config/*
+!/.local/
+/.local/*
+!/.local/etc
+!/.local/share/
+/.local/share/*
+
+# Local binaries
+!/.local/bin/
+
+# Zsh
+!/.config/zsh/
+!/.local/share/zsh/
+
+# Vim
+!/.vimrc
+
+# htop
+!/.config/htop/
+
+# dircolors
+!/.local/share/dircolors/
+
+# setcolors
+!/.local/share/setcolors/
+
+# Pacman
+!/.config/pacman/
+
+# X
+!/.config/X/
+
+# Applications
+!/.config/Code - OSS/
+/.config/Code - OSS/*
+!/.config/Code - OSS/User/
+/.config/Code - OSS/User/*
+!/.config/Code - OSS/User/settings.json
+
+# vim: ft=gitconfig

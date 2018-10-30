@@ -1,0 +1,20 @@
+readonly -g EXIT_SUCCESS=0
+readonly -g EXIT_FAILURE=1
+
+# zerror message
+#
+# Prints an error message to STDERR.
+#
+# The caller name and line are prepended.
+function zerror
+{
+    autoload caller
+
+    local -r message="${1:?The message must be specified.}"
+
+    print -P "$(caller):%F{red} $message%f" >&2
+}
+
+zerror "$@"
+
+# vim: ft=zsh

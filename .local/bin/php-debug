@@ -1,0 +1,4 @@
+#! /bin/sh
+
+php -e -d zend_extension=xdebug.so -d xdebug.remote_autostart=1 "$@"
+

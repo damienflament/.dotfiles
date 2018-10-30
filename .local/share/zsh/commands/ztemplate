@@ -1,0 +1,27 @@
+#! /bin/zsh
+# ztemplate <template> [output]
+#
+# Renders a template.
+#
+# If an output file path is specified, the rendered template is writed to it.
+# Otherwize, it is send to the standard output.
+
+local -r ztemplates_dir="$HOME/Templates"
+
+function ztemplate
+{
+    local -r template_name="$1"
+    local template
+
+    if [[ -z "$template_name" ]]
+    then
+        echo "usage: $0 <template> [output]"
+        return 1
+    fi
+
+    template=$( <"$ztemplates_dir/$template_name" )
+
+    echo $template
+}
+
+# vim: ft=zsh

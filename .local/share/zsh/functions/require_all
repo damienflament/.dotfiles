@@ -1,0 +1,33 @@
+# require_all [ file ... ]
+#
+# Sources the specified files.
+#
+# Same as 'source_all', but if an error occurs while sourcing, prints it and exits
+# with status code EXIT_FAILURE.
+function require_all
+{
+    zmodload zsh/param/private
+    autoload zerror
+
+    private file there_is_error=false
+
+    for file in "$@"
+    do
+        source "$file"
+
+        if (( $? != 0 ))
+        then
+            there_is_error=true
+            zerror "Error while sourcing '$file'."
+        fi
+    done
+
+    if $there_is_error
+    then
+        exit EXIT_FAILURE
+    fi
+}
+
+require_all "$@"
+
+# vim: ft=zsh
