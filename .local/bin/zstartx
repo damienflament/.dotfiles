@@ -164,7 +164,7 @@ function server_ready
     
     local -r resources=${XRESOURCES:-"$XDG_CONFIG_HOME/X/Xresources"}
     local -r modmap=${XMODMAP:-"$XDG_CONFIG_HOME/X/Xmodmap"}
-    local server_pid status
+    local server_pid return_status
 
     # Save server PID to kill it
     server_pid=$!
@@ -179,13 +179,13 @@ function server_ready
     # Start client
     message "Starting client '$client'..."
     $client |& logger --tag $client[1] --priority user.info
-    status=$?
-    message "Client exited with status $status."
+    return_status=$?
+    message "Client exited with status $return_status."
 
     kill_server $server_pid
     cleanup_authentication
 
-    exit $status
+    exit $return_status
 }
 
 # message MESSAGE
