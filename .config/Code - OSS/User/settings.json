@@ -1,3 +1,4 @@
+// VSCode configuration //
 {
     "workbench.settings.editor": "json", // Settings style
 
@@ -25,6 +26,7 @@
     "editor.renderLineHighlight": "all",
     "editor.renderControlCharacters": true,
     "editor.rulers": [80, 120],
+    "editor.renderIndentGuides": false,
 
     "editor.cursorStyle": "line",
     "editor.cursorWidth": 1,
