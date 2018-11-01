@@ -39,6 +39,13 @@
 # X
 !/.config/X/
 
+# XMonad
+!/.xmonad/
+/.xmonad/xmonad-*-*
+/.xmonad/xmonad.errors
+/.xmonad/**/*.hi
+/.xmonad/**/*.o
+
 # Applications
 !/.config/Code - OSS/
 /.config/Code - OSS/*
