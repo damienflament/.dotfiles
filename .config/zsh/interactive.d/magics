@@ -1,0 +1,7 @@
+# Shell magics #
+
+autoload manydots-magic
+
+manydots-magic
+
+# vim: ft=zsh
