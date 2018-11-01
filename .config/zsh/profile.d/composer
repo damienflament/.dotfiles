@@ -1,5 +1,11 @@
-# Composer binaries #
+# Composer configuration #
 
-path=( "$HOME/.composer/vendor/bin" $path )
+export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
+export COMPOSER_CACHE_DIR="$XDG_CACHE_HOME/composer"
+export COMPOSER_DATA_DIR="$XDG_DATA_HOME/composer"
+export COMPOSER_VENDOR_DIR="$XDG_DATA_HOME/composer/vendor"
+export COMPOSER_BIN_DIR="$HOME/.local/bin"
+
+path=( "$COMPOSER_BIN_DIR" $path )
 
 # vim: ft=zsh

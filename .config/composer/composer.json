@@ -1,0 +1,17 @@
+{
+    "name": "damienflament/my-composer",
+    "description": "My Composer user configuration",
+    "type": "project",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Damien Flament",
+            "email": "damien.flament@gmx.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpunit/phpunit": "^7.4",
+        "symfony/thanks": "^1.1"
+    }
+}

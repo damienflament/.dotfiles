@@ -41,6 +41,11 @@
 /.stack/*
 !/.stack/config.yaml
 
+# Composer
+!/.config/composer
+/.config/composer/*
+!/.config/composer/composer.json
+
 # X
 !/.config/X/
 
@@ -51,7 +56,7 @@
 /.xmonad/**/*.hi
 /.xmonad/**/*.o
 
-# Applications
+# VSCode
 !/.config/Code - OSS/
 /.config/Code - OSS/*
 !/.config/Code - OSS/User/
