@@ -36,6 +36,11 @@
 # Pacman
 !/.config/pacman/
 
+# Stack
+!/.stack/
+/.stack/*
+!/.stack/config.yaml
+
 # X
 !/.config/X/
 
