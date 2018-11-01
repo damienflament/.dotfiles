@@ -15,9 +15,10 @@ myLayouts = renamed [Replace "Vertically tiled"] tiled
         ||| renamed [Replace "Grid"] grid
         ||| renamed [Replace "Fullscreen"] fullscreen
   where
+    spacing = spacingRaw True (Border 6 6 6 6) False (Border 6 6 6 6) False
     tiled = let nmaster = 1
                 ratio = 1/2
                 delta = 1/100
-                in smartSpacing 6 . smartBorders $ Tall nmaster delta ratio
-    grid = smartSpacing 6 . smartBorders $ Grid False
+                in spacing . smartBorders $ Tall nmaster delta ratio
+    grid = spacing . smartBorders $ Grid False
     fullscreen = noBorders Full
