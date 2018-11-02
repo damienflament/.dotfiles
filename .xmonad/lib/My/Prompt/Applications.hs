@@ -52,7 +52,4 @@ spawnApplication :: DesktopEntry -> X ()
 spawnApplication DesktopEntry { exec = c,
                                 inTerminal = t,
                                 path = p } =
-  let action = if t then spawnCommandInTerminal c else spawn c
-    in maybe action
-             (\ p' -> withCurrentDirectory p' action)
-             p
+  if t then spawnCommandInTerminal c else spawn c

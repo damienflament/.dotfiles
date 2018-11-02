@@ -24,9 +24,10 @@ import qualified XMonad.StackSet as W
 
 -- | Prompt using multiple modes : 'applicationsMode' and 'zshMode.
 myPrompt :: X ()
-myPrompt = do appsMode <- applicationsMode
-              zMode <- zshMode
-              mkXPromptWithModes [appsMode, zMode, actionsMode] myXPConfig
+myPrompt = do
+    appsMode <- applicationsMode
+    zMode <- zshMode
+    mkXPromptWithModes [appsMode, zMode, actionsMode] myXPConfig
 
 -- | Custom 'XPConfig'.
 myXPConfig :: XPConfig

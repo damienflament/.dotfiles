@@ -4,7 +4,7 @@ module My.KeyBindings (myKeyBindings) where
 import qualified Data.Map as M
 
 import My.Core
---import My.Prompt
+import My.Prompt
 import My.Terminal
 
 import System.Exit
@@ -25,7 +25,7 @@ myKeyBindings (XConfig { modMask = m,
   --, ((m,                xK_e),      spawnCommandInTerminal "ranger")
   --, ((m .|. shiftMask,  xK_e),      spawnCommandInSuperTerminal "ranger")
 
-  --, ((m,                xK_Escape),  myPrompt)
+  , ((m,                xK_twosuperior),  myPrompt)
 
   --, ((m .|. mod1Mask,               xK_c),  spawn "autoclick --start")
   --, ((m .|. shiftMask .|. mod1Mask, xK_c),  spawn "autoclick --stop")
