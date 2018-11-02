@@ -199,7 +199,6 @@ function message
 
     local -r message=${1:?The message must be specified.}
 
-    echo "$message"
     logger --tag 'zstartx' --priority user.info "$message"
 }
 
