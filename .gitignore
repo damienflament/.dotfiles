@@ -51,10 +51,8 @@
 
 # XMonad
 !/.xmonad/
-/.xmonad/xmonad-*-*
-/.xmonad/xmonad.errors
-/.xmonad/**/*.hi
-/.xmonad/**/*.o
+/.xmonad/*
+/.xmonad/**/*.hs
 
 # VSCode
 !/.config/Code - OSS/
