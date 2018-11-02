@@ -14,9 +14,6 @@
 !/.local/share/
 /.local/share/*
 
-# Local binaries
-!/.local/bin/
-
 # Zsh
 !/.config/zsh/
 !/.local/share/zsh/
