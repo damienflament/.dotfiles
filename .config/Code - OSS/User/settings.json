@@ -101,5 +101,8 @@
     // Telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+
+    // Git
     "git.autofetch": true,
+    "git.confirmSync": false,
 }
