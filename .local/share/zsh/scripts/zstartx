@@ -104,9 +104,11 @@ function start_server
 
     check_available X logger || return $?
 
+    local vt="vt${XDG_VTNR}"
+
     trap '' USR1 # Set USR1 to SIG_IGN instead of SIG_DFL. It makes the server send USR1 signal when ready.
-    message "Starting server..."
-    exec X "$DISPLAY" "vt${XDG_VTNR}" -auth "$XAUTHORITY" -nolisten tcp -quiet -novtswitch -noreset
+    message "Starting server on $vt..."
+    exec X "$DISPLAY" "$vt" -auth "$XAUTHORITY" -nolisten tcp -quiet -novtswitch -noreset
 }
 
 # wait_for_server PID SECONDS
