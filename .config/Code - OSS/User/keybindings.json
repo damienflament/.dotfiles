@@ -8,7 +8,19 @@
     }
     ,{
         "key": "ctrl+[Backquote]",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    }
+    ,
+    {
+        "key": "ctrl+[Backquote]",
         "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus"
+    }
+    ,
+    {
+        "key": "ctrl+shift+[Backquote]",
+        "command": "workbench.action.terminal.new",
         "when": ""
     }
     ,{
