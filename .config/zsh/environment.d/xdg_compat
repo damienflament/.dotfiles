@@ -2,5 +2,6 @@
 
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
+export STACK_ROOT="$XDG_CONFIG_HOME/stack"
 
 # vim: ft=zsh

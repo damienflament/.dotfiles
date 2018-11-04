@@ -34,9 +34,9 @@
 !/.config/pacman/
 
 # Stack
-!/.stack/
-/.stack/*
-!/.stack/config.yaml
+!/.config/stack
+/.config/stack/*
+!/.config/stack/config.yaml
 
 # Composer
 !/.config/composer
