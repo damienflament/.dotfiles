@@ -1,0 +1,5 @@
+# Package manager user configuration #
+
+PACMAN='aura'
+
+# vim: ft=zsh
