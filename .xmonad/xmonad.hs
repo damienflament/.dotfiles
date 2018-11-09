@@ -59,7 +59,7 @@ _main = do
     xmonad $ ewmh def
         { terminal    = "urxvt"
         , focusFollowsMouse = False
-        , clickJustFocuses = True
+        , clickJustFocuses = False
         , modMask     = mod4Mask
         , keys = myKeyBindings
         , mouseBindings = myMouseBindings

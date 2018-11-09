@@ -39,6 +39,8 @@ myKeyBindings (XConfig { modMask = m,
 
   , ((m,                xK_Down), windows W.focusDown)
   , ((m,                xK_Up),   windows W.focusUp)
+  , ((m,                xK_Tab),  windows W.focusDown)
+  , ((m .|. shiftMask,  xK_Tab),  windows W.focusUp)
   , ((m,                xK_m),    windows W.focusMaster)
   , ((m .|. shiftMask,  xK_Down), windows W.swapDown)
   , ((m .|. shiftMask,  xK_Up),   windows W.swapUp)
