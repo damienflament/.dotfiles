@@ -19,7 +19,9 @@
 !/.local/share/zsh/
 
 # Vim
-!/.vimrc
+!/.config/vim/
+/.config/vim/*
+!/.config/vim/vimrc
 
 # htop
 !/.config/htop/
