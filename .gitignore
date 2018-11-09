@@ -14,14 +14,15 @@
 !/.local/share/
 /.local/share/*
 
+# Git
+!/.config/git/
+
 # Zsh
 !/.config/zsh/
 !/.local/share/zsh/
 
 # Vim
 !/.config/vim/
-/.config/vim/*
-!/.config/vim/vimrc
 
 # htop
 !/.config/htop/
