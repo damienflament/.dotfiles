@@ -3,6 +3,8 @@
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
 export STACK_ROOT="$XDG_CONFIG_HOME/stack"
-export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
+export VIM_RC="$XDG_CONFIG_HOME/vim/vimrc"
+export VIMINIT='source $VIM_RC'
+export VIMPAGER_RC="$XDG_CONFIG_HOME/vim/vimpagerrc"
 
 # vim: ft=zsh

@@ -1,0 +1,10 @@
+" Load the Vim configuration
+source $VIM_RC
+
+" Unset options not suitable for a pager
+set nonumber
+set noshowcmd
+set nowrap
+set colorcolumn=
+
+" vim: ft=vim
