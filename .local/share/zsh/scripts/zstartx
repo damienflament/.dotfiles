@@ -5,9 +5,9 @@ setopt no_aliases
 export DISPLAY=
 export XAUTHORITY="$XDG_CACHE_HOME/.Xauthority"
 
-local TEMP_DIR='/tmp/Xorg'
+local TEMP_DIR='/tmp/xorg'
 local AUTH_FILE=
-local WAIT_SECONDS=10
+local WAIT_SECONDS=5
 
 # xstart [CLIENT]
 #
