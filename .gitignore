@@ -49,6 +49,9 @@
 # X
 !/.config/X/
 
+# FontConfig
+!/.config/fontconfig/
+
 # XMonad
 !/.xmonad/
 /.xmonad/*

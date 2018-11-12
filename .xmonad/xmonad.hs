@@ -25,7 +25,7 @@ statusBarHandle = spawnPipe $
     ++ (hexColorValue . brightBlack $ solarizedPalette)
     ++ " --fgcolor="
     ++ (hexColorValue . brightBlue $ solarizedPalette)
-    ++ " --font 'xft:Terminus:size=9' "
+    ++ " --font 'xft:ui:size=10' "
     ++ " --top"
     ++ " ~/.xmonad/xmobar.hs"
 
