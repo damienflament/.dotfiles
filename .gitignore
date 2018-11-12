@@ -21,6 +21,9 @@
 !/.config/zsh/
 !/.local/share/zsh/
 
+# Scripts
+!/.local/scripts/
+
 # Vim
 !/.config/vim/
 

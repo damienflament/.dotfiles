@@ -1,5 +1,5 @@
 # User shell scripts #
 
-path=( "$XDG_DATA_HOME/zsh/scripts" $path )
+path=( "$HOME/.local/scripts" $path )
 
 # vim: ft=zsh
