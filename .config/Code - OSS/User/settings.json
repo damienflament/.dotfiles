@@ -21,6 +21,7 @@
     "explorer.openEditors.visible": 0,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.rendererType": "canvas",
 
     // Editor UI
     "editor.renderLineHighlight": "all",
@@ -105,4 +106,7 @@
     // Git
     "git.autofetch": true,
     "git.confirmSync": false,
+
+    // XML
+    "xml.format.splitAttributes": false,
 }
