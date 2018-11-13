@@ -14,51 +14,39 @@
 !/.local/share/
 /.local/share/*
 
-# Git
-!/.config/git/
-
-# Zsh
-!/.config/zsh/
-!/.local/share/zsh/
-
-# Scripts
-!/.local/scripts/
-
-# Vim
-!/.config/vim/
-
-# htop
-!/.config/htop/
+# Composer
+!/.config/composer
+/.config/composer/*
+!/.config/composer/composer.json
 
 # dircolors
 !/.local/share/dircolors/
 
-# setcolors
-!/.local/share/setcolors/
+# FontConfig
+!/.config/fontconfig/
+
+# Git
+!/.config/git/
 
 # Pacman
 !/.config/pacman/
+
+# Scripts
+!/.local/scripts/
+
+# setcolors
+!/.local/share/setcolors/
 
 # Stack
 !/.config/stack
 /.config/stack/*
 !/.config/stack/config.yaml
 
-# Composer
-!/.config/composer
-/.config/composer/*
-!/.config/composer/composer.json
+# Todo
+!/TODO
 
-# X
-!/.config/X/
-
-# FontConfig
-!/.config/fontconfig/
-
-# XMonad
-!/.xmonad/
-/.xmonad/*
-/.xmonad/**/*.hs
+# Vim
+!/.config/vim/
 
 # VSCode
 !/.config/Code - OSS/
@@ -67,5 +55,21 @@
 /.config/Code - OSS/User/*
 !/.config/Code - OSS/User/keybindings.json
 !/.config/Code - OSS/User/settings.json
+
+# X
+!/.config/X/
+
+# XMonad
+!/.xmonad/
+/.xmonad/*
+/.xmonad/**/*.hs
+
+# Zsh
+!/.config/zsh/
+!/.local/share/zsh/
+
+
+# htop
+!/.config/htop/
 
 # vim: ft=gitconfig

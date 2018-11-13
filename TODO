@@ -1,0 +1,19 @@
+# TODO LIST
+
+## Shell
+
+- Automatically compile local functions (using zcompile)
+- Trash mode for 'rm' command (or 'trash' command)
+- Use zsh/system syserror
+- Add context option (-c) to zerror to show custom context instead of caller
+
+## Windows Manager
+
+- Prompt (via XMonad.Prompt.Shell)
+
+## System
+
+- Media buttons management via daemon (IMPROVE)
+
+# vim: ft=markdown
+code: language=markdown
