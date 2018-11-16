@@ -21,7 +21,7 @@
     "explorer.openEditors.visible": 0,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.rendererType": "canvas",
+    "terminal.integrated.rendererType": "dom",
 
     // Editor UI
     "editor.renderLineHighlight": "all",
@@ -58,7 +58,12 @@
     "editor.acceptSuggestionOnEnter": "smart",
 
     // Files associations
-    "files.associations": {},
+    "files.associations": {
+        "**/.config/zsh/**/*": "shellscript",
+        "**/.local/share/zsh/**/*": "shellscript",
+
+        "**/.config/fontconfig/**/*": "xml",
+    },
 
     // Hidden files
     "files.exclude": {
