@@ -1,6 +1,6 @@
 # Linux console color palette #
 
-if [[ "$TERM" == 'linuxe' ]]
+if [[ "$TERM" == 'linux' ]]
 then
     autoload check_available
 

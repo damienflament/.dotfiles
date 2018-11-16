@@ -10,7 +10,7 @@ function prompt_vtnr
     fi
 }
 
-# Git 
+# Git
 if source /usr/share/git/git-prompt.sh
 then
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -26,7 +26,7 @@ fi
 # Prompt configuration
 setopt prompt_subst         # Substitutions within prompt
 setopt prompt_cr            # Carriage return before the prompt
-setopt transient_rprompt    # Right prompt only visible on the current prompt 
+setopt transient_rprompt    # Right prompt only visible on the current prompt
 
 # Prompt
 PROMPT=$'\n%F{black}%(!.%K{red}.%K{green}) %n %K{magenta} %m %K{blue} %~ %k%f '

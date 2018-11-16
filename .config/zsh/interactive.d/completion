@@ -8,7 +8,7 @@ bashcompinit
 setopt auto_list            # List choices on ambiguous completion
 setopt auto_menu            # Use menu completion
 
-setopt auto_param_keys      # Make parameter keys typing easier 
+setopt auto_param_keys      # Make parameter keys typing easier
 setopt auto_param_slash     # Append slash to directories
 setopt auto_remove_slash    # Remove appended slash when needed
 

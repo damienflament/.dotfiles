@@ -1,4 +1,4 @@
-# Shell aliases # 
+# Shell aliases #
 
 alias sudo='sudo '      # Make aliases available with sudo
 alias su='su --login'
@@ -37,7 +37,7 @@ alias chmodr='chmod --recursive'
 alias chownr='chown --recursive'
 alias chgrpr='chgrp --recursive'
 
-# Utilities 
+# Utilities
 alias mount='mount -v'
 alias grep='grep --color=auto --context=5'
 alias view='vim -R'
@@ -45,7 +45,7 @@ alias make='make -j$(( $(nproc) - 1 ))'
 alias stack='stack --jobs $(( $(nproc) - 1 ))'
 
 # Shell utilities
-alias pager="${PAGER:?}"
-alias editor="${EDITOR:?}"
+alias pager="$PAGER"
+alias editor="$EDITOR"
 
 # vim: ft=zsh
