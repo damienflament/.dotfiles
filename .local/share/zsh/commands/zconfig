@@ -5,18 +5,17 @@
 # The shell configuration is usually customized by manually editing the
 # configuration files. But this command make some common tasks easilly
 # available from the interactive shell.
-#
-# The following commands are supported:
-#   reload: reloads the shell configuration
-#   recompile: recompiles the configuration files
-#   deploy: deploys the configuration to the root user
 function zconfig
 {
     autoload zerror
 
-    local command=${1:?The command must be specified.}
-    
+    readonly command=${1:?The command must be specified.}
+
     case "$command" in
+        (get)
+            shift
+            __zconfig-get "$@"
+            ;;
         (reload)
             exec -l zsh
             ;;
@@ -25,33 +24,83 @@ function zconfig
             ;;
         (deploy)
             shift
-            zconfig-deploy "$@"
+            __zconfig-deploy "$@"
             ;;
         (*)
             zerror "command '$command' not available"
+            return 1
+            ;;
     esac
 }
 
-function zconfig-deploy
+function __zconfig-get
 {
-    autoload check_available zmessage
+    autoload zerror
 
-    check_available sudo rsync || return $?
+    readonly name=${1?:The configuration name must be specified}
+    readonly type=${(Pt)name}
+    local description="${description}$name ($type) = "
+    local value
+
+    case "$type" in
+        (integer*|float*)
+            value="${(P)name}"
+            ;;
+        (scalar*)
+            value="\"${(P)name}\""
+            ;;
+        (array*)
+            description="${description}\n"
+            value="${(PF)name}"
+            ;;
+        ('')
+            zerror "$name is not defined"
+            return 1
+            ;;
+        (*)
+            zerror "type '$type' not handled"
+            return 2
+            ;;
+    esac
+
+    print "${description}${value}"
+}
+
+function __zconfig-deploy
+{
+    # zmodload zparseopts
+    autoload check_available not zerror
+
+    check_available sudo git rm || return $?
+
+    sudo --validate --prompt="In order to deploy configuration to %U user, please give its password:" || return $?
 
     typeset -ga zconfig_deploy_targets=( $zconfig_deploy_targets )
+    readonly destination=$(sudo --set-home --shell echo \$HOME)
+    # local -a options
 
-    local target destination parent
-    local -r destination_prefix=~root
-    local -a destinations=( ${zconfig_deploy_targets/#$HOME/$destination_prefix} )
-    
-    for target destination in ${zconfig_deploy_targets:^destinations}
-    do
-        zmessage "$target -> $destination"
-        parent=${destination:h}
+    # zparseopts -D -a options - -clean
 
-        [[ -e "$parent" ]] || sudo mkdir --parents "$parent"
-        sudo rsync --dirs --recursive --links --perms --delete --update --verbose "$target" "$parent"
-    done
+    sudo --shell <<_SCRIPT_
+
+    cd "$destination"
+    git init --quiet
+
+    git ls-remote '$USERNAME' &>/dev/null
+
+    if (( \$? != 0 ))
+    then
+        git remote add '$USERNAME' "$HOME"
+        git remote set-url --push '$USERNAME' ''
+    fi
+
+    git fetch --quiet '$USERNAME'
+    git checkout --quiet --force -B sync '$USERNAME'/master
+    git reset --quiet --hard
+    git checkout --quiet sync
+
+    rm --recursive --force ./.git
+_SCRIPT_
 }
 
 # Completion
@@ -62,6 +111,7 @@ compdef _zconfig zconfig
 function _zconfig
 {
     local -a commands=(
+        'get:get a configuration value'
         'reload:reload the shell configuration'
         'recompile:recompile the configuration files'
         'deploy:deploy the configuration to the root user'
@@ -69,7 +119,7 @@ function _zconfig
 
     if (( CURRENT == 2 ))
     then
-        _describe -t commands 'commands' commands 
+        _describe -t commands 'commands' commands
     fi
 }
 
