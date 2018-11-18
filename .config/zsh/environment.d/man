@@ -1,0 +1,5 @@
+# Man user configuration #
+
+export MANSECT='1:8:3:0:2:5:4:7:6:n'
+
+# vim: ft=zsh
