@@ -2,4 +2,6 @@
 
 export MAKEFLAGS="-j$(( $(nproc) - 1 ))"
 
+export CFLAGS="-Wall -Werror"
+
 # vim: ft=zsh
