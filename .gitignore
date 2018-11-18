@@ -14,6 +14,9 @@
 !/.local/share/
 /.local/share/*
 
+# Cabal
+!/.config/cabal
+
 # Composer
 !/.config/composer
 /.config/composer/*
