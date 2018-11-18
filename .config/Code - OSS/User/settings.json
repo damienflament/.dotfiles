@@ -14,6 +14,8 @@
     "workbench.colorTheme": "Solarized Dark",
     "workbench.iconTheme": "vs-minimal",
 
+    "C_Cpp.inactiveRegionOpacity": 0.3,
+
     // Components UI
     "breadcrumbs.enabled": true,
     "workbench.tree.horizontalScrolling": true,
@@ -38,6 +40,7 @@
     "debug.inlineValues": true,
 
     // Editor behaviors
+    "editor.tabSize": 4,
     "editor.formatOnPaste": true,
     "files.autoGuessEncoding": true,
     "files.insertFinalNewline": false,
@@ -46,6 +49,8 @@
 
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
+
+    "explorer.confirmDelete": false,
 
     // Suggestions
     "editor.quickSuggestions": {
@@ -114,4 +119,10 @@
 
     // XML
     "xml.format.splitAttributes": false,
+
+    // C/C++
+    "C_Cpp.default.includePath": [
+        "/usr/include/**"
+    ],
+    "C_Cpp.loggingLevel": "Warning",
 }
