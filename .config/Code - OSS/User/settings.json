@@ -117,6 +117,35 @@
     "git.autofetch": true,
     "git.confirmSync": false,
 
+    // TODO
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": false,
+    "todohighlight.keywords": [
+        "Note:",
+        {
+            "text": "Todo:",
+            "color": "#e4e4e4",
+            "backgroundColor": "#00afaf",
+            "borderColor": "#00afaf",
+        },
+        {
+            "text": "Fixme:",
+            "color": "#e4e4e4",
+            "backgroundColor": "#d75f00",
+            "borderColor": "#d75f00",
+        },
+    ],
+    "todohighlight.defaultStyle": {
+        "color": "#626262",
+        "backgroundColor": "#ffffd7",
+        "borderColor":  "#ffffd7",
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderRadius": "2px",
+        "cursor": "pointer",
+        "isWholeLine": false,
+    },
+
     // XML
     "xml.format.splitAttributes": false,
 
