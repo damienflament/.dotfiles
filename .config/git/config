@@ -1,3 +1,5 @@
 [user]
 	email = damien.flament@gmx.com
 	name = Damien Flament
+[core]
+	excludesfile = /home/damien/.config/git/exclude
