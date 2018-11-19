@@ -27,6 +27,7 @@
 
     // Editor UI
     "editor.renderLineHighlight": "all",
+    "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
     "editor.rulers": [80, 120],
     "editor.renderIndentGuides": false,
@@ -41,11 +42,13 @@
 
     // Editor behaviors
     "editor.tabSize": 4,
+    "editor.autoIndent": true,
+    "editor.detectIndentation": true,
     "editor.formatOnPaste": true,
-    "files.autoGuessEncoding": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "files.autoGuessEncoding": true,
 
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
@@ -116,6 +119,7 @@
     // Git
     "git.autofetch": true,
     "git.confirmSync": false,
+    "gitlens.codeLens.enabled": false,
 
     // TODO
     "todohighlight.isEnable": true,
