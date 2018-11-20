@@ -22,8 +22,8 @@ zstyle ':completion:*' verbose yes  # Show completions descriptions
 zstyle ':completion:*:descriptions' format '%B%d:%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for %d'
-zstyle ':completion:*' group-name 'group %d'
-
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' format $'\n%F{white}%d:%f'
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
