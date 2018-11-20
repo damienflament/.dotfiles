@@ -1,5 +1,7 @@
 # Make user configuration #
 
+export CONFIG_SITE="$XDG_CONFIG_HOME/autotools/config.site"
+
 export MAKEFLAGS="-j$(( $(nproc) - 1 ))"
 
 export CFLAGS="-Wall -Werror"

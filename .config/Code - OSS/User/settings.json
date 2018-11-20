@@ -71,6 +71,10 @@
         "**/.local/share/zsh/**/*": "shellscript",
 
         "**/.config/fontconfig/**/*": "xml",
+
+        // Autotools templates
+        "*.h.in": "c",
+        "config.site": "shellscript"
     },
 
     // Hidden files

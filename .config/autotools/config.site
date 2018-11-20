@@ -1,0 +1,11 @@
+# Give Autoconf 2.x generated configure scripts a shared default cache file
+# for feature test results, architecture-specific.
+if test "$cache_file" = /dev/null
+then
+    test -z "$CC" && CC=gcc
+
+    # A cache file is only valid for one C compiler.
+    cache_file="$HOME/.cache/autotools/config.${CC}.cache"
+fi
+
+# vim: ft=sh
