@@ -125,6 +125,7 @@
     // Git
     "git.autofetch": true,
     "git.confirmSync": false,
+    "git.enableSmartCommit": true,
     "gitlens.codeLens.enabled": false,
 
     // TODO
