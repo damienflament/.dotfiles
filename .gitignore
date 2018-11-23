@@ -30,6 +30,7 @@
 !/.config/git/
 !/.config/htop/
 !/.config/pacman/
+!/.config/pip
 !/.config/stack/
 /.config/stack/*
 !/.config/stack/config.yaml
