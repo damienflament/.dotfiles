@@ -49,7 +49,7 @@
 !/.local/scripts/
 
 # Todo
-!/TODO
+!/TODO.md
 
 # XMonad
 !/.xmonad/

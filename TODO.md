@@ -1,5 +1,9 @@
 # TODO LIST
 
+## Dotfiles
+
+- Command to update .gitignore file from a more user friendly configuration file
+
 ## Shell
 
 - Automatically compile local functions (using zcompile)
@@ -15,5 +19,5 @@
 
 - Media buttons management via daemon (IMPROVE)
 
-# vim: ft=markdown
-code: language=markdown
+<!-- vim: ft=markdown -->
+<!-- code: language=markdown -->
