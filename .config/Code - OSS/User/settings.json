@@ -69,12 +69,14 @@
     "files.associations": {
         "**/.config/zsh/**/*": "shellscript",
         "**/.local/share/zsh/**/*": "shellscript",
-
         "**/.config/fontconfig/**/*": "xml",
 
-        // Autotools templates
+        // GNU Build System (Autotools)
         "*.h.in": "c",
-        "config.site": "shellscript"
+        "config.site": "shellscript",
+
+        // SCons
+        "SConstruct": "python"
     },
 
     // Hidden files
@@ -162,4 +164,7 @@
         "/usr/include/**"
     ],
     "C_Cpp.loggingLevel": "Warning",
+
+    // Python
+    "python.linting.lintOnSave": true,
 }
