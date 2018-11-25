@@ -53,7 +53,9 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
 
+    // Explorer behaviors
     "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
 
     // Suggestions
     "editor.quickSuggestions": {
@@ -76,10 +78,11 @@
         "config.site": "shellscript",
 
         // SCons
-        "SConstruct": "python"
+        "SConstruct": "python",
+        "SConscript": "python",
     },
 
-    // Hidden files
+    // Excluded files
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
