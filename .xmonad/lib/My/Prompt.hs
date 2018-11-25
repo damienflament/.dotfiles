@@ -1,9 +1,9 @@
 -- | Custom prompt for "XMonad"
 module My.Prompt
-  ( module XMonad.Prompt
-  , myXPConfig
-  , myPrompt )
-  where
+    ( module XMonad.Prompt
+    , myXPConfig
+    , myPrompt )
+    where
 
 import Control.Arrow
 
@@ -45,15 +45,15 @@ myXPConfig = def { XMonad.Prompt.font = My.UI.Theme.font solarizedTheme
 
 myPromptKeyBindings :: M.Map (KeyMask, KeySym) (XP ())
 myPromptKeyBindings = M.fromList $
-  map (first $ (,) noModMask)
-      [ (xK_Return, setSuccess True >> setDone True)
-      , (xK_KP_Enter, setSuccess True >> setDone True)
-      , (xK_BackSpace, deleteString Prev)
-      , (xK_Delete, deleteString Next)
-      , (xK_Left, moveCursor Prev)
-      , (xK_Right, moveCursor Next)
-      , (xK_Home, startOfLine)
-      , (xK_End, endOfLine)
-      , (xK_Down, moveHistory W.focusUp')
-      , (xK_Up, moveHistory W.focusDown')
-      , (xK_Escape, quit) ]
+    map (first $ (,) noModMask)
+        [ (xK_Return, setSuccess True >> setDone True)
+        , (xK_KP_Enter, setSuccess True >> setDone True)
+        , (xK_BackSpace, deleteString Prev)
+        , (xK_Delete, deleteString Next)
+        , (xK_Left, moveCursor Prev)
+        , (xK_Right, moveCursor Next)
+        , (xK_Home, startOfLine)
+        , (xK_End, endOfLine)
+        , (xK_Down, moveHistory W.focusUp')
+        , (xK_Up, moveHistory W.focusDown')
+        , (xK_Escape, quit) ]

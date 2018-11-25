@@ -20,12 +20,12 @@ myKeyBindings :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeyBindings (XConfig { modMask = m,
                          layoutHook = l,
                          workspaces = ws }) = M.fromList $
-  [ ((m,                xK_Return), spawnTerminal)
-  , ((m .|. shiftMask,  xK_Return), spawnSuperTerminal)
+  [ ((m,                xK_twosuperior), spawnTerminal)
+  , ((m .|. shiftMask,  xK_twosuperior), spawnSuperTerminal)
   --, ((m,                xK_e),      spawnCommandInTerminal "ranger")
   --, ((m .|. shiftMask,  xK_e),      spawnCommandInSuperTerminal "ranger")
 
-  , ((m,                xK_twosuperior),  myPrompt)
+  , ((m,                xK_Escape),  myPrompt)
 
   --, ((m .|. mod1Mask,               xK_c),  spawn "autoclick --start")
   --, ((m .|. shiftMask .|. mod1Mask, xK_c),  spawn "autoclick --stop")
