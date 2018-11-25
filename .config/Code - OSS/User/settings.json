@@ -171,4 +171,8 @@
 
     // Python
     "python.linting.lintOnSave": true,
+
+    // Cmake
+    "cmake-tools-helper.cmake_download_path": "/home/damien/.vscode-oss/extensions/maddouri.cmake-tools-helper-0.2.1/cmake_download",
+    "cmake.configureOnOpen": true,
 }
