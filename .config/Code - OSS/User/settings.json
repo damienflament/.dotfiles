@@ -4,7 +4,6 @@
 
     // Theming
     "editor.fontFamily": "'Consolas', 'monospace', monospace",
-    "terminal.integrated.fontFamily": "monospace",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.suggestFontSize": 14,
@@ -80,6 +79,9 @@
         // SCons
         "SConstruct": "python",
         "SConscript": "python",
+
+        // Clang
+        ".clang-format": "yaml"
     },
 
     // Excluded files
@@ -168,11 +170,15 @@
         "/usr/include/**"
     ],
     "C_Cpp.loggingLevel": "Warning",
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
 
     // Python
     "python.linting.lintOnSave": true,
 
     // Cmake
-    "cmake-tools-helper.cmake_download_path": "/home/damien/.vscode-oss/extensions/maddouri.cmake-tools-helper-0.2.1/cmake_download",
+    "cmake-tools-helper.auto_set_cpptools_target": true,
     "cmake.configureOnOpen": true,
+    "cmake.buildBeforeRun": true
 }
