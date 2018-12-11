@@ -261,6 +261,21 @@
         "cursor": "pointer",
         "isWholeLine": false,
     },
+    "todohighlight.include": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss",
+        "**/*.c",
+        "**/*.h",
+        "**/*.C",
+        "**/*.cpp",
+        "**/CMakeLists.txt",
+    ],
 
     // XML
     "xml.format.splitAttributes": false,
