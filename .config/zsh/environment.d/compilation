@@ -1,6 +1,6 @@
 # Make user configuration #
 
-export MAKEFLAGS="-j$(( $(nproc) - 1 ))"
+export MAKEFLAGS="-j -l$(nproc)"
 export CONFIG_SITE="$XDG_CONFIG_HOME/autotools/config.site"
 export CFLAGS="-Wall -Werror"
 export SCONSFLAGS="--jobs=$(( $(nproc) - 1 )) --warn=all"
