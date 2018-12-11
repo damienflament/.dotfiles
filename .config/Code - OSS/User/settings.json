@@ -1,9 +1,14 @@
-// VSCode configuration //
+/*
+    VSCode configuration
+*/
 {
-    "workbench.settings.editor": "json", // Settings style
+    // Settings editing
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultSettings": false,
+    "workbench.settings.openDefaultKeybindings": false,
 
     // Theming
-    "editor.fontFamily": "'Consolas', 'monospace', monospace",
+    "editor.fontFamily": "Source Code Pro, 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.suggestFontSize": 14,
@@ -52,6 +57,17 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
 
+    // Language specific editor UI and behaviors
+    "[html]": {
+        "editor.colorDecorators": true,
+    },
+    "[css]": {
+        "editor.colorDecorators": true,
+    },
+    "[scss]": {
+        "editor.colorDecorators": true,
+    },
+
     // Explorer behaviors
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -60,11 +76,15 @@
     "editor.quickSuggestions": {
         "other": true,
         "comments": false,
-        "strings": false
+        "strings": false,
     },
     "editor.snippetSuggestions": "bottom",
+    "editor.wordBasedSuggestions": true,
+    "editor.suggest.filterGraceful": true,
     "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.suggest.localityBonus": true,
     "editor.acceptSuggestionOnEnter": "smart",
+    "editor.acceptSuggestionOnCommitCharacter": true,
 
     // Files associations
     "files.associations": {
@@ -81,7 +101,14 @@
         "SConscript": "python",
 
         // Clang
-        ".clang-format": "yaml"
+        "*.clang-format": "yaml",
+
+        // C/C++
+        "*.private.h": "c",
+        "*.h": "c",
+        ".c": "c",
+        ".C": "cpp",
+        "*.cpp": "cpp",
     },
 
     // Excluded files
@@ -111,9 +138,82 @@
     // Diff
     "diffEditor.ignoreTrimWhitespace": false,
 
-    // Global debug launch configuration
+    // Debug
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.openDebug": "openOnSessionStart",
+    "debug.openExplorerOnEnd": false,
+    "debug.showInStatusBar": "never",
+    "debug.toolBarLocation": "docked",
+
     "launch": {
-        "configurations": [],
+        "configurations": [
+            {
+                "name": "[CMake] Current target",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${command:cmake.launchTargetPath}",
+                "cwd": "${workspaceFolder}",
+                "MIMode": "gdb",
+                "miDebuggerArgs": "--quiet",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "stopAtEntry": false,
+                "externalConsole": false,
+            },
+            {
+                "name": "[CMake][Inferiors] Current target",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${command:cmake.launchTargetPath}",
+                "cwd": "${workspaceFolder}",
+                "MIMode": "gdb",
+                "miDebuggerArgs": "--quiet --command=${workspaceFolder}/criterion.gdb",
+                "setupCommands": [
+                    {
+                        "text": "-interpreter-exec console \"set follow-fork-mode child\""
+                    },
+                ],
+                "stopAtEntry": false,
+                "externalConsole": false,
+            },
+            {
+                "name": "[CMake][Native] Current target",
+                "type": "gdb",
+                "request": "launch",
+                "target": "${command:cmake.launchTargetPath}",
+                "cwd": "${workspaceFolder}",
+                "valuesFormatting": "prettyPrinters",
+            },
+            {
+                "name": "[CMake][Native][Inferiors] Current target",
+                "type": "gdb",
+                "request": "launch",
+                "target": "${command:cmake.launchTargetPath}",
+                "cwd": "${workspaceFolder}",
+                // "showDevDebugOutput": true,
+                "autorun": [
+                    // "set follow-fork-mode child",
+                    // "set detach-on-fork off",
+                    // "set non-stop on",
+                    // "set target-async on",
+                    // "set schedule-multiple on",
+                    // "set print inferior-events off",
+                    // "set print thread-events off",
+                    // "handle SIGSTOP SIGCONT nostop noprint pass"
+                ],
+                "debugger_args": [
+                    "-x",
+                    "${workspaceFolder}/criterion.gdb",
+                ],
+                "printCalls": true,
+                "valuesFormatting": "prettyPrinters",
+            },
+        ],
         "compounds": []
     },
 
@@ -167,18 +267,29 @@
 
     // C/C++
     "C_Cpp.default.includePath": [
-        "/usr/include/**"
+        "/usr/include"
     ],
-    "C_Cpp.loggingLevel": "Warning",
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_style": "file",
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
 
+    // Cmake
+    "cmake.configureOnOpen": true,
+    "cmake.saveBeforeBuild": true,
+    "cmake.autoRestartBuild": true,
+    "cmake.buildBeforeRun": true,
+    "cmake.debugConfig": {
+        "environment": [
+            {
+                // Prevents Check forks while debugging
+                "name": "CK_FORK",
+                "value": "no",
+                //
+            }
+        ],
+    },
+
     // Python
     "python.linting.lintOnSave": true,
-
-    // Cmake
-    "cmake-tools-helper.auto_set_cpptools_target": true,
-    "cmake.configureOnOpen": true,
-    "cmake.buildBeforeRun": true
+    "window.zoomLevel": 0,
 }
