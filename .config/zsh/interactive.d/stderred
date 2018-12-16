@@ -1,0 +1,5 @@
+# Standard error colorizing #
+
+source /usr/share/stderred/stderred.sh
+
+# vim: ft=zsh
