@@ -12,6 +12,16 @@
         "command": "workbench.action.reloadWindow",
     },
 
+    /* Opening */
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.files.openFile",
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.files.openFolder",
+    },
+
     /* Tasks */
     {
         "key": "ctrl+b",
