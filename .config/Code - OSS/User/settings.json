@@ -21,6 +21,7 @@
     "C_Cpp.inactiveRegionOpacity": 0.3,
 
     // Components UI
+    "window.titleBarStyle": "native",
     "breadcrumbs.enabled": true,
     "workbench.tree.horizontalScrolling": true,
     "window.menuBarVisibility": "toggle",
@@ -92,6 +93,13 @@
         "**/.local/share/zsh/**/*": "shellscript",
         "**/.config/fontconfig/**/*": "xml",
 
+        // C/C++
+        "*.private.h": "c",
+        "*.h": "c",
+        ".c": "c",
+        ".C": "cpp",
+        "*.cpp": "cpp",
+
         // GNU Build System (Autotools)
         "*.h.in": "c",
         "config.site": "shellscript",
@@ -103,12 +111,8 @@
         // Clang
         "*.clang-format": "yaml",
 
-        // C/C++
-        "*.private.h": "c",
-        "*.h": "c",
-        ".c": "c",
-        ".C": "cpp",
-        "*.cpp": "cpp",
+        // PkgConfig
+        "*.pc": "shellscript",
     },
 
     // Excluded files
