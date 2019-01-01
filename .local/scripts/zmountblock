@@ -18,6 +18,6 @@ function zmountblock
     sudo mount --options="uid=$UID,gid=$GID" "$device" "$mount_path"
 }
 
-zmountblock "$*"
+zmountblock "$@"
 
 # vim: ft=zsh
