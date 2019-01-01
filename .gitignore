@@ -1,8 +1,9 @@
 # Git ignore file for the dotfiles repository #
 
-# First, ignore all files, except this one.
+# First, ignore all files, except this one and the license.
 /*
 !/.gitignore
+!/.LICENSE
 # Then, allow selectively files to be versionned.
 
 # Main directories
