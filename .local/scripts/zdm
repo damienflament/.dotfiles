@@ -56,10 +56,9 @@ function select_name
         export DIALOG_OK=0
 
         dialog  --stdout --no-items \
-                --backtitle 'Display manager' \
                 --ok-label 'Run' \
                 --cancel-label 'Exit' \
-                --menu 'Environments:' 0 0 $(get_commands_count) $(get_names)
+                --menu ' ' 0 0 $(get_commands_count) $(get_names)
     )
     status=$?
 
