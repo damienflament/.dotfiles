@@ -6,7 +6,7 @@
 # module; that is in the form 'name:line'.
 function caller
 {
-    zmodload zsh/parameter
+    zmodload zsh/parameter 2>/dev/null # Prevents showing error when some module parameter are already defined in the parent scope.
 
     # Index 1 is for the current line,
     # index 2 is for the caller of this function (the one which ask for info about its caller),

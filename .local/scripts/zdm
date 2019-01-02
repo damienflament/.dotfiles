@@ -1,5 +1,106 @@
 #! /bin/zsh
 
+ZDM_COMMANDS=(
+    "XMonad" "zstartx xmonad"
+    "Console" "$SHELL"
+)
 
+function get_names
+{
+    local name command
 
+    foreach name command in $ZDM_COMMANDS
+    do
+        echo $name
+    done
+}
 
+function get_commands_count
+{
+    echo $(( ${#ZDM_COMMANDS} / 2 + ${#ZDM_COMMANDS} % 2 ))
+}
+
+function get_command_for_name
+{
+    autoload zerror
+    zmodload zsh/system
+
+    readonly name=${1:?The name must be specified.}
+    integer index
+    local command
+
+    index=$ZDM_COMMANDS[(Ie)$name]
+    command=$ZDM_COMMANDS[$(( index + 1 ))]
+
+    if [[ -z "$command"  ]]
+    then
+        zerror "No command defined for '$name'"
+        exit EXIT_FAILURE
+    fi
+
+    echo $command
+}
+
+function select_name
+{
+    autoload zerror
+    zmodload zsh/system
+
+    readonly names=${1:?The available names must be specified.}
+    local name
+    local -h status
+
+    name=$(
+        export DIALOG_ESC=1
+        export DIALOG_CANCEL=1
+        export DIALOG_OK=0
+
+        dialog  --stdout --no-items \
+                --backtitle 'Display manager' \
+                --ok-label 'Run' \
+                --cancel-label 'Exit' \
+                --menu 'Environments:' 0 0 $(get_commands_count) $(get_names)
+    )
+    status=$?
+
+    if (( $status == 1 ))
+    then
+        exit EXIT_SUCCESS
+    fi
+
+    if (( $status != 0 ))
+    then
+        zerror "Error while displaying the menu: $status"
+        exit EXIT_FAILURE
+    fi
+
+    echo $name
+}
+
+function zdm
+{
+    zmodload zsh/system
+
+    local name
+    local -a command
+
+    name=$(select_name $(get_names))
+
+    if [[ -z "$name" ]]
+    then
+        exit EXIT_FAILURE
+    fi
+
+    clear
+
+    command=( $(get_command_for_name "$name") )
+
+    if [[ -z "$command" ]]
+    then
+        exit EXIT_FAILURE
+    fi
+
+    exec $command
+}
+
+zdm "$@"
