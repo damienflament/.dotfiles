@@ -31,6 +31,7 @@
     "terminal.integrated.rendererType": "dom",
 
     // Editor UI
+    "editor.lineNumbers": "on",
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
@@ -44,6 +45,7 @@
     "editor.smoothScrolling": true,
 
     "debug.inlineValues": true,
+
 
     // Editor behaviors
     "editor.tabSize": 4,
@@ -67,6 +69,9 @@
     },
     "[scss]": {
         "editor.colorDecorators": true,
+    },
+    "[shellscript]": {
+        "editor.lineNumbers": "relative",
     },
 
     // Explorer behaviors
