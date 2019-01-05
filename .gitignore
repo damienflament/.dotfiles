@@ -27,6 +27,7 @@
 !/.config/composer/
 /.config/composer/*
 !/.config/composer/composer.json
+!/.config/dialog/
 !/.config/fontconfig/
 !/.config/git/
 !/.config/htop/
