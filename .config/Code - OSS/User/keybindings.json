@@ -28,11 +28,15 @@
         Tasks
     */
     {
-        "key": "ctrl+b",
+        "key": "ctrl+b b",
         "command": "workbench.action.tasks.build",
     },
     {
-        "key": "ctrl+shift+b",
+        "key": "ctrl+b t",
+        "command": "workbench.action.tasks.test",
+    },
+    {
+        "key": "ctrl+b r",
         "command": "workbench.action.tasks.runTask",
     },
     /*
@@ -119,8 +123,18 @@
         Navigation
     */
     {
-        "key": "ctrl+[Period]",
+        "key": "ctrl+g l",
         "command": "workbench.action.gotoLine",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+g s",
+        "command": "workbench.action.gotoSymbol",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+g f",
+        "command": "workbench.action.quickOpen",
         "when": "editorTextFocus"
     },
     /*
