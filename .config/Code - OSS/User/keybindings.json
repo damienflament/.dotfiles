@@ -2,7 +2,9 @@
     VSCode keybindings
 */
 [
-    /* Application */
+    /*
+        Application
+    */
     {
         "key": "ctrl+r",
         "command": "workbench.action.openRecent",
@@ -11,8 +13,9 @@
         "key": "ctrl+shift+r",
         "command": "workbench.action.reloadWindow",
     },
-
-    /* Opening */
+    /*
+        Opening
+    */
     {
         "key": "ctrl+o",
         "command": "workbench.action.files.openFile",
@@ -21,8 +24,9 @@
         "key": "ctrl+shift+o",
         "command": "workbench.action.files.openFolder",
     },
-
-    /* Tasks */
+    /*
+        Tasks
+    */
     {
         "key": "ctrl+b",
         "command": "workbench.action.tasks.build",
@@ -31,30 +35,62 @@
         "key": "ctrl+shift+b",
         "command": "workbench.action.tasks.runTask",
     },
-
-    /* UI components manipulation */
+    /*
+        Terminal
+    */
     {
-        "key": "ctrl+escape",
-        "command": "workbench.action.showCommands",
-    },
-    {
-        "key": "ctrl+[Backquote]",
+        "key": "ctrl+[Backquote] ctrl+[Backquote]",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+m",
-        "command": "workbench.action.toggleMaximizedPanel",
-    },
-    {
-        "key": "ctrl+[Backquote]",
+        "key": "ctrl+[Backquote] ctrl+[Backquote]",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+shift+[Backquote]",
+        "key": "ctrl+[Backquote] ctrl+n",
         "command": "workbench.action.terminal.new",
     },
+    {
+        "key": "ctrl+[Backquote] ctrl+1",
+        "command": "workbench.action.terminal.focusAtIndex1",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+2",
+        "command": "workbench.action.terminal.focusAtIndex2",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+3",
+        "command": "workbench.action.terminal.focusAtIndex3",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+4",
+        "command": "workbench.action.terminal.focusAtIndex4",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+5",
+        "command": "workbench.action.terminal.focusAtIndex5",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+6",
+        "command": "workbench.action.terminal.focusAtIndex6",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+7",
+        "command": "workbench.action.terminal.focusAtIndex7",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+8",
+        "command": "workbench.action.terminal.focusAtIndex8",
+    },
+    {
+        "key": "ctrl+[Backquote] ctrl+9",
+        "command": "workbench.action.terminal.focusAtIndex9",
+    },
+    /*
+        Debug
+    */
     {
         "key": "ctrl+d",
         "command": "workbench.action.debug.restart",
@@ -64,19 +100,32 @@
         "key": "ctrl+shift+d",
         "command": "workbench.action.debug.stop",
     },
+    /*
+        UI components manipulation
+    */
+    {
+        "key": "ctrl+escape",
+        "command": "workbench.action.showCommands",
+    },
+    {
+        "key": "ctrl+m",
+        "command": "workbench.action.toggleMaximizedPanel",
+    },
     {
         "key": "ctrl+f",
         "command": "actions.find",
     },
-
-    /* Navigation */
+    /*
+        Navigation
+    */
     {
         "key": "ctrl+[Period]",
         "command": "workbench.action.gotoLine",
         "when": "editorTextFocus"
     },
-
-    /* Editor */
+    /*
+        Editor
+    */
     // Comments
     {
         "key": "ctrl+numpad_divide",
@@ -88,7 +137,6 @@
         "command": "editor.action.blockComment",
         "when": "editorTextFocus && !editorReadonly"
     },
-
     // Indentation and formatting
     {
         "key": "ctrl+i",
@@ -105,7 +153,6 @@
         "command": "editor.action.format",
         "when": "editorTextFocus && !editorReadonly"
     },
-
     // Lines manipulation
     {
         "key": "ctrl+up",
