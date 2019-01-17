@@ -2,25 +2,27 @@
     VSCode configuration
 */
 {
-    // Settings editing
+    /*
+        Settings editing
+    */
     "workbench.settings.editor": "json",
     "workbench.settings.openDefaultSettings": false,
     "workbench.settings.openDefaultKeybindings": false,
-
-    // Theming
+    /*
+        Theming
+    */
     "editor.fontFamily": "Source Code Pro, 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.suggestFontSize": 14,
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.lineHeight": 1,
-
     "workbench.colorTheme": "Solarized Dark",
-    "workbench.iconTheme": "vs-minimal",
-
+    
     "C_Cpp.inactiveRegionOpacity": 0.3,
-
-    // Components UI
+    /*
+        Components UI
+    */
     "window.titleBarStyle": "native",
     "breadcrumbs.enabled": true,
     "workbench.tree.horizontalScrolling": true,
@@ -29,25 +31,26 @@
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.rendererType": "dom",
-
-    // Editor UI
+    /*
+        Editor UI
+    */
     "editor.lineNumbers": "on",
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
-    "editor.rulers": [80, 120],
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.renderIndentGuides": false,
-
     "editor.cursorStyle": "line",
     "editor.cursorWidth": 1,
     "editor.cursorBlinking": "expand",
-
     "editor.smoothScrolling": true,
-
     "debug.inlineValues": true,
-
-
-    // Editor behaviors
+    /*
+        Editor behaviors
+    */
     "editor.tabSize": 4,
     "editor.autoIndent": true,
     "editor.detectIndentation": true,
@@ -56,11 +59,11 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "files.autoGuessEncoding": true,
-
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
-
-    // Language specific editor UI and behaviors
+    /*
+        Language specific editor UI and behaviors
+    */
     "[html]": {
         "editor.colorDecorators": true,
     },
@@ -73,12 +76,14 @@
     "[shellscript]": {
         "editor.lineNumbers": "relative",
     },
-
-    // Explorer behaviors
+    /*
+        Explorer behaviors
+    */
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-
-    // Suggestions
+    /*
+        Suggestions
+    */
     "editor.quickSuggestions": {
         "other": true,
         "comments": false,
@@ -91,36 +96,43 @@
     "editor.suggest.localityBonus": true,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.acceptSuggestionOnCommitCharacter": true,
-
-    // Files associations
+    /*
+        Files associations
+    */
     "files.associations": {
         "**/.config/zsh/**/*": "shellscript",
         "**/.local/share/zsh/**/*": "shellscript",
         "**/.config/fontconfig/**/*": "xml",
-
-        // C/C++
+        /*
+            C/C++
+        */
         "*.private.h": "c",
         "*.h": "c",
         ".c": "c",
         ".C": "cpp",
         "*.cpp": "cpp",
-
-        // GNU Build System (Autotools)
+        /*
+            GNU Build system (Autotools)
+        */
         "*.h.in": "c",
         "config.site": "shellscript",
-
-        // SCons
+        /*
+            SCons
+        */
         "SConstruct": "python",
         "SConscript": "python",
-
-        // Clang
+        /*
+            Clang
+        */
         "*.clang-format": "yaml",
-
-        // PkgConfig
+        /*
+            PkgConfig
+        */
         "*.pc": "shellscript",
     },
-
-    // Excluded files
+    /*
+        Hidden files
+    */
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -128,32 +140,34 @@
         "**/CVS": true,
         "**/.DS_Store": true
     },
-
-    // Files excluded from searching (inherit hidden files)
+    /*
+        Files excluded from searching (inherit hidden files)
+    */
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true
     },
-
-    // Files watching
+    /*
+        Files watching
+    */
     "files.useExperimentalFileWatcher": true,
-
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true
     },
-
-    // Diff
+    /*
+        Diff
+    */
     "diffEditor.ignoreTrimWhitespace": false,
-
-    // Debug
+    /*
+        Debugging
+    */
     "debug.internalConsoleOptions": "openOnSessionStart",
     "debug.openDebug": "openOnSessionStart",
     "debug.openExplorerOnEnd": false,
     "debug.showInStatusBar": "never",
     "debug.toolBarLocation": "docked",
-
     "launch": {
         "configurations": [
             {
@@ -225,95 +239,101 @@
         ],
         "compounds": []
     },
-
-    // Terminal
+    /*
+        Terminal
+    */
     "terminal.external.linuxExec": "urxvt",
     "terminal.integrated.drawBoldTextInBrightColors": true,
     "terminal.integrated.fontWeightBold": "normal",
     "terminal.integrated.scrollback": 10000,
-
-    // Telemetry
+    /*
+        Telemetry
+    */
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-
-    // Git
+    /*
+        Git
+    */
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "gitlens.codeLens.enabled": false,
-
-    // TODO
-    "todohighlight.isEnable": true,
-    "todohighlight.isCaseSensitive": false,
-    "todohighlight.keywords": [
-        "Note:",
-        {
-            "text": "Todo:",
-            "color": "#e4e4e4",
-            "backgroundColor": "#00afaf",
-            "borderColor": "#00afaf",
-        },
-        {
-            "text": "Fixme:",
-            "color": "#e4e4e4",
-            "backgroundColor": "#d75f00",
-            "borderColor": "#d75f00",
-        },
+    /*
+        Todos
+    */
+    "todo-tree.autoRefresh": true,
+    "todo-tree.showBadges": false,
+    "todo-tree.expanded": true,
+    "todo-tree.flat": true,
+    "todo-tree.trackFile": true,
+    "todo-tree.showInExplorer": true,
+    "todo-tree.labelFormat": "${after}",
+    "todo-tree.regexCaseSensitive": false,
+    "todo-tree.tags": [
+        "NOTE", // NOTE
+        "TODO", // TODO
+        "FIXME", // FIXME
+        "HACK", // HACK
+        "BUG", // BUG
+        "DEBUG", // DEBUG
+        "OPTIMIZE", // OPTIMIZE
     ],
-    "todohighlight.defaultStyle": {
-        "color": "#626262",
-        "backgroundColor": "#ffffd7",
-        "borderColor":  "#ffffd7",
-        "borderWidth": "1px",
-        "borderStyle": "solid",
-        "borderRadius": "2px",
-        "cursor": "pointer",
-        "isWholeLine": false,
+    "todo-tree.highlightDelay": 0,
+    "todo-tree.defaultHighlight": {
+        "type": "text",
+        "foreground": "#1c1c1c",
+        "background": "#e4e4e4",
+        "iconColour": "#e4e4e4"
     },
-    "todohighlight.include": [
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.html",
-        "**/*.php",
-        "**/*.css",
-        "**/*.scss",
-        "**/*.c",
-        "**/*.h",
-        "**/*.C",
-        "**/*.cpp",
-        "**/CMakeLists.txt",
-    ],
-
-    // XML
+    "todo-tree.customHighlight": {
+        "NOTE": {
+            "icon": "note",
+        },
+        "TODO": {
+            "background": "#5f8700",
+            "iconColour": "#5f8700",
+        },
+        "FIXME": {
+            "background": "#d75f00",
+            "iconColour": "#d75f00",
+            "icon": "alert",
+        },
+        "BUG": {
+            "background": "#d70000",
+            "iconColour": "#d70000",
+            "icon": "bug",
+        },
+        "DEBUG": {
+            "background": "#808080",
+            "iconColour": "#808080",
+            "icon": "eye",
+        },
+        "HACK": {
+            "background": "#af005f",
+            "iconColour": "#af005f",
+            "icon": "file-binary",
+        },
+        "OPTIMIZE": {
+            "background": "#af8700",
+            "iconColour": "#af8700",
+            "icon": "zap",
+        }
+    },
+    /*
+        XML
+    */
     "xml.format.splitAttributes": false,
-
-    // C/C++
+    /*
+        C/C++
+    */
     "C_Cpp.default.includePath": [
         "/usr/include"
     ],
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_style": "file",
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
-
-    // Cmake
-    "cmake.configureOnOpen": true,
-    "cmake.saveBeforeBuild": true,
-    "cmake.autoRestartBuild": true,
-    "cmake.buildBeforeRun": true,
-    "cmake.debugConfig": {
-        "environment": [
-            {
-                // Prevents Check forks while debugging
-                "name": "CK_FORK",
-                "value": "no",
-                //
-            }
-        ],
-    },
-
-    // Python
+    /*
+        Python
+    */
     "python.linting.lintOnSave": true,
-    "window.zoomLevel": 0,
 }
