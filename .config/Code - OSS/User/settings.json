@@ -169,74 +169,7 @@
     "debug.showInStatusBar": "never",
     "debug.toolBarLocation": "docked",
     "launch": {
-        "configurations": [
-            {
-                "name": "[CMake] Current target",
-                "type": "cppdbg",
-                "request": "launch",
-                "program": "${command:cmake.launchTargetPath}",
-                "cwd": "${workspaceFolder}",
-                "MIMode": "gdb",
-                "miDebuggerArgs": "--quiet",
-                "setupCommands": [
-                    {
-                        "description": "Enable pretty-printing for gdb",
-                        "text": "-enable-pretty-printing",
-                        "ignoreFailures": true
-                    }
-                ],
-                "stopAtEntry": false,
-                "externalConsole": false,
-            },
-            {
-                "name": "[CMake][Inferiors] Current target",
-                "type": "cppdbg",
-                "request": "launch",
-                "program": "${command:cmake.launchTargetPath}",
-                "cwd": "${workspaceFolder}",
-                "MIMode": "gdb",
-                "miDebuggerArgs": "--quiet --command=${workspaceFolder}/criterion.gdb",
-                "setupCommands": [
-                    {
-                        "text": "-interpreter-exec console \"set follow-fork-mode child\""
-                    },
-                ],
-                "stopAtEntry": false,
-                "externalConsole": false,
-            },
-            {
-                "name": "[CMake][Native] Current target",
-                "type": "gdb",
-                "request": "launch",
-                "target": "${command:cmake.launchTargetPath}",
-                "cwd": "${workspaceFolder}",
-                "valuesFormatting": "prettyPrinters",
-            },
-            {
-                "name": "[CMake][Native][Inferiors] Current target",
-                "type": "gdb",
-                "request": "launch",
-                "target": "${command:cmake.launchTargetPath}",
-                "cwd": "${workspaceFolder}",
-                // "showDevDebugOutput": true,
-                "autorun": [
-                    // "set follow-fork-mode child",
-                    // "set detach-on-fork off",
-                    // "set non-stop on",
-                    // "set target-async on",
-                    // "set schedule-multiple on",
-                    // "set print inferior-events off",
-                    // "set print thread-events off",
-                    // "handle SIGSTOP SIGCONT nostop noprint pass"
-                ],
-                "debugger_args": [
-                    "-x",
-                    "${workspaceFolder}/criterion.gdb",
-                ],
-                "printCalls": true,
-                "valuesFormatting": "prettyPrinters",
-            },
-        ],
+        "configurations": [],
         "compounds": []
     },
     /*
