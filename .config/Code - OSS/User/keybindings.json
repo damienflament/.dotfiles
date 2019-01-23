@@ -43,53 +43,53 @@
         Terminal
     */
     {
-        "key": "ctrl+[Backquote] ctrl+[Backquote]",
+        "key": "ctrl+[Backquote] [Backquote]",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+[Backquote] ctrl+[Backquote]",
+        "key": "ctrl+[Backquote] [Backquote]",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+[Backquote] ctrl+n",
+        "key": "ctrl+[Backquote] n",
         "command": "workbench.action.terminal.new",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+1",
+        "key": "ctrl+[Backquote] 1",
         "command": "workbench.action.terminal.focusAtIndex1",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+2",
+        "key": "ctrl+[Backquote] 2",
         "command": "workbench.action.terminal.focusAtIndex2",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+3",
+        "key": "ctrl+[Backquote] 3",
         "command": "workbench.action.terminal.focusAtIndex3",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+4",
+        "key": "ctrl+[Backquote] 4",
         "command": "workbench.action.terminal.focusAtIndex4",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+5",
+        "key": "ctrl+[Backquote] 5",
         "command": "workbench.action.terminal.focusAtIndex5",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+6",
+        "key": "ctrl+[Backquote] 6",
         "command": "workbench.action.terminal.focusAtIndex6",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+7",
+        "key": "ctrl+[Backquote] 7",
         "command": "workbench.action.terminal.focusAtIndex7",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+8",
+        "key": "ctrl+[Backquote] 8",
         "command": "workbench.action.terminal.focusAtIndex8",
     },
     {
-        "key": "ctrl+[Backquote] ctrl+9",
+        "key": "ctrl+[Backquote] 9",
         "command": "workbench.action.terminal.focusAtIndex9",
     },
     /*
