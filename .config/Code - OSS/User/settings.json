@@ -31,6 +31,7 @@
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.rendererType": "dom",
+    "window.zoomLevel": 0,
     /*
         Editor UI
     */

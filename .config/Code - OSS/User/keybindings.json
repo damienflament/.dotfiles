@@ -112,7 +112,7 @@
         "command": "workbench.action.showCommands",
     },
     {
-        "key": "ctrl+m",
+        "key": "ctrl+numpad_add",
         "command": "workbench.action.toggleMaximizedPanel",
     },
     {
