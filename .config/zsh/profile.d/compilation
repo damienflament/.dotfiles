@@ -3,6 +3,7 @@
 export MAKEFLAGS="-j -l$(nproc)"
 export CONFIG_SITE="$XDG_CONFIG_HOME/autotools/config.site"
 export CFLAGS="-Wall -Wextra -Werror -Wfatal-errors"
+export CTEST_OUTPUT_ON_FAILURE=1
 export SCONSFLAGS="--jobs=$(( $(nproc) - 1 )) --warn=all"
 
 # vim: ft=zsh
