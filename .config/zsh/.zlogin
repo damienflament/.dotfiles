@@ -1,6 +1,6 @@
 # Shell login #
 
-if [[ -z "$DISPLAY" ]]
+if [[ "$USERNAME" != 'root' && -z "$DISPLAY" ]]
 then
     exec zdm
 fi
