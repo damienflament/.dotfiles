@@ -66,41 +66,66 @@ function __zconfig-get
     print "${description}${value}"
 }
 
+# __zconfig-deploy-target <source> <destination> <target>
+function __zconfig-deploy-target
+{
+    autoload check_available zerror
+
+    check_available sudo install mkdir || return $?
+
+    readonly source="${1?:The source must be specified}"
+    readonly destination="${2?:The destination must be specified}"
+    readonly target="${3?:The target must be specified}"
+    readonly source_target="$source/$target"
+    readonly destination_target="$destination/$target"
+    local subtarget
+
+    if [[ -f "$source_target" ]]
+    then
+        sudo \install --preserve-timestamps --mode=400 "$source_target" "$destination_target"
+    elif [[ -d "$source_target" ]]
+    then
+        for subtarget in $source_target/.#*(:t)
+        do
+            sudo \install  --mode=100 --directory "$destination_target"
+            __zconfig-deploy-target "$source_target" "$destination_target" "$subtarget"
+        done
+    else
+        zerror "Don't know how to deploy $source_target"
+    fi
+}
+
 function __zconfig-deploy
 {
-    # zmodload zparseopts
-    autoload check_available not zerror
+    autoload check_available zerror zmessage
 
-    check_available sudo git rm || return $?
+    check_available sudo rm tree || return $?
+
+    ZCONFIG_DEPLOY_TARGETS=(
+        '.config/zsh'
+        '.local/share/zsh'
+    )
 
     sudo --validate --prompt="In order to deploy configuration to %U user, please give its password:" || return $?
 
-    typeset -ga zconfig_deploy_targets=( $zconfig_deploy_targets )
-    readonly destination=$(sudo --set-home --shell echo \$HOME)
-    # local -a options
+    readonly source="$HOME"
+    readonly destination="$(sudo --set-home --shell echo \$HOME)"
+    local target
 
-    # zparseopts -D -a options - -clean
-
-    sudo --shell <<_SCRIPT_
-
-    cd "$destination"
-    git init --quiet
-
-    git ls-remote '$USERNAME' &>/dev/null
-
-    if (( \$? != 0 ))
+    if [[ "$source" == "$destination" ]]
     then
-        git remote add '$USERNAME' "$HOME"
-        git remote set-url --push '$USERNAME' ''
+        zerror "source and destination are identical: $source"
     fi
 
-    git fetch --quiet '$USERNAME'
-    git checkout --quiet --force -B sync '$USERNAME'/master
-    git reset --quiet --hard
-    git checkout --quiet sync
+    for target in $ZCONFIG_DEPLOY_TARGETS
+    do
+        zmessage "Deploying $target..."
 
-    rm --recursive --force ./.git
-_SCRIPT_
+        sudo \rm --recursive --force "$destination/$target"
+        __zconfig-deploy-target "$source" "$destination" "$target"
+
+        sudo tree -a "$destination/$target"
+    done
 }
 
 # Completion
