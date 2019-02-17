@@ -107,6 +107,13 @@
         "**/.local/share/zsh/**/*": "shellscript",
         "**/.config/fontconfig/**/*": "xml",
         /*
+            Configure template
+        */
+        "*.h.in": "c",
+        "*.conf.in": "properties",
+        "*.service.in": "systemd-unit-file",
+        "*.xml.in": "xml",
+        /*
             C/C++
         */
         "*.private.h": "c",
@@ -117,7 +124,6 @@
         /*
             GNU Build system (Autotools)
         */
-        "*.h.in": "c",
         "config.site": "shellscript",
         /*
             SCons
