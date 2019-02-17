@@ -3,6 +3,9 @@
 #setopt warn_create_global   # warn when a variable is implicitly made global within functions
 #setopt warn_nested_var      # warn when a variable from enclosing scope is set locally
 
+setopt extended_glob # use extended globbing
+setopt dot_glob      # * matches hidden files
+
 setopt auto_cd      # change directory without using the 'cd' command
 setopt cdable_vars  # allow usage of named directories without the '~' character
 
