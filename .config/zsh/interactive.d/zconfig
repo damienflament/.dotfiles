@@ -1,0 +1,9 @@
+# zconfig configuration #
+
+ZCONFIG_DEPLOY_TARGETS=(
+    '.config/zsh'
+    '.local/share/zsh'
+    '.config/vim'
+)
+
+# vim: ft=zsh

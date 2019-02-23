@@ -101,11 +101,6 @@ function __zconfig-deploy
 
     check_available sudo rm tree || return $?
 
-    ZCONFIG_DEPLOY_TARGETS=(
-        '.config/zsh'
-        '.local/share/zsh'
-    )
-
     sudo --validate --prompt="In order to deploy configuration to %U user, please give its password:" || return $?
 
     readonly source="$HOME"
@@ -115,6 +110,15 @@ function __zconfig-deploy
     if [[ "$source" == "$destination" ]]
     then
         zerror "source and destination are identical: $source"
+
+        return 1
+    fi
+
+    if (( ${#ZCONFIG_DEPLOY_TARGETS} == 0 ))
+    then
+        zerror "no targets specified within ZCONFIG_DEPLOY_TARGETS"
+
+        return 1
     fi
 
     for target in $ZCONFIG_DEPLOY_TARGETS
@@ -124,7 +128,12 @@ function __zconfig-deploy
         sudo \rm --recursive --force "$destination/$target"
         __zconfig-deploy-target "$source" "$destination" "$target"
 
-        sudo tree -a "$destination/$target"
+        if [[ -d "$source/$target" ]]
+        then
+            sudo tree -a "$destination/$target"
+        else
+            echo "Done."
+        fi
     done
 }
 
