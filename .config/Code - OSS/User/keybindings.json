@@ -13,6 +13,10 @@
         "key": "ctrl+shift+r",
         "command": "workbench.action.reloadWindow",
     },
+    {
+        "key": "F11",
+        "command": "workbench.action.toggleZenMode",
+    },
     /*
         Opening
     */
