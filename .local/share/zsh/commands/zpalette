@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 # zpalette
 #
 # Displays the shell color palette.
@@ -6,41 +8,107 @@ function zpalette
     autoload colors && colors
 
     local -r names=( ${(k)fg} )
+    local -r width=10
     local name fg bg
+
+    function next-line
+    {
+        printf '\n'
+    }
+
+    # title <label>
+    function title
+    {
+        printf '\n%s\n' "$1"
+
+        repeat "$#1"
+        do
+            print -n "="
+        done
+    }
+
+    # section <label>
+    function section
+    {
+        printf '\n\n\n%s:\n\n' "$1"
+    }
+
+    # cell <content> [<foreground>] [<background>] [<bold>] [<alignment>]
+    function cell
+    {
+        local content="$1"
+        local fg="$2"
+        local bg="$3"
+        local -r bold="$4"
+        local -r alignment="$5"
+        local -r length="${#content}"
+
+        [[ "$fg" == '' ]] && fg='default'
+        [[ "$bg" == '' ]] && bg='default'
+
+        if [[ "$alignment" == 'center' ]]
+        then
+            content=$(printf "%*s" "$(( ($width - $length) / 2 + $length ))" "$content")
+            content=$(printf "%-*s" "$width" "$content")
+        elif [[ "$alignment" == 'left' ]]
+        then
+            content=$(printf "%-*s" "$width" "$content")
+        else
+            content=$(printf "%*s" "$width" "$content")
+        fi
+
+        if [[ "$bold" == 'bold' ]]
+        then
+            print -Pn "%K{$bg}%F{$fg}%B$content%b%f%k"
+        else
+            print -Pn "%K{$bg}%F{$fg}$content%f%k"
+        fi
+    }
 
     function header
     {
+        cell ""
+
         for name in $names
         do
-            print -Pn " ${(r:5:)name}  "
+            cell "$name" '' '' '' 'center'
         done
-        
-        print
+
+        next-line
+        next-line
     }
 
+    title "Color palette"
+
+    section "Normal colors"
     header
 
     for fg in $names
     do
+        cell "$fg" '' '' '' 'left'
+
         for bg in $names
         do
-            print -Pn "%K{$bg}%F{$fg} ${(r:5:)fg} %f%k "
+            cell "$fg" "$fg" "$bg" '' 'center'
         done
-      
-        print "\u0008"
+
+        next-line
     done
+
+    section "High colors"
+    header
 
     for fg in $names
     do
+        cell "$fg" '' '' '' 'left'
+
         for bg in $names
         do
-            print -Pn "%K{$bg}%F{$fg}%B ${(r:5:)fg} %b%f%k "
+            cell " $fg " "$fg" "$bg" 'bold' 'center'
         done
-        
-        print "\u0008"
-    done
 
-    print
+        next-line
+    done
 }
 
 # vim: ft=zsh
