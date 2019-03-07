@@ -1,0 +1,94 @@
+{
+	"CMake module": {
+		"prefix": "executable-find-module-doc",
+		"description": "CMake find module",
+		"body": [
+			"#[=======================================================================[.rst:",
+			"Find${1:ExecutableName}",
+			"-------",
+			"",
+			"Finds the ${2:executable name} executable.",
+			"",
+			"Result Variables",
+			"^^^^^^^^^^^^^^^^",
+			"",
+			"This will define the following variables:",
+			"",
+			"``${3:EXECUTABLE_NAME}_FOUND``",
+			"  True if the system has ${2:executable name}.",
+			"``${3:EXECUTABLE_NAME}_VERSION``",
+			"  The version of ${2:executable name} which was found.",
+			"",
+			"Cache Variables",
+			"^^^^^^^^^^^^^^^",
+			"",
+			"The following cache variables may also be set:",
+			"",
+			"``${3:EXECUTABLE_NAME}_EXECUTABLE``",
+			"  The path to ${2:executable name}.",
+			"",
+			"#]=======================================================================",
+			"",
+			"include_guard(GLOBAL)",
+			"",
+			"include(FindPackageHandleStandardArgs)",
+			"",
+			"find_program(${3:EXECUTABLE_NAME}_EXECUTABLE",
+			"             NAMES ${2:executable name}",
+			"             DOC \"${2:executable name} executable\")",
+			"mark_as_advanced(${3:EXECUTABLE_NAME}_EXECUTABLE)",
+			"",
+			"find_package_handle_standard_args(${4:EXECUTABLE_NAME} DEFAULT_MSG",
+			"                                  ${4:EXECUTABLE_NAME}_EXECUTABLE)",
+			"",
+			"$0"
+		]
+	},
+	"CMake function": {
+		"prefix": "function",
+		"description": "CMake function",
+		"body": [
+			"#[=======================================================================[.rst:",
+			".. command:: ${1:function name}",
+			"",
+			"  ${2:brief description}",
+			"",
+			"    ${1:function name}(${3:arguments})",
+			"",
+			"  ${4:long description}",
+			"#]=======================================================================]",
+			"function(${1:function name} ${5:positional arguments})",
+			"  cmake_parse_arguments(PARSE_ARGV 0 \"\"",
+			"    \"${6:options}\"",
+			"    \"${7:single value arguments}\"",
+			"    \"${8:multi-value arguments}\"",
+			"  )",
+			"",
+			"  $0",
+			"endfunction()"
+		]
+	},
+	/*
+		Licenses
+	*/
+	"license notice": {
+		"prefix": "license",
+		"description": "license file notice",
+		"body": [
+			"# SPDX-License-Identifier: ${1:SPDX license identifier}",
+			"# Copyright © ${2:year} ${3:author}",
+			"# This file is part of ${4:project}.",
+			"$0"
+		]
+	},
+	"GPL 3 or later notice": {
+		"prefix": "license-gpl3-or-later",
+		"description": "GPL 3 or later file notice",
+		"body": [
+			"# SPDX-License-Identifier: GPL-3.0-or-later",
+			"# Copyright © ${1:year} ${2:author}",
+			"# This file is part of ${3:project}.",
+			"$0"
+		]
+	},
+}

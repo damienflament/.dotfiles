@@ -1,0 +1,35 @@
+{
+	/*
+		Licenses
+	*/
+	"license notice": {
+		"prefix": "license",
+		"description": "license file notice",
+		"body": [
+			"// SPDX-License-Identifier: ${1:SPDX license identifier}",
+			"// Copyright © ${2:year} ${3:author}",
+			"// This file is part of ${4:project}.",
+			"$0"
+		]
+	},
+	"GPL 3 notice": {
+		"prefix": "license-gpl3-or-later",
+		"description": "GPL 3 or later file notice",
+		"body": [
+			"// SPDX-License-Identifier: GPL-3.0-or-later",
+			"// Copyright © ${1:year} ${2:author}",
+			"// This file is part of ${3:project}.",
+			"$0"
+		]
+	},
+	"LGPL 2.1 notice": {
+		"prefix": "license-lgpl2.1-or-later",
+		"description": "LGPL 2.1 or later file notice",
+		"body": [
+			"// SPDX-License-Identifier: LGPL-2.1-or-later",
+			"// Copyright © ${1:year} ${2:author}",
+			"// This file is part of ${3:project}.",
+			"$0"
+		]
+	}
+}
