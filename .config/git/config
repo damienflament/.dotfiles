@@ -3,3 +3,5 @@
 	name = Damien Flament
 [core]
 	excludesfile = /home/damien/.config/git/exclude
+[push]
+	followTags = yes
