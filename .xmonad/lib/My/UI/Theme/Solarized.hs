@@ -14,4 +14,4 @@ solarizedTheme =
   Theme { palette = solarizedPalette
         , background = brightBlack
         , foreground = brightBlue
-        , font = "xft:monospace:size=10"}
+        , font = "xft:console:size=10"}
