@@ -4,6 +4,7 @@ export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
 export DIALOGRC="$XDG_CONFIG_HOME/dialog/dialogrc"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
+export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 export STACK_ROOT="$XDG_CONFIG_HOME/stack"
 export VIM_RC="$XDG_CONFIG_HOME/vim/vimrc"
 export VIMINIT='source $VIM_RC'

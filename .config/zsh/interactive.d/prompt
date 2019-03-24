@@ -23,6 +23,19 @@ else
     function prompt_git {}
 fi
 
+# Python virtual environment
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+function prompt_virtualenv
+{
+    if [[ "$VIRTUAL_ENV" != '' ]]
+    then
+        local name_parts=( ${(s:-:)VIRTUAL_ENV:t} )
+        local name=$name_parts[1]
+
+        echo "%K{blue} venv: $name %k"
+    fi
+}
+
 # Prompt configuration
 setopt prompt_subst         # Substitutions within prompt
 setopt prompt_cr            # Carriage return before the prompt
@@ -30,7 +43,7 @@ setopt transient_rprompt    # Right prompt only visible on the current prompt
 
 # Prompt
 PROMPT=$'\n%F{black}%(!.%K{red}.%K{green}) %n %K{magenta} %m %K{blue} %~ %k%f '
-RPROMPT='%F{black} $(prompt_git "%%K{magenta} %s %%k")%(0?..%K{red} %? %k)%(2L.%K{blue} %L %k.)$(prompt_vtnr)%f'
+RPROMPT='%F{black} $(prompt_virtualenv)$(prompt_git "%%K{magenta} %s %%k")%(0?..%K{red} %? %k)%(2L.%K{blue} %L %k.)$(prompt_vtnr)%f'
 
 # Timing
 export REPORTTIME=1

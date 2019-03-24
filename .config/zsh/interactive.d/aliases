@@ -1,7 +1,7 @@
 # Shell aliases #
 
 alias sudo='sudo '      # Make aliases available with sudo
-alias su='su --login'
+alias su='su --login'   # Force login when switching user
 
 # Files listing
 alias ls='ls --color=auto --human-readable --group-directories-first -v'

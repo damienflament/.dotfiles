@@ -11,7 +11,7 @@
     /*
         Theming
     */
-    "editor.fontFamily": "Source Code Pro, 'monospace'",
+    "editor.fontFamily": "'Hack', 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.suggestFontSize": 14,
@@ -36,6 +36,7 @@
         Editor UI
     */
     "editor.lineNumbers": "on",
+    "editor.minimap.enabled": false,
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
@@ -138,6 +139,11 @@
             PkgConfig
         */
         "*.pc": "shellscript",
+        /*
+            Python
+        */
+        "*.yapf": "ini",
+        ".flake8": "ini",
     },
     /*
         Hidden files
@@ -277,5 +283,9 @@
     /*
         Python
     */
+    "python.venvPath": "~/.cache/pypoetry/virtualenvs",
     "python.linting.lintOnSave": true,
+    "python.linting.pylintArgs": [
+        "--jobs=0"
+    ],
 }
