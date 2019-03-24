@@ -18,7 +18,6 @@
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.lineHeight": 1,
     "workbench.colorTheme": "Solarized Dark",
-    
     "C_Cpp.inactiveRegionOpacity": 0.3,
     /*
         Components UI
@@ -62,9 +61,11 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "files.autoGuessEncoding": true,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": true, // This feature is broken and should be disabled in a project settings file
+    "editor.multiCursorModifier": "alt",
     /*
         Language specific editor UI and behaviors
     */
