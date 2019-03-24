@@ -81,6 +81,9 @@
     "[shellscript]": {
         "editor.lineNumbers": "relative",
     },
+    "[cmake]": {
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+    },
     /*
         Explorer behaviors
     */
@@ -275,12 +278,27 @@
     /*
         C/C++
     */
-    "C_Cpp.default.includePath": [
-        "/usr/include"
-    ],
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_style": "file",
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+    /*
+        CMake
+    */
+    "cmake.preferredGenerators": [
+        "Unix Makefiles",
+        "Ninja",
+    ],
+    "cmake.configureOnOpen": true,
+    "cmake.autoRestartBuild": true,
+    "cmake.revealLog": "never",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.installPrefix": "${workspaceFolder}/build/install",
+    "cmake.enabledOutputParsers": [
+        "cmake",
+        "gcc",
+        "gnuld",
+    ],
     /*
         Python
     */
