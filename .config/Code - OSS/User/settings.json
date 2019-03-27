@@ -309,4 +309,11 @@
     "python.linting.pylintArgs": [
         "--jobs=0"
     ],
+    /*
+        Shell script
+    */
+    "shellcheck.exclude": [
+        "SC2148", // Ignore missing shebang
+        "SC1071", // Ignore error about unsupported Zsh
+    ],
 }
