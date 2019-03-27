@@ -24,7 +24,7 @@
     */
     "window.titleBarStyle": "native",
     "breadcrumbs.enabled": true,
-    "workbench.tree.horizontalScrolling": true,
+    "workbench.list.horizontalScrolling": true,
     "window.menuBarVisibility": "toggle",
     "explorer.openEditors.visible": 0,
     "terminal.integrated.cursorStyle": "line",
