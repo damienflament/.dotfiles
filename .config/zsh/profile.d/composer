@@ -6,6 +6,6 @@ export COMPOSER_DATA_DIR="$XDG_DATA_HOME/composer"
 export COMPOSER_VENDOR_DIR="$XDG_DATA_HOME/composer/vendor"
 export COMPOSER_BIN_DIR="$HOME/.local/bin"
 
-path=( "$COMPOSER_BIN_DIR" $path )
+path=( "$COMPOSER_BIN_DIR" "$path" )
 
 # vim: ft=zsh

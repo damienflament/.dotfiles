@@ -11,16 +11,16 @@ function prompt_vtnr
 }
 
 # Git
-if source /usr/share/git/git-prompt.sh
+if source '/usr/share/git/git-prompt.sh'
 then
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_SHOWUPSTREAM='auto'
 
-    function prompt_git { __git_ps1 "$@" }
+    function prompt_git { __git_ps1 "$@"; }
 else
-    function prompt_git {}
+    function prompt_git { :; }
 fi
 
 # Python virtual environment
@@ -30,7 +30,7 @@ function prompt_virtualenv
     if [[ "$VIRTUAL_ENV" != '' ]]
     then
         local name_parts=( ${(s:-:)VIRTUAL_ENV:t} )
-        local name=$name_parts[1]
+        local name="${name_parts[1]}"
 
         echo "%K{blue} venv: $name %k"
     fi

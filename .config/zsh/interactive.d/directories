@@ -3,18 +3,18 @@
 autoload staticdir
 
 staticdir local             "$HOME/.local"
-staticdir local-binaries    ~local/bin
-staticdir local-scripts     ~local/scripts
+staticdir local-binaries    '~local/bin'
+staticdir local-scripts     '~local/scripts'
 
 staticdir xdg-config-home   "$XDG_CONFIG_HOME"
 staticdir xdg-data-home     "$XDG_DATA_HOME"
 staticdir xdg-cache-home    "$XDG_CACHE_HOME"
 
-staticdir zsh-config                ~xdg-config-home/zsh
-staticdir zsh-config-aliases        ~zsh-config/interactive.d/aliases
-staticdir zsh-config-staticdirs     ${(%):-%x}
+staticdir zsh-config                '~xdg-config-home/zsh'
+staticdir zsh-config-aliases        '~zsh-config/interactive.d/aliases'
+staticdir zsh-config-staticdirs     "${(%):-%x}"
 
-staticdir zsh-functions     ~xdg-data-home/zsh/functions
-staticdir zsh-commands      ~xdg-data-home/zsh/commands
+staticdir zsh-functions     '~xdg-data-home/zsh/functions'
+staticdir zsh-commands      '~xdg-data-home/zsh/commands'
 
 # vim: ft=zsh

@@ -2,20 +2,20 @@
 
 if source "$ZDOTDIR/zkbd.d/$HOST-$OSTYPE-$TERM"
 then
-    bindkey "$key[Left]"      backward-char
-    bindkey "$key[Right]"     forward-char
-    bindkey "$key[PageUp]"    backward-word
-    bindkey "$key[PageDown]"  forward-word
-    bindkey "$key[Home]"      beginning-of-line
-    bindkey "$key[End]"       end-of-line
+    bindkey "${key[Left]}"      backward-char
+    bindkey "${key[Right]}"     forward-char
+    bindkey "${key[PageUp]}"    backward-word
+    bindkey "${key[PageDown]}"  forward-word
+    bindkey "${key[Home]}"      beginning-of-line
+    bindkey "${key[End]}"       end-of-line
 
-    bindkey "$key[Up]"        history-beginning-search-backward
-    bindkey "$key[Down]"      history-beginning-search-forward
+    bindkey "${key[Up]}"        history-beginning-search-backward
+    bindkey "${key[Down]}"      history-beginning-search-forward
 
-    bindkey "$key[Backspace]" backward-delete-char
-    bindkey "$key[Delete]"    delete-char
+    bindkey "${key[Backspace]}" backward-delete-char
+    bindkey "${key[Delete]}"    delete-char
 
-    bindkey "$key[Insert]"    overwrite-mode
+    bindkey "${key[Insert]}"    overwrite-mode
 fi
 
 # vim: ft=zsh

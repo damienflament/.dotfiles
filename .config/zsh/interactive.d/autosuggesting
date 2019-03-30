@@ -2,7 +2,7 @@
 
 autoload source_all
 
-if source_all /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+if source_all '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
 then
     export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
     #export ZSH_AUTOSUGGEST_USE_ASYNC=true

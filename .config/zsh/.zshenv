@@ -3,7 +3,7 @@
 # If not set, set ZDOTDIR to the directory containing this file
 if [[ -z "$ZDOTDIR" ]]
 then
-    export ZDOTDIR=${(%):-%x:h}
+    export ZDOTDIR="${(%):-%x:h}"
 fi
 
 # Set XDG Base user directories paths
@@ -21,6 +21,6 @@ fpath=( "$XDG_DATA_HOME/zsh/functions" $fpath )
 # Load environment subfiles
 autoload source_all
 
-source_all $ZDOTDIR/environment.d/*(N)
+source_all "$ZDOTDIR/environment.d"/*(N)
 
 # vim: ft=zsh

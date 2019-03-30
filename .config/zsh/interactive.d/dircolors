@@ -1,9 +1,10 @@
 # Files listing coloring #
 
-local -r dircolors_file="$XDG_DATA_HOME/dircolors/dir_colors"
+readonly dircolors_file="$XDG_DATA_HOME/dircolors/dir_colors"
 
-if [[ -r $dircolors_file ]] then
-    eval $(dircolors --sh $dircolors_file)
+if [[ -r $dircolors_file ]]
+then
+    eval "$(dircolors --sh "$dircolors_file")"
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 fi
 

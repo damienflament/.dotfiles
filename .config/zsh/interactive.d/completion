@@ -27,6 +27,6 @@ zstyle ':completion:*' format $'\n%F{black}%K{white} %d %k%f'
 
 
 # Search for missing command within available packages
-source /usr/share/doc/pkgfile/command-not-found.zsh
+source '/usr/share/doc/pkgfile/command-not-found.zsh'
 
 # vim: ft=zsh
