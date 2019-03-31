@@ -1,0 +1,5 @@
+# Feh themes
+#
+# Usage: <theme> <option>...
+
+feh	--draw-exif --draw-actions --draw-tinted --conversion-timeout 3 --scale-down --auto-zoom --auto-rotate --title "%f"
