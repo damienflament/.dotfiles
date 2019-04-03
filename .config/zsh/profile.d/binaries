@@ -1,5 +1,5 @@
 # User binaries #
 
-path=( "$HOME/.local/bin" "$path" )
+path=( "$HOME/.local/bin" $path )
 
 # vim: ft=zsh
