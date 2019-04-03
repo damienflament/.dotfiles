@@ -84,6 +84,9 @@
     "[cmake]": {
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
     },
+    "[tsv]": {
+        "editor.insertSpaces": false,
+    },
     /*
         Explorer behaviors
     */
@@ -108,9 +111,11 @@
         Files associations
     */
     "files.associations": {
+        /*
+            Zsh
+        */
         "**/.config/zsh/**/*": "shellscript",
         "**/.local/share/zsh/**/*": "shellscript",
-        "**/.config/fontconfig/**/*": "xml",
         /*
             Configure template
         */
@@ -148,6 +153,11 @@
         */
         "*.yapf": "ini",
         ".flake8": "ini",
+        /*
+            Configuration files
+        */
+        "**/.config/fontconfig/**/*": "xml",
+        "**/.config/feh/*": "tsv",
     },
     /*
         Hidden files
