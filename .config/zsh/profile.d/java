@@ -10,11 +10,11 @@ local -r java_options=(
 )
 
 local key value
-export _JAVA_OPTIONS=''
+export  JAVA_TOOL_OPTIONS=''
 
 for key value in ${(kv)java_options}
 do
-    _JAVA_OPTIONS="$_JAVA_OPTIONS -D$key=$value"
+     JAVA_TOOL_OPTIONS="$_JAVA_OPTIONS -D$key=$value"
 done
 
 export _JAVA_AWT_WM_NONREPARENTING=1
