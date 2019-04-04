@@ -43,6 +43,7 @@ alias grep='grep --color=auto --context=5'
 alias view='vim -R'
 alias make='make $MAKEFLAGS'
 alias stack='stack --jobs $(( $(nproc) - 1 ))'
+alias makepkg='PACMAN=aura makepkg'
 
 # Shell utilities
 alias pager='$PAGER'
