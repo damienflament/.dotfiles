@@ -32,69 +32,41 @@
         Tasks
     */
     {
-        "key": "ctrl+b b",
+        "key": "ctrl+b",
         "command": "workbench.action.tasks.build",
     },
     {
-        "key": "ctrl+b t",
+        "key": "alt+b t",
         "command": "workbench.action.tasks.test",
     },
     {
-        "key": "ctrl+b r",
+        "key": "alt+b r",
         "command": "workbench.action.tasks.runTask",
+    },
+    {
+        "key": "alt+b s",
+        "command": "workbench.action.tasks.showTasks"
     },
     /*
         Terminal
     */
     {
-        "key": "ctrl+[Backquote] [Backquote]",
+        "key": "ctrl+[Backquote]",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+[Backquote] [Backquote]",
+        "key": "ctrl+[Backquote]",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+[Backquote] n",
+        "key": "ctrl+shift+[Backquote]",
+        "command": "workbench.action.terminal.kill",
+    },
+    {
+        "key": "alt+[Backquote] n",
         "command": "workbench.action.terminal.new",
-    },
-    {
-        "key": "ctrl+[Backquote] 1",
-        "command": "workbench.action.terminal.focusAtIndex1",
-    },
-    {
-        "key": "ctrl+[Backquote] 2",
-        "command": "workbench.action.terminal.focusAtIndex2",
-    },
-    {
-        "key": "ctrl+[Backquote] 3",
-        "command": "workbench.action.terminal.focusAtIndex3",
-    },
-    {
-        "key": "ctrl+[Backquote] 4",
-        "command": "workbench.action.terminal.focusAtIndex4",
-    },
-    {
-        "key": "ctrl+[Backquote] 5",
-        "command": "workbench.action.terminal.focusAtIndex5",
-    },
-    {
-        "key": "ctrl+[Backquote] 6",
-        "command": "workbench.action.terminal.focusAtIndex6",
-    },
-    {
-        "key": "ctrl+[Backquote] 7",
-        "command": "workbench.action.terminal.focusAtIndex7",
-    },
-    {
-        "key": "ctrl+[Backquote] 8",
-        "command": "workbench.action.terminal.focusAtIndex8",
-    },
-    {
-        "key": "ctrl+[Backquote] 9",
-        "command": "workbench.action.terminal.focusAtIndex9",
     },
     /*
         Debug
