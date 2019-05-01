@@ -87,6 +87,10 @@
     "[tsv]": {
         "editor.insertSpaces": false,
     },
+    "[python]": {
+        "editor.highlightActiveIndentGuide": true,
+        "editor.renderIndentGuides": true
+    },
     /*
         Explorer behaviors
     */
