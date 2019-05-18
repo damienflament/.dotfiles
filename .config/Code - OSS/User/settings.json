@@ -26,10 +26,10 @@
     /*
         Components UI
     */
-    "window.titleBarStyle": "native",
+    "window.menuBarVisibility": "toggle",
+    "window.enableMenuBarMnemonics": false,
     "breadcrumbs.enabled": true,
     "workbench.list.horizontalScrolling": true,
-    "window.menuBarVisibility": "toggle",
     "explorer.openEditors.visible": 0,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
