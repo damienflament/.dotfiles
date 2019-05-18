@@ -5,3 +5,9 @@
 	excludesfile = /home/damien/.config/git/exclude
 [push]
 	followTags = yes
+[gui]
+	editor = code
+[diff]
+	tool = code --diff
+[merge]
+	tool = code --diff
