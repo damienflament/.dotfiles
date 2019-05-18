@@ -6,11 +6,11 @@
         Application
     */
     {
-        "key": "ctrl+r",
+        "key": "Ctrl+R",
         "command": "workbench.action.openRecent",
     },
     {
-        "key": "ctrl+shift+r",
+        "key": "Ctrl+Shift+R",
         "command": "workbench.action.reloadWindow",
     },
     {
@@ -25,51 +25,51 @@
         Opening
     */
     {
-        "key": "ctrl+o",
+        "key": "Ctrl+O",
         "command": "workbench.action.files.openFile",
     },
     {
-        "key": "ctrl+shift+o",
+        "key": "Ctrl+Shift+O",
         "command": "workbench.action.files.openFolder",
     },
     /*
         Tasks
     */
     {
-        "key": "ctrl+b",
+        "key": "Ctrl+B",
         "command": "workbench.action.tasks.build",
     },
     {
-        "key": "alt+b t",
+        "key": "Alt+B T",
         "command": "workbench.action.tasks.test",
     },
     {
-        "key": "alt+b r",
+        "key": "Alt+B R",
         "command": "workbench.action.tasks.runTask",
     },
     {
-        "key": "alt+b s",
+        "key": "Alt+B S",
         "command": "workbench.action.tasks.showTasks"
     },
     /*
         Terminal
     */
     {
-        "key": "ctrl+[Backquote]",
+        "key": "Ctrl+[Backquote]",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+[Backquote]",
+        "key": "Ctrl+[Backquote]",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+shift+[Backquote]",
+        "key": "Ctrl+Shift+[Backquote]",
         "command": "workbench.action.terminal.kill",
     },
     {
-        "key": "alt+[Backquote] n",
+        "key": "Alt+[Backquote] N",
         "command": "workbench.action.terminal.new",
     },
     /*
@@ -109,32 +109,32 @@
         UI components manipulation
     */
     {
-        "key": "ctrl+escape",
+        "key": "Ctrl+Escape",
         "command": "workbench.action.showCommands",
     },
     {
-        "key": "ctrl+numpad_add",
+        "key": "Ctrl+numpad_add",
         "command": "workbench.action.toggleMaximizedPanel",
     },
     {
-        "key": "ctrl+f",
+        "key": "Ctrl+F",
         "command": "actions.find",
     },
     /*
         Navigation
     */
     {
-        "key": "ctrl+g l",
+        "key": "Ctrl+G L",
         "command": "workbench.action.gotoLine",
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+g s",
+        "key": "Ctrl+G S",
         "command": "workbench.action.gotoSymbol",
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+g f",
+        "key": "Ctrl+G F",
         "command": "workbench.action.quickOpen",
         "when": "editorTextFocus"
     },
@@ -143,54 +143,54 @@
     */
     // Comments
     {
-        "key": "ctrl+numpad_divide",
+        "key": "Ctrl+numpad_divide",
         "command": "editor.action.commentLine",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+numpad_divide",
+        "key": "Ctrl+Shift+numpad_divide",
         "command": "editor.action.blockComment",
         "when": "editorTextFocus && !editorReadonly"
     },
     // Indentation and formatting
     {
-        "key": "ctrl+i",
+        "key": "Ctrl+I",
         "command": "editor.action.reindentselectedlines",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+i",
+        "key": "Ctrl+Shift+I",
         "command": "editor.action.reindentlines",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+alt+i",
+        "key": "Ctrl+Alt+I",
         "command": "editor.action.format",
         "when": "editorTextFocus && !editorReadonly"
     },
     // Lines manipulation
     {
-        "key": "ctrl+up",
+        "key": "Ctrl+Up",
         "command": "editor.action.moveLinesUpAction",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+down",
+        "key": "Ctrl+Down",
         "command": "editor.action.moveLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+alt+up",
+        "key": "Ctrl+Alt+Up",
         "command": "editor.action.copyLinesUpAction",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+alt+down",
+        "key": "Ctrl+Alt+Down",
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+alt+left",
+        "key": "Ctrl+Alt+Left",
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadonly"
     },
