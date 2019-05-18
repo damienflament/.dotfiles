@@ -53,6 +53,7 @@
     "editor.cursorBlinking": "expand",
     "editor.smoothScrolling": true,
     "debug.inlineValues": true,
+    "editor.colorDecorators": true,
     /*
         Editor behaviors
     */
