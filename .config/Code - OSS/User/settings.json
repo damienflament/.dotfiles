@@ -71,31 +71,6 @@
     "files.autoGuessEncoding": true, // This feature is broken and should be disabled in a project settings file
     "editor.multiCursorModifier": "alt",
     /*
-        Language specific editor UI and behaviors
-    */
-    "[html]": {
-        "editor.colorDecorators": true,
-    },
-    "[css]": {
-        "editor.colorDecorators": true,
-    },
-    "[scss]": {
-        "editor.colorDecorators": true,
-    },
-    "[shellscript]": {
-        "editor.lineNumbers": "relative",
-    },
-    "[cmake]": {
-        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
-    },
-    "[tsv]": {
-        "editor.insertSpaces": false,
-    },
-    "[python]": {
-        "editor.highlightActiveIndentGuide": true,
-        "editor.renderIndentGuides": true
-    },
-    /*
         Explorer behaviors
     */
     "explorer.confirmDelete": false,
@@ -292,10 +267,6 @@
         }
     },
     /*
-        XML
-    */
-    "xml.format.splitAttributes": false,
-    /*
         C/C++
     */
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
@@ -319,19 +290,51 @@
         "gcc",
         "gnuld",
     ],
+    "[cmake]": {
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+    },
     /*
         Python
     */
     "python.venvPath": "~/.cache/pypoetry/virtualenvs",
+    "python.analysis.openFilesOnly": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
     "python.linting.lintOnSave": true,
-    "python.linting.pylintArgs": [
-        "--jobs=0"
-    ],
+    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.renderIndentGuides": true,
+        "editor.rulers": [
+            88,
+        ],
+        "editor.formatOnPaste": false, // Not available with black
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
+    "kivy.requireKivyHeader": true,
+    "[kivy]": {
+        "editor.renderIndentGuides": true
+    },
     /*
         Shell script
     */
+    "[shellscript]": {
+        "editor.lineNumbers": "relative",
+    },
     "shellcheck.exclude": [
         "SC2148", // Ignore missing shebang
         "SC1071", // Ignore error about unsupported Zsh
     ],
+    /*
+        XML
+    */
+    "xml.format.splitAttributes": false,
+    /*
+        Other languages
+    */
+    "[tsv]": {
+        "editor.insertSpaces": false,
+    },
 }
