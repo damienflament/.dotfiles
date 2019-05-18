@@ -17,6 +17,10 @@
         "key": "F11",
         "command": "workbench.action.toggleZenMode",
     },
+    {
+        "key": "F12",
+        "command": "dayNightThemeSwitcher.toggleDayNightTheme",
+    }
     /*
         Opening
     */

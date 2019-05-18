@@ -11,13 +11,17 @@
     /*
         Theming
     */
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorCustomizations": {},
+    "dayNightThemeSwitcher.dayTheme": "Solarized Light",
+    "dayNightThemeSwitcher.nightTheme": "Solarized Dark",
+    "dayNightThemeSwitcher.toggleDefaultDark": true,
     "editor.fontFamily": "'Hack', 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.suggestFontSize": 14,
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.lineHeight": 1,
-    "workbench.colorTheme": "Solarized Dark",
     "C_Cpp.inactiveRegionOpacity": 0.3,
     /*
         Components UI
