@@ -1,0 +1,5 @@
+# Python environment #
+
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
+
+# vim: ft=zsh
