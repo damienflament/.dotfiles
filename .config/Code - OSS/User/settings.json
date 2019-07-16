@@ -38,7 +38,6 @@
     "workbench.list.horizontalScrolling": true,
     "explorer.openEditors.visible": 0,
     "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.rendererType": "dom",
     "window.zoomLevel": 0,
     /*
