@@ -211,7 +211,6 @@
     "git.confirmSync": false,
     "git.enableSmartCommit": false,
     "gitlens.codeLens.enabled": false,
-    "gitlens.settings.mode": "advanced",
     "gitlens.keymap": "alternate",
     /*
         Todos
