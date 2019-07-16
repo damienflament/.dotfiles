@@ -20,7 +20,7 @@
     {
         "key": "F12",
         "command": "dayNightThemeSwitcher.toggleDayNightTheme",
-    }
+    },
     /*
         Opening
     */
@@ -65,12 +65,48 @@
         "when": "terminalFocus"
     },
     {
-        "key": "Ctrl+Shift+[Backquote]",
+        "key": "Alt+[Backquote]",
+        "command": "workbench.action.terminal.new",
+    },
+    {
+        "key": "Alt+Shift+[Backquote]",
         "command": "workbench.action.terminal.kill",
     },
     {
-        "key": "Alt+[Backquote] N",
-        "command": "workbench.action.terminal.new",
+        "key": "Alt+1",
+        "command": "workbench.action.terminal.focusAtIndex1",
+    },
+    {
+        "key": "Alt+2",
+        "command": "workbench.action.terminal.focusAtIndex2",
+    },
+    {
+        "key": "Alt+3",
+        "command": "workbench.action.terminal.focusAtIndex3",
+    },
+    {
+        "key": "Alt+4",
+        "command": "workbench.action.terminal.focusAtIndex4",
+    },
+    {
+        "key": "Alt+5",
+        "command": "workbench.action.terminal.focusAtIndex5",
+    },
+    {
+        "key": "Alt+6",
+        "command": "workbench.action.terminal.focusAtIndex6",
+    },
+    {
+        "key": "Alt+7",
+        "command": "workbench.action.terminal.focusAtIndex7",
+    },
+    {
+        "key": "Alt+8",
+        "command": "workbench.action.terminal.focusAtIndex8",
+    },
+    {
+        "key": "Alt+9",
+        "command": "workbench.action.terminal.focusAtIndex9",
     },
     /*
         Debug
