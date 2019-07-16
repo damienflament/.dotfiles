@@ -181,11 +181,11 @@
     /*
         Debugging
     */
-    "debug.internalConsoleOptions": "openOnSessionStart",
     "debug.openDebug": "openOnSessionStart",
-    "debug.openExplorerOnEnd": false,
-    "debug.showInStatusBar": "never",
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.showInStatusBar": "always",
     "debug.toolBarLocation": "docked",
+    "debug.allowBreakpointsEverywhere": true,
     "launch": {
         "configurations": [],
         "compounds": []
