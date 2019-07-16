@@ -193,10 +193,11 @@
     /*
         Terminal
     */
-    "terminal.external.linuxExec": "urxvt",
     "terminal.integrated.drawBoldTextInBrightColors": true,
     "terminal.integrated.fontWeightBold": "normal",
     "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.showExitAlert": false,
+    "terminal.external.linuxExec": "urxvt",
     /*
         Telemetry
     */
