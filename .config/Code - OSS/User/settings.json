@@ -213,67 +213,6 @@
     "gitlens.codeLens.enabled": false,
     "gitlens.keymap": "alternate",
     /*
-        Todos
-    */
-    "todo-tree.autoRefresh": true,
-    "todo-tree.showBadges": false,
-    "todo-tree.expanded": true,
-    "todo-tree.flat": true,
-    "todo-tree.trackFile": true,
-    "todo-tree.showInExplorer": true,
-    "todo-tree.labelFormat": "${after}",
-    "todo-tree.regexCaseSensitive": false,
-    "todo-tree.tags": [
-        "NOTE", // NOTE
-        "TODO", // TODO
-        "FIXME", // FIXME
-        "HACK", // HACK
-        "BUG", // BUG
-        "DEBUG", // DEBUG
-        "OPTIMIZE", // OPTIMIZE
-    ],
-    "todo-tree.highlightDelay": 0,
-    "todo-tree.defaultHighlight": {
-        "type": "text",
-        "foreground": "#1c1c1c",
-        "background": "#e4e4e4",
-        "iconColour": "#e4e4e4"
-    },
-    "todo-tree.customHighlight": {
-        "NOTE": {
-            "icon": "note",
-        },
-        "TODO": {
-            "background": "#5f8700",
-            "iconColour": "#5f8700",
-        },
-        "FIXME": {
-            "background": "#d75f00",
-            "iconColour": "#d75f00",
-            "icon": "alert",
-        },
-        "BUG": {
-            "background": "#d70000",
-            "iconColour": "#d70000",
-            "icon": "bug",
-        },
-        "DEBUG": {
-            "background": "#808080",
-            "iconColour": "#808080",
-            "icon": "eye",
-        },
-        "HACK": {
-            "background": "#af005f",
-            "iconColour": "#af005f",
-            "icon": "file-binary",
-        },
-        "OPTIMIZE": {
-            "background": "#af8700",
-            "iconColour": "#af8700",
-            "icon": "zap",
-        }
-    },
-    /*
         Coverage
     */
     "coverage-gutters.coverageFileNames": [
