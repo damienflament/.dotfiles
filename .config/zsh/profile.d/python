@@ -1,5 +1,6 @@
 # Python environment #
 
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/profile.py"
 export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
 
 # vim: ft=zsh

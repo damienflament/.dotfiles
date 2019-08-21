@@ -34,7 +34,8 @@
 !/.config/git/
 !/.config/htop/
 !/.config/pacman/
-!/.config/pypoetry
+!/.config/pypoetry/
+!/.config/python/
 !/.config/stack/
 /.config/stack/*
 !/.config/stack/config.yaml
