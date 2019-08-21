@@ -1,6 +1,6 @@
 # Make user configuration #
 
-export MAKEFLAGS="-j -l$(nproc)"
+export MAKEFLAGS="-l$(nproc) -j"
 export CONFIG_SITE="$XDG_CONFIG_HOME/autotools/config.site"
 export CFLAGS="-Wall -Wextra -Werror"
 export CTEST_OUTPUT_ON_FAILURE=1
