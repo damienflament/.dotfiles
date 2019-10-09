@@ -210,6 +210,7 @@
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.enableSmartCommit": false,
+    "git.suggestSmartCommit": false,
     "git.autoRepositoryDetection": "subFolders",
     "gitlens.keymap": "alternate",
     "gitlens.hovers.currentLine.over": "line",
