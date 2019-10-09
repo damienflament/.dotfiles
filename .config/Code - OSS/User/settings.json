@@ -293,6 +293,9 @@
     "[shellscript]": {
         "editor.lineNumbers": "relative",
     },
+    "shellcheck.customArgs": [
+        "-x"
+    ],
     "shellcheck.exclude": [
         "SC1071", // Ignore error about unsupported Zsh
     ],
