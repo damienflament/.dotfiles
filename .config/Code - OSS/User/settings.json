@@ -294,7 +294,6 @@
         "editor.lineNumbers": "relative",
     },
     "shellcheck.exclude": [
-        "SC2148", // Ignore missing shebang
         "SC1071", // Ignore error about unsupported Zsh
     ],
     /*
