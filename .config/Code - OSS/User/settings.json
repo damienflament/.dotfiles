@@ -299,6 +299,7 @@
     "shellcheck.exclude": [
         "SC1071", // Ignore error about unsupported Zsh
     ],
+    "shellformat.flag": "-s -bn -ci",
     /*
         XML
     */
