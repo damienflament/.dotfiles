@@ -1,0 +1,46 @@
+#! /bin/zsh
+
+# scan <pattern> <directory>
+#
+# Scans the specified file and search for lines matching the given pattern.
+function scan
+{
+    zmodload zsh/pcre
+
+    readonly pattern="${1?The pattern must be specified.}"
+    readonly file="${2?The file must be specified.}"
+    local content=""
+
+
+    if pcre_match
+
+
+}
+
+function todos-scan
+{
+    zmodload zsh/pcre
+
+    readonly pattern="${1?The pattern must be specified.}"
+    local -a files
+    local file
+
+    shift
+
+    if (( $# == 0 ))
+    then
+        files=( "${2:P}" )
+    else
+        files=( "$@" )
+    fi
+
+    pcre_compile -ix "${pattern}.*"
+    pcre_study
+
+    for file in $files
+    do
+        scan "$pattern" $file
+    done
+}
+
+todos-scan "$@"

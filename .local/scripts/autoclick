@@ -5,7 +5,7 @@ zparseopts -D -a opts -start -stop
 
 readonly USAGE="usage: $0 --start | --stop"
 readonly PREDELAY=250
-readonly INTERVAL=80
+readonly INTERVAL=50
 readonly NUMBER=1000000
 
 if (( $#opts == 0 ))

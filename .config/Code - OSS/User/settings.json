@@ -11,7 +11,7 @@
     /*
         Theming
     */
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Solarized Light",
     "workbench.colorCustomizations": {},
     "dayNightThemeSwitcher.dayTheme": "Solarized Light",
     "dayNightThemeSwitcher.nightTheme": "Solarized Dark",
@@ -74,7 +74,7 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 60000,
     "files.encoding": "utf8",
-    "files.autoGuessEncoding": true, // This feature is broken and should be disabled in a project settings file
+    "files.autoGuessEncoding": false, // This feature is broken and should be disabled in a project settings file
     "editor.multiCursorModifier": "alt",
     /*
         Explorer behaviors
@@ -299,6 +299,7 @@
     "shellcheck.exclude": [
         "SC1071", // Ignore error about unsupported Zsh
     ],
+    "shellformat.flag": "-s -bn -ci",
     /*
         XML
     */

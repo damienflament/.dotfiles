@@ -1,0 +1,26 @@
+#! /bin/zsh
+
+readonly username=${SUDO_USER:-${USER}}
+readonly ovmf_code=/usr/share/ovmf/x64/OVMF_CODE.fd
+readonly ovmf_vars=/usr/share/ovmf/x64/OVMF_VARS.fd
+readonly ovmf_nvram=${XDG_CACHE_HOME:-~/.cache}/qemu-windows/nvram.fd
+
+mkdir --parents ${ovmf_nvram%/*}
+cp $ovmf_vars $ovmf_nvram
+
+sudo chmod o+r /dev/sda /dev/sdb
+
+qemu-system-x86_64 -name "Windows" \
+    -machine q35 \
+    -cpu host -enable-kvm \
+    -m 3G \
+    -snapshot \
+    -drive file=$ovmf_code,if=pflash,index=0,media=disk,format=raw,readonly=on \
+    -drive file=$ovmf_nvram,if=pflash,index=1,media=disk,snapshot=off,format=raw \
+    -drive file=/dev/sda,if=ide,index=0,media=disk,driver=raw \
+    -drive file=/dev/sdb,if=ide,index=1,media=disk,driver=raw \
+    -net none \
+    -boot menu=on \
+    -display sdl -vga virtio
+
+rm $ovmf_nvram

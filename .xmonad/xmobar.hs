@@ -19,11 +19,9 @@ Config
             , "--"
             , "-D", "intel_backlight"
             ] 1
-        -- , Run Volume "default" "Master" [] 1
-        -- , Run Volume "default" "Master" ["-t", "VOL <volume> <status>"] 1
+        , Run Volume "default" "Master" ["-t", "VOL <volume> <status>"] 1
         ]
-    -- , template = "%StdinReader% } %date% { %bright% | %default:Master% | %multicpu% | %memory% | %swap% | %battery% "
-    , template = "%StdinReader% } %date% { %bright% | %multicpu% | %memory% | %swap% | %battery% "
+    , template = "%StdinReader% } %date% { %bright% | %default:Master% | %multicpu% | %memory% | %swap% | %battery% "
     , hideOnStart = False
     , overrideRedirect = True
     , persistent = True

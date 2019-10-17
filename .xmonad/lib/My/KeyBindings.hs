@@ -27,8 +27,8 @@ myKeyBindings (XConfig { modMask = m,
 
   , ((m,                xK_Escape),  myPrompt)
 
-  --, ((m .|. mod1Mask,               xK_c),  spawn "autoclick --start")
-  --, ((m .|. shiftMask .|. mod1Mask, xK_c),  spawn "autoclick --stop")
+  , ((m .|. mod1Mask,               xK_c),  spawn "autoclick --start")
+  , ((m .|. shiftMask .|. mod1Mask, xK_c),  spawn "autoclick --stop")
 
   , ((m,                xK_v), pasteSelection)
 
