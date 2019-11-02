@@ -1,7 +1,7 @@
 # Shell aliases #
 
-alias sudo='sudo '      # Make aliases available with sudo
-alias su='su --login'   # Force login when switching user
+alias sudo='sudo '    # Make aliases available with sudo
+alias su='su --login' # Force login when switching user
 
 # Files listing
 alias ls='ls --color=auto --human-readable --group-directories-first -v'
@@ -43,7 +43,6 @@ alias grep='grep --color=auto --context=5'
 alias view='vim -R'
 alias make='make $MAKEFLAGS'
 alias stack='stack --jobs $(( $(nproc) - 1 ))'
-alias makepkg='PACMAN=aura makepkg'
 
 # Shell utilities
 alias pager='$PAGER'
