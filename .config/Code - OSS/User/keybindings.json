@@ -226,7 +226,7 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "Ctrl+Alt+Left",
+        "key": "ctrl+alt+backspace",
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadonly"
     },
