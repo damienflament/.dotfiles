@@ -98,6 +98,21 @@
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.acceptSuggestionOnCommitCharacter": true,
     /*
+        Spell checking
+    */
+    "languageToolLinter.enabled": true,
+    "languageToolLinter.serviceType": "managed",
+    "languageToolLinter.managed.jarFile": "/usr/share/languagetool:/usr/share/java/languagetool/aho-corasick-double-array-trie.jar:/usr/share/java/languagetool/akka-actor_2.11.jar:/usr/share/java/languagetool/annotations.jar:/usr/share/java/languagetool/asm.jar:/usr/share/java/languagetool/berkeleylm.jar:/usr/share/java/languagetool/catalan-pos-dict.jar:/usr/share/java/languagetool/cjftransform.jar:/usr/share/java/languagetool/commons-cli.jar:/usr/share/java/languagetool/commons-codec.jar:/usr/share/java/languagetool/commons-collections4.jar:/usr/share/java/languagetool/commons-csv.jar:/usr/share/java/languagetool/commons-io.jar:/usr/share/java/languagetool/commons-lang3.jar:/usr/share/java/languagetool/commons-logging.jar:/usr/share/java/languagetool/commons-pool2.jar:/usr/share/java/languagetool/commons-text.jar:/usr/share/java/languagetool/config.jar:/usr/share/java/languagetool/FastInfoset.jar:/usr/share/java/languagetool/german-pos-dict.jar:/usr/share/java/languagetool/guava.jar:/usr/share/java/languagetool/hamcrest-core.jar:/usr/share/java/languagetool/hppc.jar:/usr/share/java/languagetool/hunspell-native-libs.jar:/usr/share/java/languagetool/ictclas4j.jar:/usr/share/java/languagetool/icu4j.jar:/usr/share/java/languagetool/indriya.jar:/usr/share/java/languagetool/istack-commons-runtime.jar:/usr/share/java/languagetool/jackson-annotations.jar:/usr/share/java/languagetool/jackson-core.jar:/usr/share/java/languagetool/jackson-databind.jar:/usr/share/java/languagetool/jafama.jar:/usr/share/java/languagetool/java-jwt.jar:/usr/share/java/languagetool/javax.activation-api.jar:/usr/share/java/languagetool/jaxb-api.jar:/usr/share/java/languagetool/jaxb-core.jar:/usr/share/java/languagetool/jaxb-runtime.jar:/usr/share/java/languagetool/jcommander.jar:/usr/share/java/languagetool/jna.jar:/usr/share/java/languagetool/jsonic.jar:/usr/share/java/languagetool/junit.jar:/usr/share/java/languagetool/jwordsplitter.jar:/usr/share/java/languagetool/kryo.jar:/usr/share/java/languagetool/language-detector.jar:/usr/share/java/languagetool/languagetool-commandline.jar:/usr/share/java/languagetool/languagetool-core.jar:/usr/share/java/languagetool/languagetool-core-tests.jar:/usr/share/java/languagetool/languagetool-gui-commons.jar:/usr/share/java/languagetool/languagetool.jar:/usr/share/java/languagetool/languagetool-server.jar:/usr/share/java/languagetool/languagetool-tools.jar:/usr/share/java/languagetool/logback-classic.jar:/usr/share/java/languagetool/logback-core.jar:/usr/share/java/languagetool/lucene-backward-codecs.jar:/usr/share/java/languagetool/lucene-core.jar:/usr/share/java/languagetool/lucene-gosen-ipadic.jar:/usr/share/java/languagetool/mariadb-java-client.jar:/usr/share/java/languagetool/minlog.jar:/usr/share/java/languagetool/morfologik-fsa-builders.jar:/usr/share/java/languagetool/morfologik-fsa.jar:/usr/share/java/languagetool/morfologik-speller.jar:/usr/share/java/languagetool/morfologik-stemming.jar:/usr/share/java/languagetool/morfologik-tools.jar:/usr/share/java/languagetool/morfologik-ukrainian-lt.jar:/usr/share/java/languagetool/morphology-el.jar:/usr/share/java/languagetool/mybatis.jar:/usr/share/java/languagetool/objenesis.jar:/usr/share/java/languagetool/opennlp-chunk-models.jar:/usr/share/java/languagetool/opennlp-postag-models.jar:/usr/share/java/languagetool/opennlp-tokenize-models.jar:/usr/share/java/languagetool/opennlp-tools.jar:/usr/share/java/languagetool/openregex.jar:/usr/share/java/languagetool/reflectasm-shaded.jar:/usr/share/java/languagetool/scala-compiler.jar:/usr/share/java/languagetool/scala-parser-combinators_2.11.jar:/usr/share/java/languagetool/scala-reflect.jar:/usr/share/java/languagetool/scala-xml_2.11.jar:/usr/share/java/languagetool/segment.jar:/usr/share/java/languagetool/simpleclient_common.jar:/usr/share/java/languagetool/simpleclient_guava.jar:/usr/share/java/languagetool/simpleclient_hotspot.jar:/usr/share/java/languagetool/simpleclient_httpserver.jar:/usr/share/java/languagetool/simpleclient.jar:/usr/share/java/languagetool/slf4j-api.jar:/usr/share/java/languagetool/stax-ex.jar:/usr/share/java/languagetool/txw2.jar:/usr/share/java/languagetool/unit-api.jar:/usr/share/java/languagetool/uom-lib-common.jar:/usr/share/java/languagetool/xgboost4j.jar:/usr/share/java/languagetool/xgboost-predictor.jar",
+    "languageToolLinter.languageTool.motherTongue": "fr",
+    "languageToolLinter.languageTool.language": "auto",
+    "languageToolLinter.languageTool.preferredVariants": "en-US,fr-FR",
+    "ltex.enabled": true,
+    "ltex.additionalRules.motherTongue": "fr",
+    "ltex.language": "en-US",
+    "ltex.en.dictionary": [
+        "POSIX",
+    ],
+    /*
         Files associations
     */
     "files.associations": {
@@ -205,6 +220,7 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
     /*
         Git
     */
