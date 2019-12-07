@@ -201,7 +201,7 @@
     },
     {
         "key": "Ctrl+Alt+I",
-        "command": "editor.action.format",
+        "command": "editor.action.formatDocument",
         "when": "editorTextFocus && !editorReadonly"
     },
     // Lines manipulation
