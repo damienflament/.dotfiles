@@ -40,6 +40,7 @@
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.rendererType": "dom",
     "window.zoomLevel": 0,
+    "window.titleBarStyle": "custom",
     /*
         Editor UI
     */
