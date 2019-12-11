@@ -1,3 +1,10 @@
 # stderr coloring #
 
+autoload colors && colors
 source /usr/share/stderred/stderred.sh
+
+# Custom Stderred color
+# export STDERRED_ESC_CODE="${fg[yellow]}"
+
+# Programs blacklisted from Stderred
+# export STDERRED_BLACKLIST="^bash*$"
