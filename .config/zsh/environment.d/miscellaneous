@@ -12,6 +12,8 @@ export READNULLCMD="$PAGER"
 
 export EDITOR='vim'
 
+export SUDO_ASKPASS="$HOME/.local/scripts/sudo-askpass"
+
 unfunction command_available
 
 # vim: ft=zsh

@@ -1,0 +1,4 @@
+#! /bin/sh
+
+gnome-keyring-query get sudo | head -n1
+
