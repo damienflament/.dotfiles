@@ -14,7 +14,7 @@ export  JAVA_TOOL_OPTIONS=''
 
 for key value in ${(kv)java_options}
 do
-     JAVA_TOOL_OPTIONS="$_JAVA_OPTIONS -D$key=$value"
+     JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -D$key=$value"
 done
 
 export _JAVA_AWT_WM_NONREPARENTING=1
