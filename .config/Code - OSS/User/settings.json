@@ -44,7 +44,7 @@
     /*
         Editor UI
     */
-    "editor.lineNumbers": "on",
+    "editor.lineNumbers": "interval",
     "editor.minimap.enabled": false,
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "none",
@@ -307,9 +307,7 @@
     /*
         Shell script
     */
-    "[shellscript]": {
-        "editor.lineNumbers": "relative",
-    },
+
     "shellcheck.customArgs": [
         "-x"
     ],
@@ -327,4 +325,21 @@
     "[tsv]": {
         "editor.insertSpaces": false,
     },
+    /*
+    /*
+        Custom commands
+    */
+    "settings.cycle": [
+        {
+            "id": "lineNumbers",
+            "values": [
+                {
+                    "editor.lineNumbers": "interval"
+                },
+                {
+                    "editor.lineNumbers": "relative"
+                }
+            ]
+        }
+    ],
 }

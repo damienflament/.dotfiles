@@ -230,4 +230,10 @@
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadonly"
     },
+    // Line numbers
+    {
+        "key": "ctrl+l",
+        "command": "settings.cycle.lineNumbers",
+        "when": "editorTextFocus"
+    }
 ]
