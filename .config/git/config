@@ -1,6 +1,8 @@
 [user]
 	email = damien.flament@gmx.com
-	name = Damien Flament
+    name = Damien Flament
+[url "ssh://git@github.com/"]
+    pushInsteadOf = https://github.com/
 [core]
 	excludesfile = /home/damien/.config/git/exclude
 [push]
