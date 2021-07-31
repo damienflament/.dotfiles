@@ -47,6 +47,6 @@ RPROMPT='%F{black} $(prompt_virtualenv)$(prompt_git "%%K{magenta} %s %%k")%(0?..
 
 # Timing
 export REPORTTIME=1
-export TIMEFMT=$(print -P "\n%F{black} %K{white} %%J %k %K{green} %%U %K{red} %%S %K{yellow} %%*E %k %K{blue} %%P %k%f")
+export TIMEFMT=$(print -P "\n%F{black} %K{yellow} %%J %k %K{green} %%U %K{red} %%S %K{cyan} %%*E %k %K{blue} %%P %k%f")
 
 # vim: ft=zsh
