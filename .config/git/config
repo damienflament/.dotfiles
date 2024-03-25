@@ -5,6 +5,7 @@
     pushInsteadOf = https://github.com/
 [core]
 	excludesfile = /home/damien/.config/git/exclude
+	autocrlf = input
 [push]
 	followTags = yes
 [gui]
