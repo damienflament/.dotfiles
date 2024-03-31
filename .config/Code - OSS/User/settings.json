@@ -11,11 +11,9 @@
     /*
         Theming
     */
-    "workbench.colorTheme": "Solarized Light",
-    "workbench.colorCustomizations": {},
+    "workbench.colorTheme": "Solarized Dark",
     "dayNightThemeSwitcher.dayTheme": "Solarized Light",
     "dayNightThemeSwitcher.nightTheme": "Solarized Dark",
-    "dayNightThemeSwitcher.toggleDefaultDark": true,
     "editor.fontFamily": "'Hack', 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
@@ -29,6 +27,11 @@
     "coverage-gutters.partialHighlightLight": "rgba(181, 137, 0, 0.15)",
     "coverage-gutters.noHighlightDark": "rgba(220, 50, 47, 0.25)",
     "coverage-gutters.noHighlightLight": "rgba(220, 50, 47, 0.15)",
+    "workbench.colorCustomizations": {
+        "[Solarized Light]": {
+            "terminal.ansiWhite": "#073642"
+        }
+    },
     /*
         Components UI
     */
