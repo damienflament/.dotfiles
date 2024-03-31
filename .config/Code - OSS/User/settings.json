@@ -39,7 +39,6 @@
     "window.enableMenuBarMnemonics": false,
     "breadcrumbs.enabled": true,
     "workbench.list.horizontalScrolling": true,
-    "explorer.openEditors.visible": 0,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.rendererType": "dom",
     "window.zoomLevel": 0,
@@ -56,18 +55,18 @@
         80,
         120
     ],
-    "editor.renderIndentGuides": false,
+    "editor.guides.indentation": false,
     "editor.cursorStyle": "line",
     "editor.cursorWidth": 1,
     "editor.cursorBlinking": "expand",
     "editor.smoothScrolling": true,
-    "debug.inlineValues": true,
+    "debug.inlineValues": "on",
     "editor.colorDecorators": true,
     /*
         Editor behaviors
     */
     "editor.tabSize": 4,
-    "editor.autoIndent": true,
+    "editor.autoIndent": "full",
     "editor.detectIndentation": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
@@ -94,7 +93,7 @@
         "strings": false,
     },
     "editor.snippetSuggestions": "bottom",
-    "editor.wordBasedSuggestions": true,
+    "editor.wordBasedSuggestions": "matchingDocuments",
     "editor.suggest.filterGraceful": true,
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "editor.suggest.localityBonus": true,
@@ -297,23 +296,22 @@
     "python.linting.lintOnSave": true,
     "python.formatting.provider": "black",
     "[python]": {
-        "editor.renderIndentGuides": true,
+        "editor.guides.indentation": true,
         "editor.rulers": [
             88,
         ],
         "editor.formatOnPaste": false, // Not available with black
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
+            "source.organizeImports": "explicit"
         },
     },
     "kivy.requireKivyHeader": true,
     "[kivy]": {
-        "editor.renderIndentGuides": true
+        "editor.guides.indentation": true,
     },
     /*
         Shell script
     */
-
     "shellcheck.customArgs": [
         "-x"
     ],
