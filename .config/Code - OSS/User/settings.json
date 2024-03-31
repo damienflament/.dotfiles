@@ -241,6 +241,7 @@
     "git.allowForcePush": true,
     "git.useForcePushWithLease": true,
     "git.confirmForcePush": true,
+    "git.untrackedChanges": "separate",
     "git.autoRepositoryDetection": "subFolders",
     "gitlens.keymap": "alternate",
     "gitlens.hovers.currentLine.over": "line",
