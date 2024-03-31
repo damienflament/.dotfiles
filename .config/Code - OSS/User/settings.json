@@ -317,7 +317,12 @@
     "shellcheck.exclude": [
         "SC1071", // Ignore error about unsupported Zsh
     ],
+    "shellformat.path": "/usr/bin/shfmt",
     "shellformat.flag": "-s -bn -ci",
+    "[shellscript]": {
+        "editor.insertSpaces": false
+    },
+    "bashIde.highlightParsingErrors": true,
     /*
         XML
     */
