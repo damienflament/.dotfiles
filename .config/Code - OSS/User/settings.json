@@ -328,6 +328,17 @@
     */
     "xml.format.splitAttributes": false,
     /*
+        JSON
+    */
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/*.webmanifest"
+            ],
+            "url": "https://json.schemastore.org/web-manifest-combined.json"
+        }
+    ],
+    /*
         Other languages
     */
     "[tsv]": {
