@@ -166,6 +166,10 @@
         */
         "**/.config/fontconfig/**/*": "xml",
         "**/.config/feh/*": "tsv",
+        /*
+            Git related files
+        */
+        "TAG_EDITMSG": "git-commit"
     },
     /*
         Hidden files
@@ -233,6 +237,7 @@
     "git.confirmSync": false,
     "git.enableSmartCommit": false,
     "git.suggestSmartCommit": false,
+    "git.inputValidation": true,
     "git.autoRepositoryDetection": "subFolders",
     "gitlens.keymap": "alternate",
     "gitlens.hovers.currentLine.over": "line",
@@ -242,8 +247,11 @@
     "gitlens.views.lineHistory.location": "scm",
     "gitlens.views.compare.location": "scm",
     "gitlens.views.search.location": "scm",
-    "gitlens.advanced.messages": {
-        "suppressSupportGitLensNotification": true
+    "[git-commit]": {
+        "editor.rulers": [
+            50,
+            72
+        ]
     },
     /*
         Coverage
