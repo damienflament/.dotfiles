@@ -31,6 +31,7 @@
 !/.config/dialog/
 !/.config/feh/
 !/.config/fontconfig/
+/.config/fontconfig/fonts.conf
 !/.config/git/
 !/.config/htop/
 !/.config/pacman/
