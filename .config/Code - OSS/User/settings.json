@@ -351,12 +351,24 @@
         }
     ],
     /*
+        Javascript
+    */
+    "javascript.inlayHints.variableTypes.enabled": true,
+    "javascript.inlayHints.enumMemberValues.enabled": true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "typescript.inlayHints.parameterTypes.enabled": true,
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    "javascript.format.semicolons": "insert",
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "javascript.suggest.completeFunctionCalls": true,
+    /*
         Other languages
     */
     "[tsv]": {
         "editor.insertSpaces": false,
     },
-    /*
     /*
         Custom commands
     */
