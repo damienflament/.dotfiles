@@ -12,8 +12,9 @@
         Theming
     */
     "workbench.colorTheme": "Solarized Dark",
-    "dayNightThemeSwitcher.dayTheme": "Solarized Light",
-    "dayNightThemeSwitcher.nightTheme": "Solarized Dark",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "Solarized Light",
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
     "editor.fontFamily": "'Hack', 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
