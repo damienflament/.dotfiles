@@ -62,6 +62,8 @@
     "editor.smoothScrolling": true,
     "debug.inlineValues": "on",
     "editor.colorDecorators": true,
+    "dimmer.enabled": true,
+    "dimmer.opacity": 80,
     /*
         Editor behaviors
     */
