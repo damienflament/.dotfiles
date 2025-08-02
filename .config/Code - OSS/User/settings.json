@@ -172,7 +172,11 @@
         /*
             Git related files
         */
-        "TAG_EDITMSG": "git-commit"
+        "TAG_EDITMSG": "git-commit",
+        /*
+            JSON
+        */
+        "*.jtd": "json"
     },
     /*
         Hidden files
@@ -366,6 +370,16 @@
     "javascript.format.semicolons": "insert",
     "javascript.referencesCodeLens.showOnAllFunctions": true,
     "javascript.suggest.completeFunctionCalls": true,
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "debug.javascript.unmapMissingSources": true,
+    "javascript.format.enable": false,
+    "[javascript]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "never",
+            "source.organizeImports": "explicit",
+        },
+    },
     /*
         LaTeX
     */
