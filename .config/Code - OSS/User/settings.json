@@ -9,6 +9,10 @@
     "workbench.settings.openDefaultSettings": false,
     "workbench.settings.openDefaultKeybindings": false,
     /*
+        Security
+    */
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    /*
         Theming
     */
     "workbench.colorTheme": "Solarized Dark",
