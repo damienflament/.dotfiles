@@ -367,6 +367,25 @@
     "javascript.referencesCodeLens.showOnAllFunctions": true,
     "javascript.suggest.completeFunctionCalls": true,
     /*
+        LaTeX
+    */
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+    "latex-workshop.latex.recipe.default": "tectonic",
+    "latex-workshop.formatting.latex": "tex-fmt",
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.intellisense.package.unusual": true,
+    /*
+        Typst
+    */
+    "tinymist.lint.enabled": true,
+    "tinymist.formatterMode": "disable",
+    "tinymist.exportPdf": "never",
+    "tinymist.renderDocs": "disable",
+    "[typst]": {
+        "editor.wordWrap": "off",
+    },
+    /*
         Other languages
     */
     "[tsv]": {
