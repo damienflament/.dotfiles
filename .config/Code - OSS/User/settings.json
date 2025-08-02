@@ -257,13 +257,21 @@
     "git.untrackedChanges": "separate",
     "git.autoRepositoryDetection": "subFolders",
     "gitlens.keymap": "alternate",
-    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.hovers.currentLine.enabled": false,
+    "gitlens.currentLine.enabled": false,
     "gitlens.codeLens.enabled": false,
-    "gitlens.views.repositories.location": "scm",
-    "gitlens.views.fileHistory.location": "scm",
-    "gitlens.views.lineHistory.location": "scm",
-    "gitlens.views.compare.location": "scm",
-    "gitlens.views.search.location": "scm",
+    "gitlens.views.scm.grouped.views": {
+        "commits": true,
+        "branches": true,
+        "remotes": true,
+        "stashes": true,
+        "tags": true,
+        "worktrees": true,
+        "contributors": true,
+        "repositories": true,
+        "searchAndCompare": false,
+        "launchpad": true
+    },
     "[git-commit]": {
         "editor.rulers": [
             50,
