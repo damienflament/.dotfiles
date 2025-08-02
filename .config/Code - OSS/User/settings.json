@@ -218,9 +218,13 @@
     */
     "debug.openDebug": "openOnSessionStart",
     "debug.internalConsoleOptions": "openOnSessionStart",
-    "debug.showInStatusBar": "always",
-    "debug.toolBarLocation": "docked",
+    "debug.toolBarLocation": "commandCenter",
+    "debug.hideLauncherWhileDebugging": true,
     "debug.allowBreakpointsEverywhere": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "debug.terminal.clearBeforeReusing": true,
+    "debug.console.acceptSuggestionOnEnter": "on",
+    "debug.closeReadonlyTabsOnEnd": true,
     "launch": {
         "configurations": [],
         "compounds": []
