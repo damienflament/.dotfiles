@@ -360,8 +360,22 @@
     ],
     "shellformat.path": "/usr/bin/shfmt",
     "shellformat.flag": "-s -bn -ci",
+    "shellformat.effectLanguages": [
+        "shellscript",
+        "dockerfile",
+        "dotenv",
+        "hosts",
+        "jvmoptions",
+        "ignore",
+        "gitignore",
+        "properties",
+        "spring-boot-properties",
+        "azcli",
+        "bats"
+    ],
     "[shellscript]": {
-        "editor.insertSpaces": false
+        "editor.tabSize": 2,
+        "editor.comments.ignoreEmptyLines": false,
     },
     "bashIde.highlightParsingErrors": true,
     /*
