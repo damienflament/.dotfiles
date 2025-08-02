@@ -18,7 +18,17 @@ then
     export GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_SHOWUPSTREAM='auto'
 
-    function prompt_git { __git_ps1 "$@"; }
+    function prompt_git
+{
+        local repo_path
+
+        if git rev-parse --is-inside-work-tree --quiet >/dev/null 2>&1
+        then
+            repo_path=$(git rev-parse --show-toplevel)
+        fi
+
+        __git_ps1 "%%K{magenta} $repo_path:t %s %%k";
+    }
 else
     function prompt_git { :; }
 fi
@@ -43,7 +53,7 @@ setopt transient_rprompt    # Right prompt only visible on the current prompt
 
 # Prompt
 PROMPT=$'\n%F{black}%(!.%K{red}.%K{green}) %n %K{magenta} %m %K{blue} %~ %k%f '
-RPROMPT='%F{black} $(prompt_virtualenv)$(prompt_git "%%K{magenta} %s %%k")%(0?..%K{red} %? %k)%(2L.%K{blue} %L %k.)$(prompt_vtnr)%f'
+RPROMPT='%F{black} $(prompt_virtualenv)$(prompt_git)%(0?..%K{red} %? %k)%(2L.%K{blue} %L %k.)$(prompt_vtnr)%f'
 
 # Timing
 export REPORTTIME=1
