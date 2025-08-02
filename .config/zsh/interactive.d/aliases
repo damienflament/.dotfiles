@@ -41,11 +41,19 @@ alias chgrpr='chgrp --recursive'
 alias mount='mount -v'
 alias grep='grep --color=auto --context=5'
 alias view='vim -R'
+alias tar='tar -v'
+alias gpg='gpg -v'
 alias make='make $MAKEFLAGS'
 alias stack='stack --jobs $(( $(nproc) - 1 ))'
+
+# Packages management (using Yay)
+alias yayo='yay -Q --unrequired --deps --info' # Show orphans
+alias yayc='yay -Y --clean'                    # Remove orphans and their dependencies
 
 # Shell utilities
 alias pager='$PAGER'
 alias editor='$EDITOR'
+
+alias mimetype="file --brief --mime-type"
 
 # vim: ft=zsh
