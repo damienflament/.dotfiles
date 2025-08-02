@@ -234,6 +234,7 @@
         Telemetry
     */
     "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     /*
