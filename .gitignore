@@ -54,6 +54,9 @@
 !/.config/zsh/
 !/.local/share/zsh/
 
+# Xonsh
+!/.config/xonsh
+
 # Scripts
 !/.local/scripts/
 
