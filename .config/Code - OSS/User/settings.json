@@ -15,16 +15,14 @@
     /*
         Theming
     */
-    "workbench.colorTheme": "Solarized Dark",
     "window.autoDetectColorScheme": true,
-    "workbench.preferredLightColorTheme": "Solarized Light",
-    "workbench.preferredDarkColorTheme": "Solarized Dark",
+    "workbench.preferredLightColorTheme": "Adwaita Light & colorful status bar",
+    "workbench.preferredDarkColorTheme": "Adwaita Dark",
+    "workbench.productIconTheme": "adwaita",
     "editor.fontFamily": "'Hack', 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
-    "editor.suggestFontSize": 14,
     "terminal.integrated.fontSize": 14,
-    "terminal.integrated.lineHeight": 1,
     "C_Cpp.inactiveRegionOpacity": 0.3,
     "coverage-gutters.highlightdark": "rgba(42, 161, 152, 0.25)",
     "coverage-gutters.highlightlight": "rgba(42, 161, 152, 0.15)",
@@ -40,14 +38,15 @@
     /*
         Components UI
     */
-    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "custom",
+    "window.customTitleBarVisibility": "auto",
+    "window.menuBarVisibility": "compact",
     "window.enableMenuBarMnemonics": false,
     "breadcrumbs.enabled": true,
+    "breadcrumbs.filePath": "last",
     "workbench.list.horizontalScrolling": true,
     "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.rendererType": "dom",
-    "window.zoomLevel": 0,
-    "window.titleBarStyle": "custom",
+    "window.zoomLevel": 0.0,
     /*
         Editor UI
     */
@@ -68,7 +67,8 @@
     "debug.inlineValues": "on",
     "editor.colorDecorators": true,
     "dimmer.enabled": true,
-    "dimmer.opacity": 80,
+    "dimmer.opacity": 70,
+    "dimmer.delay": 50,
     /*
         Editor behaviors
     */
