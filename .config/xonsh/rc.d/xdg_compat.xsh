@@ -15,3 +15,4 @@ $PYLINTHOME = p"$XDG_CACHE_HOME/pylint"
 $STACK_ROOT = p"$XDG_CONFIG_HOME/stack"
 $VIM_RC = p"$XDG_CONFIG_HOME/vim/vimrc"
 $VIMPAGER_RC = p"$XDG_CONFIG_HOME/vim/vimpagerrc"
+

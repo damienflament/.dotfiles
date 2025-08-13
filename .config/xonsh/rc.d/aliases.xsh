@@ -1,58 +1,60 @@
 """ Shell aliases. """
 
-aliases |= {
-    "sudo": "sudo ",
+if $XONSH_INTERACTIVE:
 
-    # Files listing
-    "ls": "ls --color=auto --human-readable --group-directories-first -v",
-    "l": "ls",
-    "ll": "ls --format=long",
-    "la": "ls --almost-all",
-    "lla": "ll --almost-all",
-    "lr": "ls --recursive",
-    "llr": "ll --recursive",
-    "lra": "lr --almost-all",
-    "llra": "llr --almost-all",
+    aliases |= {
+        "sudo": "sudo ",
 
-    # Files management
-    "rm": "rm --interactive=once --verbose --preserve-root",
-    "mv": "mv --interactive --verbose",
-    "cp": "cp --interactive --verbose --preserve=all",
-    "ln": "ln --interactive --verbose",
-    "rename": "rename --verbose --no-overwrite",
+        # Files listing
+        "ls": "ls --color=auto --human-readable --group-directories-first -v",
+        "l": "ls",
+        "ll": "ls --format=long",
+        "la": "ls --almost-all",
+        "lla": "ll --almost-all",
+        "lr": "ls --recursive",
+        "llr": "ll --recursive",
+        "lra": "lr --almost-all",
+        "llra": "llr --almost-all",
 
-    "rmr": "rm --recursive",
-    "cpr": "cp --recursive",
+        # Files management
+        "rm": "rm --interactive=once --verbose --preserve-root",
+        "mv": "mv --interactive --verbose",
+        "cp": "cp --interactive --verbose --preserve=all",
+        "ln": "ln --interactive --verbose",
+        "rename": "rename --verbose --no-overwrite",
 
-    # "mk": "\\touch",
-    # "touch": "touch --no-create",
-    "mkdir": "mkdir --parents --verbose",
+        "rmr": "rm --recursive",
+        "cpr": "cp --recursive",
 
-    # Files rights management
-    "chmod": "chmod --preserve-root --verbose",
-    "chown": "chown --preserve-root --verbose",
-    "chgrp": "chgrp --preserve-root --verbose",
+        # "mk": "\\touch",
+        # "touch": "touch --no-create",
+        "mkdir": "mkdir --parents --verbose",
 
-    "chmodr": "chmod --recursive",
-    "chownr": "chown --recursive",
-    "chgrpr": "chgrp --recursive",
+        # Files rights management
+        "chmod": "chmod --preserve-root --verbose",
+        "chown": "chown --preserve-root --verbose",
+        "chgrp": "chgrp --preserve-root --verbose",
 
-    # Packages management (using Yay)
-    "yay-orphans": "yay -Q --unrequired --deps --info", # Show orphans
-    "yay-clean": "yay -Y --clean",                      # Remove orphans and their dependencies
-    "yay-owner": "yay -Q --owns",                       # Looks for owner of the given file
+        "chmodr": "chmod --recursive",
+        "chownr": "chown --recursive",
+        "chgrpr": "chgrp --recursive",
 
-    # Shell utilities
-    "pager": "$PAGER",
-    "editor": "$EDITOR",
+        # Packages management (using Yay)
+        "yay-orphans": "yay -Q --unrequired --deps --info", # Show orphans
+        "yay-clean": "yay -Y --clean",                      # Remove orphans and their dependencies
+        "yay-owner": "yay -Q --owns",                       # Looks for owner of the given file
 
-    # Utilities
-    "mount": "mount -v",
-    "grep": "grep --color=auto --context=5",
-    "view": "vim -R",
-    "tar": "tar -v",
-    "gpg": "gpg -v",
-    "make": "make $MAKEFLAGS",
-    "stack": f"stack --jobs {__xonsh__.env['NPROC'] - 1}",
-    "mimetype": "file --brief --mime-type",
-}
+        # Shell utilities
+        "pager": "$PAGER",
+        "editor": "$EDITOR",
+
+        # Utilities
+        "mount": "mount -v",
+        "grep": "grep --color=auto --context=5",
+        "view": "vim -R",
+        "tar": "tar -v",
+        "gpg": "gpg -v",
+        "make": "make $MAKEFLAGS",
+        "stack": f"stack --jobs {__xonsh__.env['NPROC'] - 1}",
+        "mimetype": "file --brief --mime-type",
+    }
