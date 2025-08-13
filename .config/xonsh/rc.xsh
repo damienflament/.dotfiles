@@ -4,19 +4,26 @@ This file is loaded before the splitted configuration files found in the
 rc.d directory.
 """
 
+from pathlib import Path
+
+def source_all(directory: Path):
+    """ Sources .xsh files found in the given directory. """
+    if directory.is_dir():
+        for file in directory.glob("*.xsh"):
+            source @(file)
+
 # Update `os.environ` to match Xonsh environment.
 $UPDATE_OS_ENVIRON = True
+
+# Custom run control files diretories
+$XONSH_ENV_CONFIG_DIR = p"$XONSH_CONFIG_DIR/env"
+$XONSH_INTERACTIVE_CONFIG_DIR = p"$XONSH_CONFIG_DIR/interactive"
+$XONSH_LOGIN_CONFIG_DIR = p"$XONSH_CONFIG_DIR/login"
 
 # TODO Put it in a xontrib.
 on_linux_console = "TERM" in ${...} and $TERM == "linux"
 
-# Maximum number of parallel processus
-from multiprocessing import cpu_count
-
-$NPROC = cpu_count()
-
-del cpu_count
-
+source_all($XONSH_ENV_CONFIG_DIR)
 
 if $XONSH_LOGIN:
 
@@ -27,23 +34,7 @@ if $XONSH_LOGIN:
     # Fixes https://github.com/xonsh/xonsh/issues/5895
     source-bash /etc/profile
 
-    # Fixes https://github.com/xonsh/xonsh/issues/5870
-    from xonsh.tools import EnvPath
+    source_all($XONSH_LOGIN_CONFIG_DIR)
 
-    if not isinstance($PATH, EnvPath):
-        $PATH = EnvPath($PATH)
-
-    del EnvPath
-
-    if "XONSH_VENV" not in ${...}:
-        $XONSH_VENV = p"$HOME/.local/xonsh-venv"
-
-
-    # XDG base user directories paths
-    $XDG_CONFIG_HOME = p"$HOME/.config"
-    $XDG_CACHE_HOME = p"$HOME/.cache"
-    $XDG_DATA_HOME = p"$HOME/.local/share"
-
-    # User binaries and scripts
-    $PATH.add(p"$HOME/.local/bin", front = True, replace = True)
-    $PATH.add(p"$HOME/.local/scripts", front = True, replace = True)
+if $XONSH_INTERACTIVE:
+    source_all($XONSH_INTERACTIVE_CONFIG_DIR)
