@@ -46,3 +46,6 @@ set mouse=a
 
 " Use modelines
 set modeline
+
+" Filetypes associations
+autocmd BufRead,BufNewFile *.xsh set filetype=python
