@@ -1,4 +1,4 @@
-""" Fixes $PATH not being an EnvPath.
+""" Ensures $PATH is an EnvPath.
 
 Fixes https://github.com/xonsh/xonsh/issues/5870.
 """
