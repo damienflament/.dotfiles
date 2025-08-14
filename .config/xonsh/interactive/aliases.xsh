@@ -1,11 +1,11 @@
-""" Shell aliases. """
+""" Aliases. """
 
 if $XONSH_INTERACTIVE:
 
     aliases |= {
         "sudo": "sudo ",
 
-        # Files listing
+        # Listing des fichiers
         "ls": "ls --color=auto --human-readable --group-directories-first -v",
         "l": "ls",
         "ll": "ls --format=long",
@@ -16,7 +16,7 @@ if $XONSH_INTERACTIVE:
         "lra": "lr --almost-all",
         "llra": "llr --almost-all",
 
-        # Files management
+        # Gestion des fichiers
         "rm": "rm --interactive=once --verbose --preserve-root",
         "mv": "mv --interactive --verbose",
         "cp": "cp --interactive --verbose --preserve=all",
@@ -30,7 +30,7 @@ if $XONSH_INTERACTIVE:
         # "touch": "touch --no-create",
         "mkdir": "mkdir --parents --verbose",
 
-        # Files rights management
+        # Gestion des droits sur les fichiers
         "chmod": "chmod --preserve-root --verbose",
         "chown": "chown --preserve-root --verbose",
         "chgrp": "chgrp --preserve-root --verbose",
@@ -39,16 +39,16 @@ if $XONSH_INTERACTIVE:
         "chownr": "chown --recursive",
         "chgrpr": "chgrp --recursive",
 
-        # Packages management (using Yay)
-        "yay-orphans": "yay -Q --unrequired --deps --info", # Show orphans
-        "yay-clean": "yay -Y --clean",                      # Remove orphans and their dependencies
-        "yay-owner": "yay -Q --owns",                       # Looks for owner of the given file
+        # Gestion des paquets (avec Yay)
+        "yay-orphans": "yay -Q --unrequired --deps --info", # Affiche les orphelins
+        "yay-clean": "yay -Y --clean",                      # Supprime les orphelins et leurs dépendances
+        "yay-owner": "yay -Q --owns",                       # Cherche le paquets à qui appartient le fichier spécifié
 
-        # Shell utilities
+        # Utilitaires du shell
         "pager": "$PAGER",
         "editor": "$EDITOR",
 
-        # Utilities
+        # Commandes utilitaires
         "mount": "mount -v",
         "grep": "grep --color=auto --context=5",
         "view": "vim -R",

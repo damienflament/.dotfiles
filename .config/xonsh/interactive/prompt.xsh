@@ -1,24 +1,24 @@
-""" Shell prompt. """
+""" Invite de commande. """
 
 if $XONSH_INTERACTIVE:
 
     fields = $PROMPT_FIELDS
 
-    # Restrict current working directory to 30% of the screen.
+    # Restriction du chemin du répertoire courant à 30% de l'écran.
     $DYNAMIC_CWD_WIDTH = "30%"
     $DYNAMIC_CWD_ELISION_CHAR = "…"
 
-    # Username color (red for root)
+    # Couleur du nom d'utitilsateur (rouge pour root)
     fields["user_color"] = "{{BACKGROUND_INTENSE_{}}}" \
         .format("RED" if $USER == "root" else "GREEN")
 
-    # Virtual Terminal number when on linux console
+    # Numéro du terminal virtuel
     fields["vtnr"] = $XDG_VTNR if "XDG_VTNR" in ${...} else None
 
-    # Shell nesting level
+    # Niveau d'imbrication du shell
     fields["shlvl"] = $SHLVL if $SHLVL > 1 else None
 
-    # Git status
+    # Informations dur le dépôt Git courant
     fields["gitstatus"].fragments = (
         ".clean",
         " ",
@@ -76,7 +76,7 @@ if $XONSH_INTERACTIVE:
 
     del fields
 
-    # Main prompt
+    # Invite principal
     $PROMPT = (
         "\n"
         "{BLACK}"
@@ -86,7 +86,7 @@ if $XONSH_INTERACTIVE:
         "{RESET} "
     )
 
-    # Right prompt
+    # Invite à droite de l'écran
     $RIGHT_PROMPT = (
         "\n"
         "{BLACK}"
@@ -96,7 +96,7 @@ if $XONSH_INTERACTIVE:
         "{RESET}"
     )
 
-    # Toolbar
+    # Barre d'outils
     $BOTTOM_TOOLBAR = (
         "{INVERT_DEFAULT}                       "
         "{vtnr:{INVERT_PURPLE} VT{} }"
@@ -104,24 +104,24 @@ if $XONSH_INTERACTIVE:
         "{RESET}"
     )
 
-    # Window title
+    # Titre de la fenêtre
     $TITLE = "{current_job:{} | }{user}@{hostname}: {cwd} | xonsh"
 
-    # Colorize and indent input.
-    # FIXME: Fix bug with colorized input on Linux console.
+    # Coloration de la ligne de commande.
+    # FIXME Problème de couleur dans la console Linux.
     $COLOR_INPUT = not on_linux_console
 
-    $INDENT = " " * 4
 
-    # Indent with spaces and a dotted vertical line multiline input.
+    # Indentation avec des espaces et une ligne verticale.
+    $INDENT = " " * 4
     $MULTILINE_PROMPT = " "
     $MULTILINE_PROMPT_POS = "┊"
     del $MULTILINE_PROMPT_PRE
 
-    # Colorize and pretty print Python results.
+    # Coloration et affichage amélioré des résultats Python.
     $COLOR_RESULTS = True
     $PRETTY_PRINT_RESULTS = True
 
-    # Colorize standard error stream.
+    # Coloration du flux standard d'erreur en rouge.
     $XONSH_STDERR_PREFIX = "{BACKGROUND_RED}"
     $XONSH_STDERR_POSTFIX = "{RESET}"

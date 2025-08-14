@@ -1,9 +1,9 @@
-""" Shell behavior. """
+""" Comportement du shell interactif. """
 
 if $XONSH_INTERACTIVE:
 
-    # Change to specified directory without using `cd` command.
+    # Changement de répertoide sans spécifier la commande `cd`.
     $AUTO_CD = True
 
-    # Push traversed directories in the stack.
+    # Ajout des répertoires traversés à la pile.
     $AUTO_PUSHD = True

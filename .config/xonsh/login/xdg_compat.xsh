@@ -1,10 +1,11 @@
-""" XDG Base Directory specification compatibility.
+""" Compatibilité avec la spécification XDG Base Directory.
 
-Some applications don't use the XDG directories to store configuration files.
-Set the configuration files location explicitly to fix that.
+Certaines applications n'utilisent pas les répertoires XDG pour stocker leur
+fichiers de configuration. Nous définissons explicitement leur  localisation
+afin de remédier à cela.
 
-Those variables are meant to stay defined even when the related application is
-not installed on the system.
+Ces variables sont censées restées définies même lorsque l'application
+concernée est désinstalée.
 """
 
 $CABAL_CONFIG = p"$XDG_CONFIG_HOME/cabal/config"
@@ -15,4 +16,3 @@ $PYLINTHOME = p"$XDG_CACHE_HOME/pylint"
 $STACK_ROOT = p"$XDG_CONFIG_HOME/stack"
 $VIM_RC = p"$XDG_CONFIG_HOME/vim/vimrc"
 $VIMPAGER_RC = p"$XDG_CONFIG_HOME/vim/vimpagerrc"
-

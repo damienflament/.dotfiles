@@ -1,6 +1,7 @@
-""" Ensures $PATH is an EnvPath.
+""" Garantit que $PATH est un EnvPath.
 
-Fixes https://github.com/xonsh/xonsh/issues/5870.
+# FIXME Proposer un patch.
+Works around https://github.com/xonsh/xonsh/issues/5870.
 """
 
 from xonsh.tools import EnvPath

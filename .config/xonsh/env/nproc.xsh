@@ -1,4 +1,4 @@
-""". Maximum number of parallel processus. """
+""" Nombre maximum de processus parallèles. """
 
 from multiprocessing import cpu_count
 

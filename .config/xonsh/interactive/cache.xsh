@@ -1,10 +1,10 @@
-""" Shell cache. """
+""" Cache des scripts et commandes. """
 
 $ENABLE_COMMANDS_CACHE = True
 
-# Keep cache between runs.
+# Conservation du cache entre les exécutions.
 $COMMANDS_CACHE_SAVE_INTERMEDIATE = True
 
-# Don't cache code entered at the interactive prompt. Just scripts.
+# Pas de mise en cache des commandes. Uniquement des scripts.
 $XONSH_CACHE_EVERYTHING = False
 $XONSH_CACHE_SCRIPTS = True

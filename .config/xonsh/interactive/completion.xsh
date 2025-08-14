@@ -1,34 +1,38 @@
-""" Shell completion and suggestion """
+""" Complétion et suggestions du shell. """
 
 if $XONSH_INTERACTIVE:
 
-    # Generate completions in background threads
+    # Génèration les complétions en arrière plan.
     $COMPLETION_IN_THREAD = True
 
-    # Need to press TAB to show completion menu.
-    # TODO: Make completions show on first TAB press then update on key press
+    # Nécessité de presser Tabulation pour afficher le menu de complétion.
+    # TODO  Faire apparaître le menu avec TAB puis le mettre à jour à chaque
+    #       pression d'une touche.
     $UPDATE_COMPLETIONS_ON_KEYPRESS = False
 
-    # Don't run command with selected completion. Just complete.
+    # La touche Entrée valide la complétion mais n'exécute pas la commande.
     $COMPLETION_CONFIRM = True
 
-    # Show description of command below completion menu.
+    # Affichage de la description de la commande sous le menu.
     $CMD_COMPLETIONS_SHOW_DESC = True
-    # Display a maximum of 100 completions
+
+    # Affichage d'un maximum de 100 complétions.
     $COMPLETION_QUERY_LIMIT = 100
 
     $ALIAS_COMPLETIONS_OPTIONS_LONGEST = True
 
-    # With `cd`, complete dotfiles only when input starts with a dot.
+    # Avec `cd`, complétion des dotfiles uniquement lorsque la saisie commence
+    # par un point.
     $COMPLETE_DOTS = "matching"
 
-    # Complete parentheses, brackets, and quotes
+    # Complétion des parenthèses, crochets et guillemets.
     $XONSH_AUTOPAIR = True
 
-    # Suggest from history.
+    # Suggestions depuis l'historique.
     $AUTO_SUGGEST = True
 
-    # Suggest max 5 commands on error.
+    # Suggestion d'un maximum de 5 résultats lorsque une commande est
+    # introuvable.
     $SUGGEST_COMMANDS = True
     $SUGGEST_MAX_NUM = 5
     $SUGGEST_THRESHOLD = 3

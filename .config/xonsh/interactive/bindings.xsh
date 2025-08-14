@@ -1,6 +1,6 @@
-""" Shell bindings. """
+""" Raccourcis du shell interactif. """
 
 if $XONSH_INTERACTIVE:
 
-    # Delete whole word using Ctrl+Del.
+    # Suppression de mots entiers avec Ctrl+Suppr.
     $XONSH_CTRL_BKSP_DELETION = True

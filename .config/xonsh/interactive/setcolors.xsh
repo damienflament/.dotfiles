@@ -1,9 +1,9 @@
-""" Linux console solor palette.
+""" Palette de couleur de la console Linux.
 
-Setups the color palette of the Linux console using `setcolors`.
+Définit la palette de couleur de la console Linux en utilisant `setcolors`.
 """
 if $XONSH_INTERACTIVE:
 
-    # TODO: Check if `setcolors` is available
+    # TODO Vérifier que `setcolors` est disponible.
     if on_linux_console:
         setcolors p"$XDG_DATA_HOME/setcolors/solarized"

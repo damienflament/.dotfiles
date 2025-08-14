@@ -1,4 +1,7 @@
-""" Ensures $USER is defined. """
+""" Garantit que $USER est défini.
+
+# FIXME Proposer un patch (Si ce n'est pas le comportement attendu).
+"""
 
 from getpass import getuser
 

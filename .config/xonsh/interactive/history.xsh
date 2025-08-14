@@ -1,13 +1,13 @@
-""" Shell history. """
+""" Historique des commandes. """
 
-# Don't store duplicates.
+# Suppression des doublons.
 $HISTCONTROL = {
     "ignoredups",
     "erasedups",
 }
 
-# Store 10000 commands.
+# Stockage de 1000 commandes.
 $XONSH_HISTORY_SIZE = "10000 commands"
 
-# Use SQLite storage backend.
+# Stockage avec SQLite.
 $XONSH_HISTORY_BACKEND = "sqlite"

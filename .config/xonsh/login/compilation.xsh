@@ -1,4 +1,4 @@
-""" Building tools. """
+""" Outils de compilation. """
 
 $MAKEFLAGS = f"-j{__xonsh__.env['NPROC'] - 1}"
 $CONFIG_SITE = p"$XDG_CONFIG_HOME/autotools/config.site"

@@ -1,4 +1,4 @@
-""" Java applications. """
+""" Applications Java. """
 
 java_options = {
    "awt.useSystemAAFontSettings":   "on",
