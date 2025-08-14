@@ -1,52 +1,35 @@
-# Git ignore file for the dotfiles repository #
+# Sélection des fichiers de configuration personnelle à versionner. #
 
-# First, ignore all files, except this one and the license.
+# On commence par ignorer tous les fichiers, à l'exception de celui-ci et de la
+# licence.
 /*
 !/.gitignore
 !/.LICENSE
-# Then, allow selectively files to be versionned.
 
-# Main directories
+# Ensuite, on ajoute les fichiers désirés.
+#
+# Afin de continuer à ignorer tous les fichiers par défaut, l'ajout d'un
+# dossier doit s'accompagner d'une règle pour ignorer tous les fichiers le
+# qu'il contient.
+
+# Todo
+!/TODO.md
+
+# Répertoires principaux
 !/.config/
 /.config/*
+
 !/.local/
 /.local/*
-!/.local/etc
+
+!/.local/etc    # .local/etc --> .config
+
+!/.local/scripts/
+
 !/.local/share/
 /.local/share/*
 
-# Configuration files
-!/.config/autotools/
-!/.config/cabal/
-!/.config/Code - OSS/
-/.config/Code - OSS/*
-!/.config/Code - OSS/User/
-/.config/Code - OSS/User/*
-!/.config/Code - OSS/User/keybindings.json
-!/.config/Code - OSS/User/settings.json
-!/.config/Code - OSS/User/snippets
-!/.config/composer/
-/.config/composer/*
-!/.config/composer/composer.json
-!/.config/dialog/
-!/.config/feh/
-!/.config/fontconfig/
-/.config/fontconfig/fonts.conf
-!/.config/git/
-!/.config/htop/
-!/.config/pacman/
-!/.config/pypoetry/
-!/.config/python/
-!/.config/stack/
-/.config/stack/*
-!/.config/stack/config.yaml
-!/.config/systemd/
-/.config/systemd/*
-!/.config/systemd/user/
-!/.config/vim/
-!/.config/X/
-
-# Data files
+# Fichiers de données
 !/.local/share/dircolors/
 !/.local/share/setcolors/
 
@@ -57,15 +40,64 @@
 # Xonsh
 !/.config/xonsh
 
-# Scripts
-!/.local/scripts/
+# Systemd
+!/.config/systemd/
+/.config/systemd/*
+!/.config/systemd/user/
 
-# Todo
-!/TODO.md
+# Gestion de paquets
+!/.config/pacman/
+
+# Polices de caractères
+!/.config/fontconfig/
+/.config/fontconfig/fonts.conf
+
+# Gestion de version
+!/.config/git/
+
+# Code
+!/.config/Code - OSS/
+/.config/Code - OSS/*
+
+!/.config/Code - OSS/User/
+/.config/Code - OSS/User/*
+
+!/.config/Code - OSS/User/keybindings.json
+!/.config/Code - OSS/User/settings.json
+!/.config/Code - OSS/User/snippets
+
+# C
+!/.config/autotools/
+
+# PHP
+!/.config/composer/
+/.config/composer/*
+!/.config/composer/composer.json
+
+# Python
+!/.config/python/
+!/.config/pypoetry/
+
+# Haskell
+!/.config/cabal/
+
+!/.config/stack/
+/.config/stack/*
+!/.config/stack/config.yaml
 
 # XMonad
 !/.xmonad/
 /.xmonad/*
 /.xmonad/**/*.hs
+
+# Serveur X
+!/.config/X/
+
+# Utilitaires
+!/.config/dialog/
+!/.config/feh/
+!/.config/htop/
+!/.config/vim/
+
 
 # vim: ft=gitconfig
