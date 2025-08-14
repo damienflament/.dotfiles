@@ -6,6 +6,8 @@ chargés par des fonctions personnaliées.
 
 from pathlib import Path
 
+xontrib load coreutils
+
 $XONSH_SHOW_TRACEBACK = True
 
 
