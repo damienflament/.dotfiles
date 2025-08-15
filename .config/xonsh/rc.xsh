@@ -6,6 +6,15 @@ chargés par des fonctions personnaliées.
 
 $XONSH_SHOW_TRACEBACK = True
 
+# Active l'environnement virtuel de Xonsh, si présent, et remplace le shell
+# actuel par la version présente.
+if $XONSH_LOGIN and $XONSH_INTERACTIVE and "XONSH_VENV" not in ${...}:
+    $XONSH_VENV = p"$XONSH_DATA_DIR" / "virtualenv"
+
+    if $XONSH_VENV.is_dir():
+        source-bash @($XONSH_VENV / "bin/activate")
+        exec xonsh --login --interactive
+
 # Mise à jour de `os.environ` pour correspondre à l'environnement de Xonsh.
 $UPDATE_OS_ENVIRON = True
 
