@@ -12,14 +12,39 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"Expand parameter with default value": {
+	"Zsh script": {
+		"prefix": "script-zsh",
+		"body": [
+			"#! /bin/zsh",
+			""
+		],
+		"isFileTemplate": true
+	},
+	/*
+		Paramètres
+	*/
+	"Paramètre local": {
+		"prefix": "local",
+		"body": "local $1",
+	},
+	"Paramètre en lecture seule": {
+		"prefix": "readonly",
+		"body": "readonly $1"
+	},
+	/*
+		Expansion
+	*/
+	"Valeur avec valeur par défaut": {
 		"prefix": "parameter-value-default",
 		"body": "${${1:parameter}:-${2:default value}}"
 	},
-	"Expand parameter while checking for null or unset value": {
+	"Valeur avec erreur en cas de valeur nule ou de paramètre indéfini": {
 		"prefix": "parameter-value-check",
 		"body": "${${1:parameter}:?${2:error message}}"
 	},
+	/*
+		Conditional state
+	*/
 	"Case statement": {
 		"prefix": "case",
 		"body": [
@@ -49,9 +74,25 @@
 			"done",
 		]
 	},
+	"Function": {
+		"prefix": "function",
+		"body": [
+			"function $1 {",
+			"  $0",
+			"}"
+		],
+	},
 	"Change directory": {
 		"prefix": "cd",
 		"body": "cd ${1:directory} || return",
+	},
+	/*
+		Shellcheck
+	*/
+	"Shellcheck with sh": {
+		"prefix": "shellcheck-sh",
+		"body": "# shellcheck shell=sh",
+		"description": "Tells to Shellcheck this script is designed for sh"
 	},
 	"Shellcheck with Bash": {
 		"prefix": "shellcheck-bash",
@@ -61,8 +102,10 @@
 	"Ignore Shellcheck error": {
 		"prefix": "shellcheck-disable",
 		"body": "# shellcheck disable=SC${1:0000}",
-
 	},
+	/*
+		Run mode
+	*/
 	"Bash unofficial strict mode": {
 		"prefix": "bash-strict-mode",
 		"body": [
@@ -70,6 +113,13 @@
 			"set -euo pipefail",
 			"IFS=$'\\n\\t'"
 		]
+	},
+	/*
+		Debug
+	*/
+	"Zsh Debug mode": {
+		"prefix": "debug-zsh",
+		"body": "#! /bin/zsh -x"
 	},
 	"Debug parameter": {
 		"prefix": "debug-parameter",

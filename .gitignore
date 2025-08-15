@@ -59,15 +59,17 @@
 !/.config/git/
 
 # Code
-!/.config/Code - OSS/
-/.config/Code - OSS/*
+!/.config/code-flags.conf
 
-!/.config/Code - OSS/User/
-/.config/Code - OSS/User/*
+!/.config/code-oss/
+/.config/code-oss/*
 
-!/.config/Code - OSS/User/keybindings.json
-!/.config/Code - OSS/User/settings.json
-!/.config/Code - OSS/User/snippets
+!/.config/code-oss/User
+/.config/code-oss/User/*
+
+!/.config/code-oss/User/keybindings.json
+!/.config/code-oss/User/settings.json
+!/.config/code-oss/User/snippets
 
 # C
 !/.config/autotools/

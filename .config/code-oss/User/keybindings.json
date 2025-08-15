@@ -204,6 +204,11 @@
         "command": "editor.action.formatDocument",
         "when": "editorTextFocus && !editorReadonly"
     },
+    {
+        "key": "Ctrl+Alt+I",
+        "command": "standard.executeAutofix",
+        "when": "(editorLangId == javascriptreact || editorLangId == javascript || editorLangId == json || editorLangId == jsonc) && editorTextFocus && !editorReadonly"
+    },
     // Lines manipulation
     {
         "key": "Ctrl+Up",
