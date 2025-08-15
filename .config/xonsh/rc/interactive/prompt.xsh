@@ -1,6 +1,8 @@
 """ Invite de commande. """
 
 from terminal import on_linux_console
+from xonsh.prompt.gitstatus import GitStatusPromptField, PromptField, PromptFields
+from xonsh.prompt.gitstatus import _get_sp_output
 
 fields = $PROMPT_FIELDS
 
@@ -11,6 +13,11 @@ $DYNAMIC_CWD_ELISION_CHAR = "…"
 # Couleur du nom d'utitilsateur (rouge pour root)
 fields["user_color"] = "{{BACKGROUND_INTENSE_{}}}" \
     .format("RED" if $USER == "root" else "GREEN")
+
+# Couleur du délimiteur de l'invite
+fields["end_color"] = "{{INTENSE_{}}}" \
+    .format("RED" if $USER == "root" else "GREEN")
+
 
 # Numéro du terminal virtuel
 fields["vtnr"] = $XDG_VTNR if "XDG_VTNR" in ${...} else None
@@ -38,18 +45,10 @@ fields["gitstatus"].fragments = (
 )
 fields["gitstatus"].hidden = ()
 
-from xonsh.prompt.gitstatus import GitStatusPromptField, PromptField, PromptFields
-
 @GitStatusPromptField.wrap()
 def _repo(fld: PromptField, ctx: PromptFields):
-    from xonsh.prompt.gitstatus import _get_sp_output
-
     repo_path = _get_sp_output(ctx.xsh, "git", "rev-parse", "--show-toplevel").strip()
     fld.value = pf"{repo_path}".name
-
-del GitStatusPromptField
-del PromptField
-del PromptFields
 
 fields["gitstatus.repo"] = _repo
 
@@ -74,16 +73,14 @@ fields["gitstatus.stash_count"].prefix = " \uf187 " if not on_linux_console else
 fields["gitstatus.operations"].prefix = ""
 fields["gitstatus.operations"].separator = "│"
 
-del fields
-
 # Invite principal
 $PROMPT = (
     "\n"
     "{BLACK}"
     "{user_color} {user} "
     "{BACKGROUND_INTENSE_PURPLE} {hostname} "
-    "{BACKGROUND_INTENSE_CYAN} {cwd} "
-    "{RESET} "
+    "{BACKGROUND_INTENSE_CYAN} {cwd} {RESET}"
+    "\n{end_color}{prompt_end}{RESET} "
 )
 
 # Invite à droite de l'écran
@@ -91,16 +88,10 @@ $RIGHT_PROMPT = (
     "\n"
     "{BLACK}"
     "{last_return_code_if_nonzero:{BACKGROUND_INTENSE_RED} {} }"
-    "{gitstatus:{BACKGROUND_INTENSE_CYAN}{}}"
+    "{env_name: {BACKGROUND_INTENSE_CYAN} {} }"
+    "{gitstatus:{BACKGROUND_INTENSE_PURPLE}{}}"
     "{shlvl:{BACKGROUND_INTENSE_BLUE} {} }"
-    "{RESET}"
-)
-
-# Barre d'outils
-$BOTTOM_TOOLBAR = (
-    "{INVERT_DEFAULT}                       "
-    "{vtnr:{INVERT_PURPLE} VT{} }"
-    "{INVERT_DEFAULT}                       "
+    "{vtnr:{BACKGROUND_INTENSE_PURPLE} VT{} }"
     "{RESET}"
 )
 
