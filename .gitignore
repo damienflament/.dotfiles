@@ -9,8 +9,8 @@
 # Ensuite, on ajoute les fichiers désirés.
 #
 # Afin de continuer à ignorer tous les fichiers par défaut, l'ajout d'un
-# dossier doit s'accompagner d'une règle pour ignorer tous les fichiers le
-# qu'il contient.
+# dossier doit s'accompagner d'une règle pour ignorer tous les fichiers qu'il
+# contient.
 
 # Todo
 !/TODO.md
@@ -39,6 +39,9 @@
 
 # Xonsh
 !/.config/xonsh
+!/.local/share/xonsh/
+/.local/share/xonsh/*
+!/.local/share/xonsh/site-packages/
 
 # Systemd
 !/.config/systemd/
@@ -75,6 +78,8 @@
 !/.config/composer/composer.json
 
 # Python
+__pycache__/
+*.pyc
 !/.config/python/
 !/.config/pypoetry/
 
@@ -98,6 +103,5 @@
 !/.config/feh/
 !/.config/htop/
 !/.config/vim/
-
 
 # vim: ft=gitconfig

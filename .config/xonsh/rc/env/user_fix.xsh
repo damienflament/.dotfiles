@@ -9,5 +9,3 @@ try:
     $USER = getuser()
 except OSError:
     $USER = "<user>"
-
-del getuser
