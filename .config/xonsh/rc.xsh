@@ -4,8 +4,6 @@ Ce fichier est chargé automatiquement par Xonsh. Les RC fractionnés sont
 chargés par des fonctions personnaliées.
 """
 
-$XONSH_SHOW_TRACEBACK = True
-
 # Active l'environnement virtuel de Xonsh, si présent, et remplace le shell
 # actuel par la version présente.
 if $XONSH_LOGIN and $XONSH_INTERACTIVE and "XONSH_VENV" not in ${...}:
@@ -15,12 +13,19 @@ if $XONSH_LOGIN and $XONSH_INTERACTIVE and "XONSH_VENV" not in ${...}:
         source-bash @($XONSH_VENV / "bin/activate")
         exec xonsh --login --interactive
 
+
+from rc.fix import home, user, xdg, path
+
+# Active PDB si la variable d'environnement $XONSH_ENABLE_PDB est vraie.
+if "XONSH_ENABLE_PDB" in ${...} and $XONSH_ENABLE_PDB:
+    xontrib load pdb
+
 # Mise à jour de `os.environ` pour correspondre à l'environnement de Xonsh.
 $UPDATE_OS_ENVIRON = True
 
 # Permet de charger les scripts RC ainsi que les modules et xontribs.
 #
-# FIXME $XONSH_DATA_DIR devrait être un Path
+# FIXME $XONSH_DATA_DIR devrait être un Path.
 import sys
 
 sys.path[0:0] = [
@@ -28,7 +33,11 @@ sys.path[0:0] = [
     str(p"$XONSH_DATA_DIR" / "site-packages"),
 ]
 
-xontrib load coreutils
+# Stocke le cache Python dans un répertoire dédié.
+sys.pycache_prefix = str(p"$XDG_CACHE_HOME" / "python")
+
+# FIXME L'implémentation de `cat` semble buggée !
+# xontrib load coreutils
 
 # Importe les scripts RC pour configurer l'environnement du shell
 import rc.env
