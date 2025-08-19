@@ -1,6 +1,6 @@
 """ Invite de commande. """
 
-from terminal import on_linux_console
+from my.terminal import on_linux_console
 from xonsh.prompt.gitstatus import GitStatusPromptField, PromptField, PromptFields
 from xonsh.prompt.gitstatus import _get_sp_output
 

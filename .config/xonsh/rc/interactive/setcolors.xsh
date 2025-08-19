@@ -3,7 +3,7 @@
 Définit la palette de couleur de la console Linux en utilisant `setcolors`.
 """
 
-from terminal import on_linux_console
+from my.terminal import on_linux_console
 
 # TODO Vérifier que `setcolors` est disponible.
 if on_linux_console:
