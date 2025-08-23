@@ -23,15 +23,20 @@ if "XONSH_ENABLE_PDB" in ${...} and $XONSH_ENABLE_PDB:
 # Mise à jour de `os.environ` pour correspondre à l'environnement de Xonsh.
 $UPDATE_OS_ENVIRON = True
 
-# Permet de charger les scripts RC ainsi que les modules et xontribs.
+# Permet de charger les scripts RC, les modules et xontribs ainsi que les
+# paquets systèmes.
 #
 # FIXME $XONSH_DATA_DIR devrait être un Path.
-import sys
+# TODO Déterminer l'emplacement des paquets systèmes.
 
 sys.path[0:0] = [
     $XONSH_CONFIG_DIR,
     str(p"$XONSH_DATA_DIR" / "site-packages"),
+    "/usr/lib/python3.13/site-packages",
 ]
+
+# Rend accessible aux scripts Python systèmes les paquets système.
+$PYTHONPATH = "/usr/lib/python3.13/site-packages"
 
 # Stocke le cache Python dans un répertoire dédié.
 sys.pycache_prefix = str(p"$XDG_CACHE_HOME" / "python")
