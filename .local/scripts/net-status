@@ -1,0 +1,64 @@
+#! /usr/bin/env xonsh
+"""
+Usage: net-status [--ip <address>]
+
+Renseigne l'état de la connexion avec l'hôte spécifié.
+
+Options:
+    -i --ip <address>   L'adresse de l'hôte auquel se connecter [default: 1.1.1.1].
+    -h --help           Affiche cette aide.
+
+Codes retours:
+    0   Connexion établie avec l'hôte.
+    2   Connexion avec l'hôte lente.
+    3   Pas de réponse de l'hôte.
+    4   Réseau inaccessible.
+"""
+
+from my.scripting import check_available, docopt, error
+import re
+
+STATUS_SLOW = 2
+STATUS_NO_RESPONSE = 3
+STATUS_UNREACHABLE = 4
+
+MAX_FAST_RTT = 10
+""" Durée au delà de laquelle la connexion est considérée comme lente
+    (en micro-secondes). """
+
+TIMEOUT = 5
+""" Délai avant de considérer la connexion comme échouée (en secondes). """
+
+RTT_PATTERN = r"rtt min/avg/max/mdev = \d\.\d{3}/(\d\.\d{3})/\d\.\d{3}/\d\.\d{3} ms"
+
+args = docopt(__doc__)
+ip_address = args["--ip"]
+
+check_available("ping")
+
+# Calcul du RTT moyen jusqu'à l'hôte.
+#
+# Une seule requête est envoyée. Un temps d'attente de 5 secondes est fixé.
+ping_info = $(ping -c 1 -w @(TIMEOUT) -n -q @(ip_address))
+
+match __xonsh__.last.returncode:
+    case 0:
+        pass
+    case 1:
+        print("Pas de réponse de l'hôte.")
+        exit(STATUS_NO_RESPONSE)
+    case 2:
+        print("Réseau inaccessible.")
+        exit(STATUS_UNREACHABLE)
+    case _:
+        error("Erreur innatendue de `ping`.")
+
+match = re.search(RTT_PATTERN, ping_info)
+average_rtt = float(match[1])
+
+# Si le RTT est trop élevé, la connexion est considérée comme lente.
+if average_rtt > MAX_FAST_RTT:
+    print("Connexion lente.")
+    exit(STATUS_SLOW)
+else:
+    print("Connexion établie.")

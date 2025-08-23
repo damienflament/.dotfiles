@@ -1,0 +1,3 @@
+#! /usr/bin/env xonsh
+
+curl "ipinfo.io/$1"

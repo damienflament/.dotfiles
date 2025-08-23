@@ -1,54 +1,87 @@
-#! /bin/zsh
+#! /usr/bin/env xonsh
+"""
+Usage: make-debug [--file <file>] [<argument>...]
 
-readonly FUNCTIONS=$(<<- '_FUNCTIONS_'
-# show_variables <origin> [<title>]
+Affiche des informations sur le Makefile.
+
+Arguments:
+    <argument>        Arguments passés à `make`.
+
+Options:
+    -f --file <file>  Le Makefile à déboguer.
+    -h --help         Affiche cette aide.
+
+Si aucun fichier n'est spécifié, un fichier nommé GNUMakefile, Makefile ou
+makefile est recherché (dans cet ordre) dans le répertoire courant.
+
+Les arguments supplémentaires sont passés à `make`.
+"""
+
+from my.scripting import check_available, docopt, error, STATUS
+
+args = docopt(__doc__)
+filename = args["--file"]
+arguments = args["<argument>"]
+
+check_available("make")
+
+MAKEFILE = r"""
+# show_variables <origine> [<titre>]
 #
-# <origin> : 'default' | 'environment' | 'environment override' | 'file'
+# <origine> : 'default' | 'environment' | 'environment override' | 'file'
 #            | 'command line' | 'override' | 'automatic'
 define show_variables =
   $(if $(filter undefined, $(origin 2)),,
     $(info )
     $(info # ${2} # )
+    $(info )
   )
 
   $(foreach variable, $(sort ${.VARIABLES}),
     $(if $(filter ${1}, $(origin ${variable})),
-      $(if $(filter ${variable}, $(0) .RECIPEPREFIX),,
+      $(if $(filter ${variable}, $(0) .RECIPEPREFIX .VARIABLES),,
 	      $(info $(variable) = $($(variable)) )
       )
-	  )
-	)
+    )
+  )
 endef
-_FUNCTIONS_
-)
-
-for filename in GNUMakefile Makefile makefile
-do
-  if [[ -r "${filename}" ]]
-  then
-    makefilename="${filename}"
-    break
-  fi
-done
-
-readonly MAKEFILE="$(< ${makefilename})"
-
-makefile=$(<<- _MAKEFILE_
-${MAKEFILE}
-
-${FUNCTIONS}
 
 .RECIPEPREFIX := >
 
 debug-recipe:
-> \$(call show_variables,file,Local variables)
-> \$(call show_variables,command line,Command line)
-> \$(call show_variables,environment override,Environment override)
+> $(call show_variables,override,Valeurs forcées (override))
+> $(call show_variables,command line,Ligne de commande)
+> $(call show_variables,file,Variables locales)
+> $(call show_variables,default,Valeurs par défaut)
+> $(call show_variables,environment,Variables d'environnement)
 
-_MAKEFILE_
-)
+"""
 
-#cat <<< "$makefile"
+files = [p"GNUMakefile", p"Makefile", p"makefile"]
 
-make --dry-run --quiet --makefile=- debug-recipe <<< "$makefile"
+# Traite le fichier spécifié optionnellement.
+file = None
 
+if filename:
+  file = pf"{filename}"
+
+  if not file.exists():
+    error(f"le fichier {file} n'existe pas.", STATUS.NO_INPUT)
+
+  files[0:0] = [file]
+
+# Traite le premier fichier trouvé.
+for f in files:
+  if f.exists():
+
+    if not f.is_file():
+      error(f"{f} n'est pas un fichier.", STATUS.DATA_ERR)
+
+    content = f.read_text()
+
+    echo @(content) @(MAKEFILE) | make --dry-run --quiet --makefile=- debug-recipe @(arguments)
+
+    exit(STATUS.SUCCESS)
+
+# Aucun Makefile trouvé.
+error("aucun Makefile trouvé.", STATUS.NO_INPUT)

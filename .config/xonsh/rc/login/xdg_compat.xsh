@@ -5,7 +5,7 @@ fichiers de configuration. Nous définissons explicitement leur  localisation
 afin de remédier à cela.
 
 Ces variables sont censées restées définies même lorsque l'application
-concernée est désinstalée.
+concernée est désinstallée.
 """
 
 $CABAL_CONFIG = p"$XDG_CONFIG_HOME" / "cabal/config"

@@ -1,0 +1,29 @@
+#! /usr/bin/env xonsh
+"""
+Usage: generate-salt [--length <length>]
+
+Génère une chaîne aléatoire utilisée pour initialiser un algorithme de
+chiffrement.
+
+Par défaut une chaîne de 20 caractères est générée.
+
+Options:
+    -l --length <length>    Génère une chaîne de taille spécifiée [default: 20].
+    -h --help               Affiche cette aide.
+"""
+
+from my.scripting import docopt, error
+from secrets import choice
+import string
+
+args = docopt(__doc__)
+length = int(args["--length"])
+
+if length < 1:
+    error("la taille spécifiée doit être de 1 au minimum.")
+
+alphabet = string.ascii_letters + string.digits
+
+salt = "".join(choice(alphabet) for _ in range(length))
+
+print(salt)

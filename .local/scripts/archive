@@ -1,0 +1,34 @@
+#! /usr/bin/env xonsh
+"""
+Usage: archive <directory>
+
+Archive un répertoire.
+
+Arguments:
+    <directory>     Le répertoire à archiver.
+
+Options:
+    -h --help       Affiche cette aide.
+"""
+
+from datetime import datetime
+from my.scripting import docopt, check_available, error, STATUS
+
+args = docopt(__doc__)
+directory = pf"{args['<directory>']}"
+
+check_available("tar")
+
+if not directory.exists():
+    error(f"le répertoire {directory} n'existe pas.", STATUS.NO_INPUT)
+
+if not directory.is_dir():
+    error(f"{directory} n'est pas un répertoire.", STATUS.DATA_ERR)
+
+now = datetime.now()
+destination = f"{directory}-{now:%Y%m%d-%H%M%S}.tar.xz"
+
+
+tar --create  --file @(destination) --xz @(directory)
+
+print(destination)

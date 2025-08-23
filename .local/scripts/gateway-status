@@ -1,0 +1,39 @@
+#! /usr/bin/env xonsh
+"""
+Usage: gateway-status
+
+Renseigne l'état de la connexion avec la passerelle par défaut.
+
+Options:
+    -h --help   Affiche cette aide.
+
+Codes retours:
+    0   Connexion établie avec la passerelle.
+    2   Connexion avec la passerelle lente.
+    3   Pas de réponse de la passerelle.
+    4   Passerelle inaccessible.
+"""
+
+from my.scripting import check_available, docopt, error
+import re
+
+STATUS_UNREACHABLE = 4
+
+GATEWAY_IP_PATTERN = r"default via (\d+.\d+.\d+.\d+)"
+
+args = docopt(__doc__)
+
+check_available("ip", "net-status")
+
+# Obtention de l'adresse IP de la passerelle par défaut.
+route_info = $(ip -4 route show default)
+
+if len(route_info) == 0:
+    print("Passerelle inaccessible.")
+    exit(STATUS_UNREACHABLE)
+
+match = re.match(GATEWAY_IP_PATTERN, route_info)
+ip_address = match[1]
+
+# Test de la connexion avec la passerelle
+net-status --ip @(ip_address)
