@@ -32,9 +32,9 @@ if $XONSH_LOGIN and "XONSH_VENV" not in ${...}:
             Relancez une session ! ;)
         """
 
-
-
-from rc.fix import home, user, xdg, path
+# Importe les scripts de correction dans un ordre précis.
+from rc.fix import home, user, xdg, path, reset
+del home, user, xdg, path, reset
 
 # Active PDB si la variable d'environnement $XONSH_ENABLE_PDB est vraie.
 if "XONSH_ENABLE_PDB" in ${...} and $XONSH_ENABLE_PDB:
