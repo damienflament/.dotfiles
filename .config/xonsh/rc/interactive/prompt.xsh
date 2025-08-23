@@ -10,7 +10,7 @@ fields = $PROMPT_FIELDS
 $DYNAMIC_CWD_WIDTH = "30%"
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 
-# Couleur du nom d'utitilsateur (rouge pour root)
+# Couleur du nom d’utilisateur (rouge pour root)
 fields["user_color"] = "{{BACKGROUND_INTENSE_{}}}" \
     .format("RED" if $USER == "root" else "GREEN")
 
