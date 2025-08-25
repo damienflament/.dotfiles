@@ -355,21 +355,16 @@
         Python
     */
     "python.venvPath": "~/.cache/pypoetry/virtualenvs",
-    "python.analysis.openFilesOnly": false,
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.lintOnSave": true,
-    "python.formatting.provider": "black",
+    "black-formatter.args": ["--line-length", "79"],
+    "isort.args": ["--profile", "black"],
     "[python]": {
-        "editor.guides.indentation": true,
-        "editor.rulers": [
-            88,
-        ],
-        "editor.formatOnPaste": false, // Not available with black
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
         },
+        "editor.guides.indentation": true,
+        "editor.rulers": [79]
     },
     "kivy.requireKivyHeader": true,
     "[kivy]": {
