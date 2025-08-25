@@ -14,7 +14,7 @@ Codes retours:
     4   Passerelle inaccessible.
 """
 
-from my.scripting import check_available, docopt, error
+from my.scripting import check_available, docopt
 import re
 
 STATUS_UNREACHABLE = 4

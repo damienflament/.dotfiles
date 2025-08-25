@@ -17,7 +17,7 @@ makefile est recherché (dans cet ordre) dans le répertoire courant.
 Les arguments supplémentaires sont passés à `make`.
 """
 
-from my.scripting import check_available, docopt, error, STATUS
+from my.scripting import check_available, docopt, exit_error, STATUS
 
 args = docopt(__doc__)
 filename = args["--file"]
@@ -66,7 +66,7 @@ if filename:
   file = pf"{filename}"
 
   if not file.exists():
-    error(f"le fichier {file} n'existe pas.", STATUS.NO_INPUT)
+    exit_error(f"le fichier {file} n'existe pas.", STATUS.NO_INPUT)
 
   files[0:0] = [file]
 
@@ -75,7 +75,7 @@ for f in files:
   if f.exists():
 
     if not f.is_file():
-      error(f"{f} n'est pas un fichier.", STATUS.DATA_ERR)
+      exit_error(f"{f} n'est pas un fichier.", STATUS.DATA_ERR)
 
     content = f.read_text()
 
@@ -84,4 +84,4 @@ for f in files:
     exit(STATUS.SUCCESS)
 
 # Aucun Makefile trouvé.
-error("aucun Makefile trouvé.", STATUS.NO_INPUT)
+exit_error("aucun Makefile trouvé.", STATUS.NO_INPUT)

@@ -15,7 +15,7 @@ Codes retours:
     4   Réseau inaccessible.
 """
 
-from my.scripting import check_available, docopt, error
+from my.scripting import check_available, docopt, exit_error
 import re
 
 STATUS_SLOW = 2
@@ -51,7 +51,7 @@ match __xonsh__.last.returncode:
         print("Réseau inaccessible.")
         exit(STATUS_UNREACHABLE)
     case _:
-        error("Erreur innatendue de `ping`.")
+        exit_error("erreur inattendue de `ping`.")
 
 match = re.search(RTT_PATTERN, ping_info)
 average_rtt = float(match[1])

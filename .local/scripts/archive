@@ -12,7 +12,7 @@ Options:
 """
 
 from datetime import datetime
-from my.scripting import docopt, check_available, error, STATUS
+from my.scripting import docopt, check_available, exit_error, STATUS
 
 args = docopt(__doc__)
 directory = pf"{args['<directory>']}"
@@ -20,10 +20,10 @@ directory = pf"{args['<directory>']}"
 check_available("tar")
 
 if not directory.exists():
-    error(f"le répertoire {directory} n'existe pas.", STATUS.NO_INPUT)
+    exit_error(f"le répertoire {directory} n'existe pas.", STATUS.NO_INPUT)
 
 if not directory.is_dir():
-    error(f"{directory} n'est pas un répertoire.", STATUS.DATA_ERR)
+    exit_error(f"{directory} n'est pas un répertoire.", STATUS.DATA_ERR)
 
 now = datetime.now()
 destination = f"{directory}-{now:%Y%m%d-%H%M%S}.tar.xz"

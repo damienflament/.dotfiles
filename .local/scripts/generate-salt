@@ -12,7 +12,7 @@ Options:
     -h --help               Affiche cette aide.
 """
 
-from my.scripting import docopt, error
+from my.scripting import docopt, exit_error
 from secrets import choice
 import string
 
@@ -20,7 +20,7 @@ args = docopt(__doc__)
 length = int(args["--length"])
 
 if length < 1:
-    error("la taille spécifiée doit être de 1 au minimum.")
+    exit_error("la taille spécifiée doit être de 1 au minimum.")
 
 alphabet = string.ascii_letters + string.digits
 
