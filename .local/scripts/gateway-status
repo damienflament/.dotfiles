@@ -14,11 +14,12 @@ Codes retours:
     4   Passerelle inaccessible.
 """
 
-from my.scripting import check_available, docopt
 import re
 
-STATUS_UNREACHABLE = 4
+from my.scripting import check_available, docopt
 
+
+STATUS_UNREACHABLE = 4
 GATEWAY_IP_PATTERN = r"default via (\d+.\d+.\d+.\d+)"
 
 args = docopt(__doc__)

@@ -12,7 +12,9 @@ Options:
 """
 
 from datetime import datetime
+
 from my.scripting import docopt, check_available, exit_error, STATUS
+
 
 args = docopt(__doc__)
 directory = pf"{args['<directory>']}"

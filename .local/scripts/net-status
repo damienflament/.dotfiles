@@ -15,8 +15,10 @@ Codes retours:
     4   Réseau inaccessible.
 """
 
-from my.scripting import check_available, docopt, exit_error
 import re
+
+from my.scripting import check_available, docopt, exit_error
+
 
 STATUS_SLOW = 2
 STATUS_NO_RESPONSE = 3

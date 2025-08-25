@@ -12,9 +12,11 @@ Options:
     -h --help               Affiche cette aide.
 """
 
-from my.scripting import docopt, exit_error
 from secrets import choice
 import string
+
+from my.scripting import docopt, exit_error
+
 
 args = docopt(__doc__)
 length = int(args["--length"])
