@@ -354,9 +354,21 @@
     /*
         Python
     */
+    "python.languageServer": "Pylance",
     "python.venvPath": "~/.cache/pypoetry/virtualenvs",
-    "black-formatter.args": ["--line-length", "79"],
-    "isort.args": ["--profile", "black"],
+    "black-formatter.args": [
+        "--line-length",
+        "79",
+    ],
+    "isort.args": [
+        "--profile",
+        "black",
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "--spec"
+    ],
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
@@ -364,7 +376,9 @@
             "source.organizeImports": "explicit"
         },
         "editor.guides.indentation": true,
-        "editor.rulers": [79]
+        "editor.rulers": [
+            79
+        ]
     },
     "kivy.requireKivyHeader": true,
     "[kivy]": {
