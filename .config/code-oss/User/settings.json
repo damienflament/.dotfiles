@@ -416,6 +416,7 @@
         "editor.tabSize": 2,
     },
     "bashIde.highlightParsingErrors": true,
+    "shellspec.executablePath": "/usr/bin/shellspec",
     /*
         XML
     */
