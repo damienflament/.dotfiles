@@ -95,6 +95,10 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     /*
+        Workbench behaviors
+    */
+    "workbench.externalBrowser": "firefox-developer-edition",
+    /*
         Suggestions
     */
     "editor.quickSuggestions": {
