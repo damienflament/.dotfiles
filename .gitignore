@@ -82,6 +82,9 @@
 # Python
 __pycache__/
 *.pyc
+.hypothesis/
+.coverage
+coverage.lcov
 !/.config/python/
 !/.config/pypoetry/
 
