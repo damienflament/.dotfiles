@@ -376,7 +376,11 @@
     /*
         Python
     */
-    "python.languageServer": "Pylance",
+    "python.languageServer": "Jedi",
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.callArgumentNames": "partial",
+    "python.analysis.inlayHints.functionReturnTypes": true,
     "python.venvPath": "~/.cache/pypoetry/virtualenvs",
     "black-formatter.args": [
         "--line-length",
