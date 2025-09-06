@@ -31,12 +31,6 @@
     "editor.fontSize": 14,
     "terminal.integrated.fontSize": 14,
     "C_Cpp.inactiveRegionOpacity": 0.3,
-    "coverage-gutters.highlightdark": "rgba(42, 161, 152, 0.25)",
-    "coverage-gutters.highlightlight": "rgba(42, 161, 152, 0.15)",
-    "coverage-gutters.partialHighlightDark": "rgba(181, 137, 0, 0.25)",
-    "coverage-gutters.partialHighlightLight": "rgba(181, 137, 0, 0.15)",
-    "coverage-gutters.noHighlightDark": "rgba(220, 50, 47, 0.25)",
-    "coverage-gutters.noHighlightLight": "rgba(220, 50, 47, 0.15)",
     "workbench.colorCustomizations": {
         "[Solarized Light]": {
             "terminal.ansiWhite": "#073642"
@@ -259,16 +253,19 @@
     /*
         Couverture des tests
     */
+    "testing.displayedCoveragePercent": "minimum",
     "coverage-gutters.coverageFileNames": [
         "lcov.info",
         "cov.xml",
         "jacoco.xml",
-        "coverage.xml"
+        "coverage.xml",
+        "coverage.lcov",
     ],
     "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,tests}/**",
     "coverage-gutters.showGutterCoverage": false,
-    "coverage-gutters.showRulerCoverage": false,
     "coverage-gutters.showLineCoverage": true,
+    "coverage-gutters.customizable.context-menu": false,
+    "coverage-gutters.watchOnActivate": true,
     /*
         Commandes personnalisées
     */
@@ -392,7 +389,11 @@
     "python.testing.pytestEnabled": true,
     "python.testing.unittestEnabled": false,
     "python.testing.pytestArgs": [
-        "--spec"
+        "--cov=${workspaceFolder}",
+        "--cov-branch",
+        "--no-cov-on-fail",
+        "--cov-report=term-missing",
+        "--cov-report=lcov"
     ],
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
