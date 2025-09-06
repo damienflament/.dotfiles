@@ -55,11 +55,15 @@ sys.path[0:0] = [
     "/usr/lib/python3.13/site-packages",
 ]
 
-# Rend accessible aux scripts Python systèmes les paquets système.
-$PYTHONPATH = "/usr/lib/python3.13/site-packages"
+# Rend accessible aux scripts Python systèmes les paquets système et les
+# fonctions utilisateur.
+$PYTHONPATH = []
+$PYTHONPATH.add("/usr/lib/python3.13/site-packages", front=True, replace=True)
+$PYTHONPATH.add(p"$XONSH_DATA_DIR" / "site-packages", front=True, replace=True)
 
 # Stocke le cache Python dans un répertoire dédié.
-sys.pycache_prefix = str(p"$XDG_CACHE_HOME" / "python")
+$PYTHONPYCACHEPREFIX = p"$XDG_CACHE_HOME" / "python"
+sys.pycache_prefix = str($PYTHONPYCACHEPREFIX)
 
 # FIXME L'implémentation de `cat` semble buguée !
 # xontrib load coreutils
