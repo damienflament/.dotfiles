@@ -15,17 +15,20 @@ aliases |= {
     "llra": "llr --almost-all",
 
     # Gestion des fichiers
-    "rm": "rm --interactive=once --verbose --preserve-root",
-    "mv": "mv --interactive --verbose",
-    "cp": "cp --interactive --verbose --preserve=all",
-    "ln": "ln --interactive --verbose",
-    "rename": "rename --verbose --no-overwrite",
-
+    # "rm": "rm --interactive=once --verbose --preserve-root",
+    "rm": "trash --verbose",
     "rmr": "rm --recursive",
+
+    "mv": "mv --interactive --verbose",
+
+    "cp": "cp --interactive --verbose --preserve=all",
     "cpr": "cp --recursive",
 
-    # "mk": "\\touch",
-    # "touch": "touch --no-create",
+    "ln": "ln --interactive --verbose",
+
+    "rename": "rename --verbose --no-overwrite",
+
+    "mk": "touch",
     "mkdir": "mkdir --parents --verbose",
 
     # Gestion des droits sur les fichiers
@@ -38,9 +41,12 @@ aliases |= {
     "chgrpr": "chgrp --recursive",
 
     # Gestion des paquets (avec Yay)
-    "yay-orphans": "yay -Q --unrequired --deps --info", # Affiche les orphelins
+    "yay-orphans": "yay -Q --unrequired --deps",        # Affiche la liste des orphelins
     "yay-clean": "yay -Y --clean",                      # Supprime les orphelins et leurs dépendances
     "yay-owner": "yay -Q --owns",                       # Cherche le paquets à qui appartient le fichier spécifié
+
+    # Environnement Python
+    "xpip": "/usr/bin/env python -m pip @(['install', '--user'] + $args[1:] if $args and $args[0] == 'install' else $args)",
 
     # Utilitaires du shell
     "pager": "$PAGER",
@@ -55,4 +61,5 @@ aliases |= {
     "make": "make $MAKEFLAGS",
     "stack": f"stack --jobs {__xonsh__.env['NPROC'] - 1}",
     "mimetype": "file --brief --mime-type",
+    "ip": "ip -color=auto"
 }
