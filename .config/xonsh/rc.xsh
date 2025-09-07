@@ -8,7 +8,7 @@ import sys
 
 # Active l'environnement virtuel de Xonsh, si présent, et remplace le shell
 # actuel par la version présente.
-if $XONSH_LOGIN and "XONSH_VENV" not in ${...}:
+if "XONSH_VENV" not in ${...}:
     $XONSH_VENV = p"$XONSH_DATA_DIR" / "virtualenv"
 
     if $XONSH_VENV.is_dir():
