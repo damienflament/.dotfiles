@@ -9,7 +9,7 @@ import sys
 # Active l'environnement virtuel de Xonsh, si présent, et remplace le shell
 # actuel par la version présente.
 if "XONSH_VENV" not in ${...}:
-    $XONSH_VENV = p"$XONSH_DATA_DIR" / "virtualenv"
+    $XONSH_VENV = p"$HOME" / ".venv"
 
     if $XONSH_VENV.is_dir():
         source-bash @($XONSH_VENV / "bin/activate")
@@ -18,16 +18,13 @@ if "XONSH_VENV" not in ${...}:
         echo """
             Environnement virtuel de Xonsh non initialisé !
 
-            Créez le répertoire:
-            @ mkdir $XONSH_VENV
-            @ cd $XONSH_VENV
-
             Initialisez l'environnement:
-            @ python -m venv .
-            @ source-bash bin/activate
+            @ cd ~
+            @ uv init --bare --name "xonsh-venv" --description "Xonsh virtual environment"
+            @ source-bash $XONSH_VENV/bin/activate
 
             Installez Xonsh:
-            @ pip install "xonsh[full]"
+            @ uv add "xonsh[full]"
 
             Relancez une session ! ;)
         """
