@@ -1,6 +1,0 @@
-#! /bin/zsh
-
-echo "Mounting as user ${UID} and group ${GID}."
-
-exec sudo mount --verbose -ouid=${UID},gid=${GID},rw $1 $2
-
