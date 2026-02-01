@@ -96,10 +96,6 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     /*
-        Comportement de l'espace de travail
-    */
-    "workbench.externalBrowser": "firefox-developer-edition",
-    /*
         Suggestions
     */
     "editor.quickSuggestions": {
