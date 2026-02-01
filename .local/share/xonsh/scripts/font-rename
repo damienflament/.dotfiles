@@ -1,0 +1,60 @@
+#! /usr/bin/env xonsh
+"""
+Usage: font-rename <file> [<file>...]
+
+Renomme des fichiers de police d'écriture.
+
+Arguments:
+    <file>      Les fichiers à renommer.
+
+Options:
+    -h --help   Affiche cette aide.
+"""
+
+from my.scripting import docopt, check_available, exit_error, STATUS
+
+REGULAR_STYLES = ("Regular", "Normal", "Roman")
+
+args = docopt(__doc__)
+filenames = args["<file>"]
+
+check_available("fc-query")
+
+for f in filenames:
+    f = pf"{f}"
+
+    if not f.exists():
+        exit_error(f"le fichier {f} n'existe pas", STATUS.NO_INPUT)
+
+    # Extraction des données depuis le fichier
+    try:
+        data = $(fc-query --format "%{family[0]},%{style[0]}" @(f))
+    except Exception:
+        exit_error(f"impossible de lire les métadonnées de la police {f}", STATUS.SOFTWARE_ERR)
+
+    extension = f.suffix.lower()
+
+    (family, style) = [t(s) for t,s in zip(
+        (str, str),
+        data.strip().split(",")
+    )]
+
+    # Construction du nom de fichier
+    stem = family
+
+    for regular_style in REGULAR_STYLES:
+        if regular_style in style:
+            style = style.replace(regular_style, "").strip()
+
+    if (len(style) > 0):
+        stem += f", {style}"
+
+    target = f.with_stem(stem)
+
+    # Prévention d'un écrasement de fichier
+    if target.exists() and f != target:
+        exit_error(f"le fichier {target} existe déjà", STATUS.CANT_CREATE)
+
+    # Renommage
+    print(f"{f} -> {target}")
+    f.rename(target)

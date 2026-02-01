@@ -19,7 +19,6 @@ Les arguments supplémentaires sont passés à `make`.
 
 from my.scripting import check_available, docopt, exit_error, STATUS
 
-
 args = docopt(__doc__)
 filename = args["--file"]
 arguments = args["<argument>"]

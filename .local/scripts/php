@@ -1,0 +1,10 @@
+#! /bin/zsh
+
+if (( PHP_DEBUG == 1 ))
+then
+  echo "Running PHP whith XDebug enabled."
+  /usr/bin/php -e -d zend_extension=xdebug.so -d xdebug.remote_autostart=1 "$@"
+else
+  /usr/bin/php "$@"
+fi
+

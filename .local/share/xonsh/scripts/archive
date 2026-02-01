@@ -13,11 +13,10 @@ Options:
 
 from datetime import datetime
 
-from my.scripting import docopt, check_available, exit_error, STATUS
-
+from my.scripting import STATUS, check_available, docopt, exit_error
 
 args = docopt(__doc__)
-directory = pf"{args['<directory>']}"
+directory =  pf"{args['<directory>']}"
 
 check_available("tar")
 
@@ -31,6 +30,6 @@ now = datetime.now()
 destination = f"{directory}-{now:%Y%m%d-%H%M%S}.tar.xz"
 
 
-tar --create  --file @(destination) --xz @(directory)
+tar --create --file @(destination) --xz @(directory)
 
 print(destination)

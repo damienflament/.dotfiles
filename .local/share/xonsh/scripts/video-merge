@@ -1,0 +1,22 @@
+#! /usr/bin/env xonsh
+"""
+Usage: video-merge <target> <file> <file> [<file> ...]
+
+Fusionne des vidéos.
+
+Arguments:
+    <target>    La cible
+    <file>      Les fichiers à fusionner.
+
+Options:
+    -h --help   Affiche cette aide.
+"""
+
+from my.scripting import check_available, docopt
+
+args = docopt(__doc__)
+filenames = args["<file>"]
+
+check_available("mencoder")
+
+mencoder -idx -ovc copy -oac copy -o @(target) @(filenames)

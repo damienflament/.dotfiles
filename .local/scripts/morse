@@ -1,0 +1,70 @@
+#! /bin/zsh
+
+if [[ $# != 1 ]]
+then
+  echo "usage: ${0:t} SENTENCE" >&2
+  exit 1
+fi
+
+typeset -A encoder decoder
+
+encoder=(
+ 'a'  '.-'
+ 'b'  '-...'
+ 'c'  '-.-.'
+ 'd'  '-..'
+ 'e'  '.'
+ 'f'  '..-.'
+ 'g'  '--.'
+ 'h'  '....'
+ 'i'  '..'
+ 'j'  '.---'
+ 'k'  '-.-'
+ 'l'  '.-..'
+ 'm'  '--'
+ 'n'  '-.'
+ 'o'  '---'
+ 'p'  '.--.'
+ 'q'  '--.-'
+ 'r'  '.-.'
+ 's'  '...'
+ 't'  '-'
+ 'u'  '..-'
+ 'v'  '...-'
+ 'w'  '.--'
+ 'x'  '-..-'
+ 'y'  '-.--'
+ 'z'  '--..'
+
+ '1'  '.----'
+ '2'  '..---'
+ '3'  '...--'
+ '4'  '....-'
+ '5'  '.....'
+ '6'  '-....'
+ '7'  '--...'
+ '8'  '---..'
+ '9'  '----.'
+ '0'  '-----'
+)
+
+for letter in ${(k)encoder}
+do
+  code=$encoder[$letter]
+  decoder[$code]=$letter
+done
+
+letters=(${(s: :)1})
+result=""
+
+for letter in $letters
+do
+  letter=$decoder[$letter]
+
+  [[ -z $letter ]] && letter='?'
+
+  result="$result$letter"
+done
+
+echo $result
+

@@ -1,0 +1,2 @@
+LOCAL_VARIABLE=Variable locale
+override OVERRIDDEN_VARIABLE=Variable forcée

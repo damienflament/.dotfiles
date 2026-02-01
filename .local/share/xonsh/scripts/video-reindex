@@ -1,0 +1,26 @@
+#! /usr/bin/env xonsh
+"""
+Usage: video-reindex <file>
+
+Reconstruit l'index d'une vidéo.
+
+Arguments:
+    <file>      Le fichier à reconstruire.
+
+Options:
+    -h --help   Affiche cette aide.
+"""
+
+from my.scripting import docopt, check_available
+
+args = docopt(__doc__)
+filename = args["<file>"]
+
+check_available("mencoder")
+
+f = pf"{filename}"
+
+target = f.with_stem(f"{f.stem}_REINDEXED")
+
+
+mencoder -idx -ovc copy -oac copy -o @(target) @(filename)

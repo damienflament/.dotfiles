@@ -42,6 +42,7 @@
 !/.local/share/xonsh/
 /.local/share/xonsh/*
 !/.local/share/xonsh/site-packages/
+!/.local/share/xonsh/scripts/
 
 # Systemd
 !/.config/systemd/
@@ -85,6 +86,7 @@ __pycache__/
 .hypothesis/
 .coverage
 coverage.lcov
+.pytest_cache/
 !/.config/python/
 !/.config/pypoetry/
 

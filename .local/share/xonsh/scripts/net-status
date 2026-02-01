@@ -1,11 +1,13 @@
 #! /usr/bin/env xonsh
 """
-Usage: net-status [--ip <address>]
+Usage: net-status <address>
 
 Renseigne l'état de la connexion avec l'hôte spécifié.
 
+Arguments:
+    <address>   L'adresse de l'hôte auquel se connecter [default: 1.1.1.1].
+
 Options:
-    -i --ip <address>   L'adresse de l'hôte auquel se connecter [default: 1.1.1.1].
     -h --help           Affiche cette aide.
 
 Codes retours:
@@ -19,6 +21,7 @@ import re
 
 from my.scripting import check_available, docopt, exit_error
 
+$RAISE_SUBPROC_ERROR = False
 
 STATUS_SLOW = 2
 STATUS_NO_RESPONSE = 3
@@ -34,7 +37,7 @@ TIMEOUT = 5
 RTT_PATTERN = r"rtt min/avg/max/mdev = \d\.\d{3}/(\d\.\d{3})/\d\.\d{3}/\d\.\d{3} ms"
 
 args = docopt(__doc__)
-ip_address = args["--ip"]
+ip_address = args["<address>"]
 
 check_available("ping")
 

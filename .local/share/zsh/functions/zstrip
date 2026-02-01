@@ -1,0 +1,14 @@
+# zstrip <string>
+#
+# Returns the given string stripped from leading and trailing spaces.
+function zstrip {
+    leadingStripped=${(*)1##[[:space:]]#}
+    trailingStripped=${(*)leadingStripped%%[[:space:]]#}
+
+    echo "$trailingStripped"
+
+}
+
+zstrip "$@"
+
+# vim: ft=zsh

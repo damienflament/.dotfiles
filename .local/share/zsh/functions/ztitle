@@ -1,0 +1,11 @@
+# ztitle title
+function ztitle
+{
+    local -r title=${1:?The title must be specified.}
+
+    print -P "\n%K{white}%F{black} $title %f%k"
+}
+
+zmessage "$@"
+
+# vim: ft=zsh
