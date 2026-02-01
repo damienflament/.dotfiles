@@ -1,5 +1,5 @@
 /*
-    Configuration de Code OSS
+    Configuration de Visual Studio Code
 */
 {
     /*
@@ -331,7 +331,7 @@
         /*
             JSON
         */
-        "*.jtd": "json"
+        "*.jtd": "json",
         /*
             Git
         */
