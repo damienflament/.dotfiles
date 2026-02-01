@@ -1,5 +1,5 @@
 /*
-    VSCode keybindings
+    Raccourcis claviers de Visual Studio Code
 */
 [
     /*
@@ -22,7 +22,7 @@
         "command": "dayNightThemeSwitcher.toggleDayNightTheme",
     },
     /*
-        Opening
+        Ouverture de documents
     */
     {
         "key": "Ctrl+O",
@@ -33,7 +33,7 @@
         "command": "workbench.action.files.openFolder",
     },
     /*
-        Tasks
+        Tâches
     */
     {
         "key": "Ctrl+B",
@@ -109,7 +109,7 @@
         "command": "workbench.action.terminal.focusAtIndex9",
     },
     /*
-        Debug
+        Débuggage
     */
     {
         "key": "F5",
@@ -142,7 +142,7 @@
         "when": "inDebugMode"
     },
     /*
-        UI components manipulation
+        Composants UI
     */
     {
         "key": "Ctrl+Escape",
@@ -152,6 +152,14 @@
         "key": "Ctrl+numpad_add",
         "command": "workbench.action.toggleMaximizedPanel",
     },
+    {
+        "key": "ctrl+numpad_subtract",
+        "command": "workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    }
     {
         "key": "Ctrl+F",
         "command": "actions.find",
@@ -175,9 +183,9 @@
         "when": "editorTextFocus"
     },
     /*
-        Editor
+        Éditeur
     */
-    // Comments
+    // Commentaires
     {
         "key": "Ctrl+numpad_divide",
         "command": "editor.action.commentLine",
@@ -188,7 +196,7 @@
         "command": "editor.action.blockComment",
         "when": "editorTextFocus && !editorReadonly"
     },
-    // Indentation and formatting
+    // Indentation et formattage
     {
         "key": "Ctrl+I",
         "command": "editor.action.reindentselectedlines",
@@ -205,11 +213,11 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "Ctrl+Alt+I",
-        "command": "standard.executeAutofix",
-        "when": "(editorLangId == javascriptreact || editorLangId == javascript || editorLangId == json || editorLangId == jsonc) && editorTextFocus && !editorReadonly"
+        // "key": "Ctrl+Alt+I",
+        // "command": "standard.executeAutofix",
+        // "when": "(editorLangId == javascriptreact || editorLangId == javascript || editorLangId == json || editorLangId == jsonc) && editorTextFocus && !editorReadonly"
     },
-    // Lines manipulation
+    // Manipulation des lignes
     {
         "key": "Ctrl+Up",
         "command": "editor.action.moveLinesUpAction",
@@ -235,10 +243,10 @@
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadonly"
     },
-    // Line numbers
+    // Numéros de lignes
     {
         "key": "ctrl+l",
         "command": "settings.cycle.lineNumbers",
         "when": "editorTextFocus"
-    }
+    },
 ]
