@@ -27,7 +27,7 @@ $COMPLETE_DOTS = "matching"
 $XONSH_AUTOPAIR = True
 
 # Suggestions depuis l'historique.
-$AUTO_SUGGEST = True
+$XONSH_PROMPT_AUTO_SUGGEST = True
 
 # Suggestion d'un maximum de 5 résultats lorsque une commande est introuvable.
 $SUGGEST_COMMANDS = True

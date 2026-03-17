@@ -30,8 +30,8 @@ if "XONSH_VENV" not in ${...}:
         """
 
 # Importe les scripts de correction dans un ordre précis.
-from rc.fix import home, user, xdg, path, reset
-del home, user, xdg, path, reset
+from rc.fix import home, user, xdg, reset
+del home, user, xdg, reset
 
 # Active PDB si la variable d'environnement $XONSH_ENABLE_PDB est vraie.
 if "XONSH_ENABLE_PDB" in ${...} and $XONSH_ENABLE_PDB:
@@ -78,8 +78,11 @@ if $XONSH_LOGIN:
     # Works around https://github.com/xonsh/xonsh/issues/5895
     source-bash /etc/profile
 
-    # Importe les scripts RC pour configurer les shells de connexion
-    import rc.login
+
+# Importe les scripts RC pour configurer les shells de connexion
+# FIXME Devrait être exécuté avec $XONSH_LOGIN mais semble ne plus être effectif
+# sous Gnome.
+import rc.login
 
 if $XONSH_INTERACTIVE:
     # Importe les scripts RC pour configurer les shells interactifs
