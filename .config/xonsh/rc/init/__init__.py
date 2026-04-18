@@ -1,4 +1,4 @@
-"""Scripts RC chargés par les shells interactifs."""
+"""Scripts RC chargés à chaque lancement du shell."""
 
 from importlib import import_module
 from pathlib import Path

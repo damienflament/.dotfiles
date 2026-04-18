@@ -1,9 +1,8 @@
-""" Scripts RC chargés à chaque lancement du shell. """
+"""Scripts RC destinés à initialiser des variables d'environnement."""
 
 from importlib import import_module
 from pathlib import Path
 
-
 for p in Path(__file__).parent.iterdir():
-    if not p.samefile(__file__)  and p.suffix in (".xsh", ".py"):
+    if not p.samefile(__file__) and p.suffix in (".xsh", ".py"):
         import_module(f".{p.stem}", __package__)

@@ -15,7 +15,7 @@ $ELINKS_CONFDIR = p"$XDG_CONFIG_HOME" / "elinks"
 $GNUPGHOME = p"$XDG_DATA_HOME" / "gnupg"
 $LESSHISTFILE = p"$XDG_CACHE_HOME" / "lesshst"
 $PYLINTHOME = p"$XDG_CACHE_HOME" / "pylint"
-$PYTEST_ADDOPTS="-o cache_dir=" + str(p"$XDG_CACHE_HOME" / "pytest")
+$PYTEST_ADDOPTS="-o cache_dir={}".format(p"$XDG_CACHE_HOME" / "pytest")
 $STACK_ROOT = p"$XDG_CONFIG_HOME" / "stack"
 $UNISON = p"$XDG_CONFIG_HOME" / "unison"
 $VIM_RC = p"$XDG_CONFIG_HOME" / "vim/vimrc"

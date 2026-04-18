@@ -46,7 +46,8 @@ aliases |= {
     "yay-owner": "yay -Q --owns",                       # Cherche le paquets à qui appartient le fichier spécifié
 
     # Environnement Python
-    "xpip": "/usr/bin/env python -m pip @(['install', '--user'] + $args[1:] if $args and $args[0] == 'install' else $args)",
+    "xpip": "/usr/bin/env pip @(['install', '--local'] + $args[1:] if $args and $args[0] == 'install' else $args)",
+    "xpip-review": "/usr/bin/env pip-review --local",
 
     # Utilitaires du shell
     "pager": "$PAGER",
