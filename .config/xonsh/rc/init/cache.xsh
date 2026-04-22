@@ -2,4 +2,4 @@
 
 import sys
 
-sys.pycache_prefix = str(p"$XDG_CACHE_HOME" / "python")
+$PYTHONPYCACHEPREFIX = p"$XDG_CACHE_HOME" / "python"

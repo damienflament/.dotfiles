@@ -4,4 +4,8 @@
 
 import sys
 
-sys.path[0:0] = [str(p"$XONSH_DATA_DIR" / "site-packages")]
+$PYTHONPATH = p"$XONSH_DATA_DIR" / "site-packages"
+sys.path[0:0] = $PYTHONPATH
+
+# Suppression des doublons
+sys.path = list(dict.fromkeys(sys.path))
