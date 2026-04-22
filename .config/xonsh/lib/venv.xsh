@@ -1,4 +1,4 @@
-"""Utilitaires de configuration."""
+""" Utilitaires de gestion des environnements virtuels. """
 
 import sys
 from pathlib import Path
@@ -9,7 +9,7 @@ def ensure_xonsh_from_venv(path: Path):
 
     L'environnement est activé si nécessaire.
     Si aucun environnement n'est trouvé à l'emplacement `path`, un message est
-    affiché mais la configuration est tout de même chargée.
+    affiché.
     """
 
     # L'instance actuelle a déjà été lancée depuis l'environnement virtuel.
@@ -18,7 +18,14 @@ def ensure_xonsh_from_venv(path: Path):
 
     # L'environnement virtuel est introuvable.
     if not path.is_dir():
-        echo f"""
+        _print_venv_installation_message()
+        return
+
+    source-bash @(path / "bin/activate")
+    exec xonsh @(sys.argv[1:])
+
+def _print_venv_installation_message():
+    echo f"""
     Environnement virtuel de Xonsh non initialisé !
 
     Initialisez l'environnement:
@@ -31,7 +38,3 @@ def ensure_xonsh_from_venv(path: Path):
 
     Relancez une session ! 😉
 """
-        return
-
-    source-bash @(path / "bin/activate")
-    exec xonsh @(sys.argv[1:])

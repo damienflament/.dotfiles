@@ -4,7 +4,7 @@ Ce fichier est chargé automatiquement par Xonsh. Les RC fractionnés sont
 chargés en tant que modules du paquet `rc`.
 """
 
-from lib import ensure_xonsh_from_venv
+from lib.venv import ensure_xonsh_from_venv
 
 # Mise en place de l'environnement virtuel.
 $XONSH_VENV = p"~" / ".venv"
