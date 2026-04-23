@@ -22,7 +22,7 @@ args = docopt(__doc__)
 length = int(args["--length"])
 
 if length < 1:
-    exit_error("la taille spécifiée doit être de 1 au minimum.")
+    exit_error("la taille spécifiée doit être de 1 au minimum")
 
 alphabet = string.ascii_letters + string.digits
 

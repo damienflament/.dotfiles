@@ -15,18 +15,20 @@ def describe_command_font_rename():
 
     def it_shows_help_screen(shell):
         """affiche un écran d'aide"""
-        assert_that(
-            shell.run("font-rename", "--help")
-        ).succeeds().and_stdout().starts_with("Usage: font-rename")
+        (
+            assert_that(shell.run("font-rename", "--help"))
+            .succeeds()
+            .and_stdout()
+            .starts_with("Usage: font-rename")
+        )
 
-    # def it_requires_a_filename(shell):
-    def il_nécessite_un_nom_de_fichier(shell):
+    def it_requires_a_filename(shell):
         """nécessite un nom de fichier"""
         (
             assert_that(shell.run("font-rename"))
             .fails()
             .and_stderr()
-            .starts_with("Usage: font-rename")
+            .starts_with("Usage: font-rename <file>")
         )
 
     def it_checks_file_exists(shell, font: Path):
@@ -37,7 +39,7 @@ def describe_command_font_rename():
             assert_that(shell.run("font-rename", str(font)))
             .fails()
             .and_stderr()
-            .contains(f"le fichier {font} n'existe pas")
+            .is_equal_to(f"erreur: le fichier {font} n'existe pas.")
         )
 
     def it_handles_error_from_fc_query(cmd_mocker, shell, font: Path):
@@ -49,7 +51,9 @@ def describe_command_font_rename():
             assert_that(shell.run("font-rename", font))
             .fails()
             .and_stderr()
-            .contains("impossible de lire les métadonnées de la police")
+            .starts_with(
+                "erreur: impossible de lire les métadonnées de la police"
+            )
         )
 
     def it_renames_font_file(cmd_mocker, shell, font: Path):

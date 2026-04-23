@@ -30,7 +30,9 @@ def describe_command_generate_salt():
             assert_that(shell.run("generate-salt", "--length", str(-1)))
             .fails()
             .and_stderr()
-            .is_not_empty()
+            .is_equal_to(
+                "erreur: la taille spécifiée doit être de 1 au minimum."
+            )
         )
 
     @settings(deadline=2000)

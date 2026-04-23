@@ -46,7 +46,7 @@ check_available("ping")
 # Une seule requête est envoyée. Un temps d'attente de 5 secondes est fixé.
 ping_info = $(ping -c 1 -w @(TIMEOUT) -n -q @(ip_address))
 
-match __xonsh__.last.returncode:
+match __xonsh__.lastcmd.returncode:
     case 0:
         pass
     case 1:
@@ -56,7 +56,7 @@ match __xonsh__.last.returncode:
         print("Réseau inaccessible.")
         exit(STATUS_UNREACHABLE)
     case _:
-        exit_error("erreur inattendue de `ping`.")
+        exit_error("erreur inattendue de `ping`")
 
 match = re.search(RTT_PATTERN, ping_info)
 average_rtt = float(match[1])

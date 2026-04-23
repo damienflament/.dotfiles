@@ -42,7 +42,7 @@ def describe_command_archive():
             assert_that(shell.run("archive"))
             .fails()
             .and_stderr()
-            .starts_with("Usage: archive")
+            .starts_with("Usage: archive <directory>")
         )
 
     def it_checks_that_the_directory_exists(shell, directory: Path):
@@ -53,7 +53,7 @@ def describe_command_archive():
             assert_that(shell.run("archive", str(directory)))
             .fails()
             .and_stderr()
-            .contains(f"le répertoire {directory} n'existe pas")
+            .is_equal_to(f"erreur: le répertoire {directory} n'existe pas.")
         )
 
     def it_checks_the_directory_is_a_directory(shell, file: Path):
@@ -62,7 +62,7 @@ def describe_command_archive():
             assert_that(shell.run("archive", str(file)))
             .fails()
             .and_stderr()
-            .contains(f"{file} n'est pas un répertoire")
+            .is_equal_to(f"erreur: {file} n'est pas un répertoire.")
         )
 
     def it_makes_the_archive_and_displays_its_name(shell, directory: Path):

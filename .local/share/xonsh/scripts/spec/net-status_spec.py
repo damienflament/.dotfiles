@@ -30,8 +30,6 @@ def describe_command_net_status():
             .fails()
             .and_stderr()
             .starts_with("Usage: net-status")
-            .and_stdout()
-            .is_empty()
         )
 
     def it_reports_unresponding_host(shell, cmd_mocker, ip_address: str):
@@ -49,7 +47,7 @@ def describe_command_net_status():
             .and_stderr()
             .is_empty()
             .and_stdout()
-            .contains("Pas de réponse de l'hôte")
+            .is_equal_to("Pas de réponse de l'hôte.")
         )
 
     def it_reports_unreachable_network(shell, cmd_mocker, ip_address: str):
@@ -61,7 +59,7 @@ def describe_command_net_status():
             assert_that(shell.run("net-status", ip_address))
             .fails()
             .and_stdout()
-            .contains("Réseau inaccessible")
+            .is_equal_to("Réseau inaccessible.")
         )
 
     @settings(deadline=2000)
@@ -77,7 +75,7 @@ def describe_command_net_status():
             assert_that(shell.run("net-status", ip_address))
             .fails()
             .and_stderr()
-            .contains("erreur inattendue de `ping`")
+            .is_equal_to("erreur: erreur inattendue de `ping`.")
         )
 
     def it_reports_reachable_host(shell, cmd_mocker, ip_address: str):

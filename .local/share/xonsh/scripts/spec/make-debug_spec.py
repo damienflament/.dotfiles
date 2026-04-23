@@ -31,7 +31,7 @@ def describe_command_make_debug():
             assert_that(shell.run("make-debug", cwd=makefile.parent))
             .fails()
             .and_stderr()
-            .contains("aucun Makefile trouvé")
+            .is_equal_to("erreur: aucun Makefile trouvé.")
         )
 
     def it_shows_data_about_defined_variables(tmp_path, shell, makefile: Path):
