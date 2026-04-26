@@ -1,33 +1,33 @@
 from assertpy import assert_that
 from hypothesis import given, settings
 from hypothesis import strategies as st
+from pytest import fixture
 
 
 def describe_command_generate_salt():
     """la commande generate-salt"""
 
-    def it_shows_help_screen(shell):
+    @fixture
+    def command(command_builder):
+        return command_builder("generate-salt")
+
+    def it_shows_help_screen(command):
         """affiche un écran d'aide"""
         (
-            assert_that(shell.run("generate-salt", "--help"))
+            assert_that(command("--help"))
             .succeeds()
             .and_stdout()
             .starts_with("Usage: generate-salt")
         )
 
-    def it_generates_20_chars_string_by_default(shell):
+    def it_generates_20_chars_string_by_default(command):
         """génère une chaîne de 20 caractères par défaut"""
-        (
-            assert_that(shell.run("generate-salt"))
-            .succeeds()
-            .and_stdout()
-            .is_length(20)
-        )
+        assert_that(command()).succeeds().and_stdout().is_length(20)
 
-    def it_cannot_generate_negative_length_string(shell):
+    def it_cannot_generate_negative_length_string(command):
         """ne peut générer une chaîne de longueur négative"""
         (
-            assert_that(shell.run("generate-salt", "--length", str(-1)))
+            assert_that(command("--length", -1))
             .fails()
             .and_stderr()
             .is_equal_to(
@@ -37,10 +37,10 @@ def describe_command_generate_salt():
 
     @settings(deadline=2000)
     @given(length=st.integers(min_value=1, max_value=10000))
-    def it_generate_string_of_specified_length(shell, length: int):
+    def it_generate_string_of_specified_length(command, length: int):
         """génère une chaîne de la longueur spécifiée"""
         (
-            assert_that(shell.run("generate-salt", "--length", str(length)))
+            assert_that(command("--length", length))
             .succeeds()
             .and_stdout()
             .is_length(length)

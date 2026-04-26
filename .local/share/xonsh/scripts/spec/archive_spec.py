@@ -25,32 +25,36 @@ def file(tmp_path) -> Path:
 def describe_command_archive():
     """la commande archive"""
 
-    def it_shows_help_screen(shell):
+    @fixture
+    def command(command_builder):
+        return command_builder("archive")
+
+    def it_shows_help_screen(command):
         """affiche un écran d'aide"""
 
         (
-            assert_that(shell.run("archive", "--help"))
+            assert_that(command("--help"))
             .succeeds()
             .and_stdout()
             .starts_with("Usage: archive")
         )
 
-    def it_asks_for_a_directory(shell):
+    def it_asks_for_a_directory(command):
         """demande de spécifier un répertoire"""
 
         (
-            assert_that(shell.run("archive"))
+            assert_that(command())
             .fails()
             .and_stderr()
             .starts_with("Usage: archive <directory>")
         )
 
-    def it_checks_that_the_directory_exists(shell, directory: Path):
+    def it_checks_that_the_directory_exists(command, directory: Path):
         """vérifie que le répertoire existe"""
         directory.rmdir()
 
         (
-            assert_that(shell.run("archive", str(directory)))
+            assert_that(command(directory))
             .fails()
             .and_stderr()
             .is_equal_to(f"erreur: le répertoire {directory} n'existe pas.")

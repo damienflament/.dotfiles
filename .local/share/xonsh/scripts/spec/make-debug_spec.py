@@ -13,33 +13,40 @@ def makefile(lazy_shared_datadir) -> Path:
 def describe_command_make_debug():
     """la commande make-debug"""
 
-    def it_shows_help_screen(shell):
+    @fixture
+    def command(command_builder):
+        return command_builder("make-debug")
+
+    def it_shows_help_screen(command):
         """affiche un écran d'aide"""
 
         (
-            assert_that(shell.run("make-debug", "--help"))
+            assert_that(command("--help"))
             .succeeds()
             .and_stdout()
             .starts_with("Usage: make-debug")
         )
 
-    def it_checks_for_Makefile(shell, makefile: Path):
+    def it_checks_for_Makefile(command, makefile: Path):
         """affiche une erreur si aucun Makefile n'est trouvé"""
         makefile.unlink()
 
         (
-            assert_that(shell.run("make-debug", cwd=makefile.parent))
+            assert_that(command(cwd=makefile.parent))
             .fails()
             .and_stderr()
             .is_equal_to("erreur: aucun Makefile trouvé.")
         )
 
-    def it_shows_data_about_defined_variables(tmp_path, shell, makefile: Path):
+    def it_shows_data_about_defined_variables(
+        tmp_path,
+        command,
+        makefile: Path,
+    ):
         """affiche des informations sur les variables définies"""
         (
             assert_that(
-                shell.run(
-                    "make-debug",
+                command(
                     "COMMAND_LINE_VARIABLE=Variable dans la ligne de commande",
                     env={"ENVIRONMENT_VARIABLE": "Variable d'environnement"},
                     cwd=makefile.parent,

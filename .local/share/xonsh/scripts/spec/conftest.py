@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
+from shlex import quote
 
 from assertpy import add_extension
 from attrs import define
-from hypothesis import HealthCheck, Verbosity, settings
 from pytest import fixture
 from pytestshellutils.shell import ProcessResult
 
@@ -12,6 +12,39 @@ from pytestshellutils.shell import ProcessResult
 os.environ["PATH"] = (
     str(Path(__file__).parent.parent) + os.pathsep + os.environ["PATH"]
 )
+
+
+@fixture
+def command_builder(shell):
+    """Fournit un fabricant de commande.
+
+
+    Exemple :
+    ```
+        @fixture
+        def command(command_builder):
+            return command_builder("foo")
+
+        ...
+
+        def test_foo(command):
+            command("--help")
+    ```
+    """
+
+    return lambda name: lambda *args, **kwargs: shell.run(
+        " ".join(
+            [name]
+            + list(
+                map(
+                    lambda x: quote(str(x)),
+                    args,
+                )
+            )
+        ),
+        **kwargs,
+        shell=True,
+    )
 
 
 # Extensions shell pour assertpy
