@@ -14,25 +14,25 @@ def ip_address() -> str:
 def describe_command_net_status():
     """la commande net-status"""
 
-    def it_shows_help_screen(shell):
+    def it_shows_help_screen(command):
         """affiche un écran d'aide"""
         (
-            assert_that(shell.run("net-status", "--help"))
+            assert_that(command("net-status --help"))
             .succeeds()
             .and_stdout()
             .starts_with("Usage: net-status")
         )
 
-    def it_requires_an_ip_address(shell):
+    def it_requires_an_ip_address(command):
         """nécessite une adresse IP"""
         (
-            assert_that(shell.run("net-status"))
+            assert_that(command("net-status"))
             .fails()
             .and_stderr()
-            .starts_with("Usage: net-status")
+            .starts_with("Usage: net-status <address>")
         )
 
-    def it_reports_unresponding_host(shell, cmd_mocker, ip_address: str):
+    def it_reports_unresponding_host(command, cmd_mocker, ip_address: str):
         """indique que l'hôte ne répond pas"""
 
         cmd_mocker.patch(
@@ -42,7 +42,7 @@ def describe_command_net_status():
         )
 
         (
-            assert_that(shell.run("net-status", ip_address))
+            assert_that(command("net-status", ip_address))
             .fails()
             .and_stderr()
             .is_empty()
@@ -50,13 +50,13 @@ def describe_command_net_status():
             .is_equal_to("Pas de réponse de l'hôte.")
         )
 
-    def it_reports_unreachable_network(shell, cmd_mocker, ip_address: str):
+    def it_reports_unreachable_network(command, cmd_mocker, ip_address: str):
         """indique que le réseau est inaccessible"""
 
         cmd_mocker.patch("ping", returns=2)
 
         (
-            assert_that(shell.run("net-status", ip_address))
+            assert_that(command("net-status", ip_address))
             .fails()
             .and_stdout()
             .is_equal_to("Réseau inaccessible.")
@@ -65,20 +65,23 @@ def describe_command_net_status():
     @settings(deadline=2000)
     @given(status=st.integers(min_value=3, max_value=254))
     def it_handles_errors_from_ping(
-        status, shell, cmd_mocker, ip_address: str
+        status,
+        command,
+        cmd_mocker,
+        ip_address: str,
     ):
         """gère les codes de status inattendus provenant de la commande ping"""
 
         cmd_mocker.patch("ping", returns=status)
 
         (
-            assert_that(shell.run("net-status", ip_address))
+            assert_that(command("net-status", ip_address))
             .fails()
             .and_stderr()
             .is_equal_to("erreur: erreur inattendue de `ping`.")
         )
 
-    def it_reports_reachable_host(shell, cmd_mocker, ip_address: str):
+    def it_reports_reachable_host(command, cmd_mocker, ip_address: str):
         """indique que l'hôte est joignable"""
 
         cmd_mocker.patch(
@@ -88,7 +91,7 @@ def describe_command_net_status():
         )
 
         (
-            assert_that(shell.run("net-status", ip_address))
+            assert_that(command("net-status", ip_address))
             .succeeds()
             .and_stdout()
             .contains("Connexion établie")

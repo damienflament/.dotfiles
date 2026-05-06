@@ -50,11 +50,11 @@ for f in filenames:
         stem += f", {style}"
 
     target = f.with_stem(stem)
+    print(f"{f} -> {target}")
 
     # Prévention d'un écrasement de fichier
     if target.exists() and f != target:
         exit_error(f"le fichier {target} existe déjà", STATUS.CANT_CREATE)
 
     # Renommage
-    print(f"{f} -> {target}")
     f.rename(target)

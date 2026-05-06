@@ -13,15 +13,11 @@ def makefile(lazy_shared_datadir) -> Path:
 def describe_command_make_debug():
     """la commande make-debug"""
 
-    @fixture
-    def command(command_builder):
-        return command_builder("make-debug")
-
     def it_shows_help_screen(command):
         """affiche un écran d'aide"""
 
         (
-            assert_that(command("--help"))
+            assert_that(command("make-debug --help"))
             .succeeds()
             .and_stdout()
             .starts_with("Usage: make-debug")
@@ -32,7 +28,7 @@ def describe_command_make_debug():
         makefile.unlink()
 
         (
-            assert_that(command(cwd=makefile.parent))
+            assert_that(command("make-debug", cwd=makefile.parent))
             .fails()
             .and_stderr()
             .is_equal_to("erreur: aucun Makefile trouvé.")
@@ -47,6 +43,7 @@ def describe_command_make_debug():
         (
             assert_that(
                 command(
+                    "make-debug",
                     "COMMAND_LINE_VARIABLE=Variable dans la ligne de commande",
                     env={"ENVIRONMENT_VARIABLE": "Variable d'environnement"},
                     cwd=makefile.parent,

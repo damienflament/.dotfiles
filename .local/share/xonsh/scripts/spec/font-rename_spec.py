@@ -10,18 +10,13 @@ def font(lazy_shared_datadir) -> Path:
     return lazy_shared_datadir / "Aileron, Black.otf"
 
 
-@fixture
-def command(command_builder):
-    return command_builder("font-rename")
-
-
 def describe_command_font_rename():
     """la commande font-rename"""
 
     def it_shows_help_screen(command):
         """affiche un écran d'aide"""
         (
-            assert_that(command("--help"))
+            assert_that(command("font-rename --help"))
             .succeeds()
             .and_stdout()
             .starts_with("Usage: font-rename")
@@ -30,7 +25,7 @@ def describe_command_font_rename():
     def it_requires_a_filename(command):
         """nécessite un nom de fichier"""
         (
-            assert_that(command())
+            assert_that(command("font-rename"))
             .fails()
             .and_stderr()
             .starts_with("Usage: font-rename <file>")
@@ -41,7 +36,7 @@ def describe_command_font_rename():
         font.unlink()
 
         (
-            assert_that(command(font))
+            assert_that(command("font-rename", font))
             .fails()
             .and_stderr()
             .is_equal_to(f"erreur: le fichier {font} n'existe pas.")
@@ -53,7 +48,7 @@ def describe_command_font_rename():
         cmd_mocker.patch("fc-query", returns=1)
 
         (
-            assert_that(command(font))
+            assert_that(command("font-rename", font))
             .fails()
             .and_stderr()
             .starts_with(
@@ -66,7 +61,7 @@ def describe_command_font_rename():
 
         cmd_mocker.patch("fc-query", outputs="Foo,Bar")
 
-        assert_that(command(font)).succeeds()
+        assert_that(command("font-rename", font)).succeeds()
         assert_that(str(font)).does_not_exist()
         assert_that(str(font.with_stem("Foo, Bar"))).is_file()
 
@@ -80,7 +75,7 @@ def describe_command_font_rename():
 
         cmd_mocker.patch("fc-query", outputs="Foo,Bar")
 
-        assert_that(command(font)).succeeds()
+        assert_that(command("font-rename", font)).succeeds()
         assert_that(str(font)).exists()
 
     def it_does_not_overwrite_existing_file(cmd_mocker, command, font: Path):
@@ -92,10 +87,10 @@ def describe_command_font_rename():
         cmd_mocker.patch("fc-query", outputs="Foo,Bar")
 
         (
-            assert_that(command(font))
+            assert_that(command("font-rename", font))
             .fails()
             .and_stderr()
-            .contains(f"le fichier {existing_font} existe déjà")
+            .is_equal_to(f"erreur: le fichier {existing_font} existe déjà.")
         )
         assert_that(str(existing_font)).exists()
         assert_that(str(font)).exists()
@@ -110,7 +105,7 @@ def describe_command_font_rename():
         """supprime les noms de style standards du nom de fichier"""
         cmd_mocker.patch("fc-query", outputs=f"Foo,{style}")
 
-        assert_that(command(font)).succeeds()
+        assert_that(command("font-rename", font)).succeeds()
         assert_that(str(font)).does_not_exist()
         assert_that(str(font.with_stem("Foo"))).exists()
         assert_that(str(font.with_stem(f"Foo, {style}"))).does_not_exist()
@@ -134,18 +129,19 @@ def describe_command_font_rename():
 
         cmd_mocker.patch("fc-query", outputs=f"Foo,{style}")
 
-        assert_that(command(font)).succeeds()
+        assert_that(command("font-rename", font)).succeeds()
         assert_that(str(font)).does_not_exist()
         assert_that(str(font.with_stem(f"Foo, {expected}"))).exists()
         assert_that(str(font.with_stem(f"Foo, {style}"))).does_not_exist()
 
 
+@mark.skip_if_binaries_missing("fc-query")
 @mark.integration
 def integrate_command_font_rename(command, font: Path):
     """intégration de la commande font-rename"""
     initial_stem = font.stem
     font = font.rename(str(font.with_stem("foo")))
 
-    assert_that(command(font)).succeeds()
+    assert_that(command("font-rename", font)).succeeds()
     assert_that(str(font)).does_not_exist()
     assert_that(str(font.with_stem(initial_stem))).is_file()
