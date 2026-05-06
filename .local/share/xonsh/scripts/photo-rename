@@ -1,0 +1,46 @@
+#! /usr/bin/env xonsh
+"""
+Usage: photo-rename <file> [<file>...]
+
+Renomme des photos.
+
+Arguments:
+    <file>      Les fichiers à renommer.
+
+Options:
+    -h --help   Affiche cette aide.
+"""
+
+from my.scripting import docopt, check_available, exit_error, STATUS
+
+args = docopt(__doc__)
+filenames = args["<file>"]
+
+check_available("exiftool")
+
+for f in filenames:
+    f = pf"{f}"
+
+    if not f.exists():
+        exit_error(f"le fichier {f} n'existe pas", STATUS.NO_INPUT)
+
+
+    # Extraction de la date et de l'heure depuis le fichier
+    try:
+        stem = $(exiftool -s3 -d "%Y%m%d %H%M" -DateTimeOriginal @(f))
+    except Exception:
+        exit_error(f"impossible de lire les métadonnées de la photo {f}", STATUS.SOFTWARE_ERR)
+
+    # Gestion d'une date vide
+    if (len(stem) == 0):
+        exit_error(f"impossible de lire la date de la photo {f}", STATUS.SOFTWARE_ERR)
+
+    target = f.with_stem(stem)
+    print(f"{f} -> {target}")
+
+    # Prévention d'un écrasement de fichier
+    if target.exists() and f != target:
+        exit_error(f"le fichier {target} existe déjà", STATUS.CANT_CREATE)
+
+    # Renommage
+    f.rename(target)
