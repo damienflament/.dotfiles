@@ -136,8 +136,8 @@ class CommandMocker:
     def patch(
         self,
         name: str,
-        returns: int = 0,
-        outputs: str = None,
+        returns: int | list[int] = 0,
+        outputs: str | list[str] = None,
         errors: str = None,
     ):
         """Patche une commande shell.
@@ -181,8 +181,13 @@ echo '{outputs}'
             content += f"""
 echo '{errors}' >&2
 """
-
-        content += f"""
+        if isinstance(returns, list):
+            for index, value in enumerate(returns):
+                content += f"""
+[ $i -eq {index + 1} ] && exit {value}
+"""
+        else:
+            content += f"""
 exit {returns}
 """
 

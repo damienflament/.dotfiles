@@ -44,9 +44,6 @@ def describe_command_photo_rename():
         another_photo: Path,
     ):
         """permet de spécifier plusieurs fichiers"""
-
-        # FIXME Le PATH est modifié lorsque le test est lancé par VSCode et
-        # le script Perl *exiftool* n'est plus trouvé.
         cmd_mocker.patch("exiftool", outputs=["foo", "bar"])
 
         assert_that(command("photo-rename", photo, another_photo)).succeeds()
@@ -54,8 +51,6 @@ def describe_command_photo_rename():
     def it_checks_file_exists(cmd_mocker, command, photo: Path):
         """vérifie que le fichier spécifié existe"""
 
-        # FIXME Le PATH est modifié lorsque le test est lancé par VSCode et
-        # le script Perl *exiftool* n'est plus trouvé.
         cmd_mocker.patch("exiftool")
 
         photo.unlink()
@@ -76,8 +71,8 @@ def describe_command_photo_rename():
             assert_that(command("photo-rename", photo))
             .fails()
             .and_stderr()
-            .starts_with(
-                "erreur: impossible de lire les métadonnées de la photo"
+            .is_equal_to(
+                f"erreur: impossible de lire les métadonnées de la photo {photo}."
             )
         )
 
@@ -94,7 +89,9 @@ def describe_command_photo_rename():
             assert_that(command("photo-rename", photo))
             .fails()
             .and_stderr()
-            .starts_with("erreur: impossible de lire la date de la photo")
+            .is_equal_to(
+                f"erreur: impossible de lire la date de la photo {photo}."
+            )
         )
 
     def it_renames_photo_file(cmd_mocker, command, photo: Path):
@@ -116,8 +113,96 @@ def describe_command_photo_rename():
 
         cmd_mocker.patch("exiftool", outputs="20240120 030712")
 
-        assert_that(command("photo-rename", photo)).succeeds()
+        (
+            assert_that(command("photo-rename", photo))
+            .succeeds()
+            .and_stdout()
+            .is_empty()
+        )
         assert_that(str(photo)).exists()
+
+    def it_keeps_running_when_file_is_not_found(
+        cmd_mocker,
+        command,
+        photo: Path,
+        another_photo: Path,
+    ):
+        """continue avec le fichier suivant si un fichier est introuvable"""
+        cmd_mocker.patch("exiftool", outputs="bar")
+
+        photo.unlink()
+
+        (
+            assert_that(command("photo-rename", photo, another_photo))
+            .fails()
+            .and_stderr()
+            .is_equal_to(f"erreur: le fichier {photo} n'existe pas.")
+        )
+        assert_that(str(another_photo)).does_not_exist()
+        assert_that(str(another_photo.with_stem("bar"))).exists()
+
+    def it_keeps_running_when_exiftool_fails(
+        cmd_mocker,
+        command,
+        photo: Path,
+        another_photo: Path,
+    ):
+        """continue avec le fichier suivant lorsque exiftool échoue"""
+        cmd_mocker.patch(
+            "exiftool",
+            outputs=["foo", "bar"],
+            returns=[1, 0],
+        )
+
+        (
+            assert_that(command("photo-rename", photo, another_photo))
+            .fails()
+            .and_stderr()
+            .is_equal_to(
+                f"erreur: impossible de lire les métadonnées de la photo {photo}."
+            )
+        )
+        assert_that(str(photo)).exists()
+        assert_that(str(another_photo)).does_not_exist()
+        assert_that(str(another_photo.with_stem("bar"))).exists()
+
+    def it_keeps_running_when_exiftool_has_empty_output(
+        cmd_mocker,
+        command,
+        photo: Path,
+        another_photo: Path,
+    ):
+        """continue avec le fichier suivant lorsque la sortie de exiftool est
+        vide"""
+        cmd_mocker.patch("exiftool", outputs=["", "bar"])
+
+        (
+            assert_that(command("photo-rename", photo, another_photo))
+            .fails()
+            .and_stderr()
+            .is_equal_to(
+                f"erreur: impossible de lire la date de la photo {photo}."
+            )
+        )
+        assert_that(str(photo)).exists()
+        assert_that(str(another_photo)).does_not_exist()
+        assert_that(str(another_photo.with_stem("bar"))).exists()
+
+    def it_keeps_running_when_a_file_is_already_well_named(
+        cmd_mocker,
+        command,
+        photo: Path,
+        another_photo: Path,
+    ):
+        """continue avec le fichier suivant lorsqu'un fichier est déjà
+        correctement nommé"""
+        photo = photo.rename(photo.with_stem("foo"))
+        cmd_mocker.patch("exiftool", outputs=["foo", "bar"])
+
+        assert_that(command("photo-rename", photo, another_photo)).succeeds()
+        assert_that(str(photo)).exists()
+        assert_that(str(another_photo)).does_not_exist()
+        assert_that(str(another_photo.with_stem("bar"))).exists()
 
 
 @mark.skip_if_binaries_missing("exiftool")
