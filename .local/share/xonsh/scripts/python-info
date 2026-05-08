@@ -1,0 +1,21 @@
+#!/usr/bin/env xonsh
+
+import sys
+
+echo f"""
+base_prefix         {sys.base_prefix}
+base_exec_prefix    {sys.base_exec_prefix}
+
+prefix              {sys.prefix}
+exec_prefix         {sys.exec_prefix}
+
+platlibdir          {sys.platlibdir}
+
+pycache_prefix      {sys.pycache_prefix}
+
+path                {("\n" + " " * 20).join(sys.path)}
+
+executable          {sys.executable}
+version             {sys.version}
+orig_argv           {sys.orig_argv}
+"""
