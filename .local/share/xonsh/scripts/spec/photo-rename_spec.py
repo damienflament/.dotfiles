@@ -103,6 +103,29 @@ def describe_command_photo_rename():
         assert_that(str(photo)).does_not_exist()
         assert_that(str(photo.with_stem("20200120 030712"))).is_file()
 
+    @mark.parametrize(
+        "actual,expected",
+        [
+            (".JPG", ".jpg"),
+            (".jpeg", ".jpg"),
+            (".JPEG", ".jpg"),
+        ],
+    )
+    def it_fixes_file_extension(
+        cmd_mocker,
+        command,
+        photo: Path,
+        actual: str,
+        expected: str,
+    ):
+        """corrige l'extension de fichier"""
+        photo = photo.rename(photo.with_suffix(actual))
+        cmd_mocker.patch("exiftool", outputs=photo.stem)
+
+        assert_that(command("photo-rename", photo)).succeeds()
+        assert_that(str(photo)).does_not_exist()
+        assert_that(str(photo.with_suffix(expected))).is_file()
+
     def it_does_nothing_if_the_file_is_well_named(
         cmd_mocker,
         command,

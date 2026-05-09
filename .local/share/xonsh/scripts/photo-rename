@@ -20,6 +20,14 @@ check_available("exiftool")
 
 em = ErrorManager()
 
+def fix_suffix(suffix: str) -> str:
+    """Corrige l'extension de fichier."""
+    match suffix:
+        case ".JPG" | ".jpeg" | ".JPEG":
+            return ".jpg"
+        case _:
+            return suffix
+
 for f in filenames:
     f = pf"{f}"
 
@@ -29,7 +37,7 @@ for f in filenames:
 
     # Extraction de la date et de l'heure depuis le fichier
     try:
-        stem = $(exiftool -s3 -d "%Y-%m-%d %H-%M-%S" -DateTimeOriginal @(f))
+        stem = $(exiftool -s3 -d "%Y-%m-%d_%H-%M-%S" -CreateDate @(f))
     except Exception:
         em.error(f"impossible de lire les métadonnées de la photo {f}", STATUS.SOFTWARE_ERR)
         continue
@@ -39,7 +47,7 @@ for f in filenames:
         em.error(f"impossible de lire la date de la photo {f}", STATUS.SOFTWARE_ERR)
         continue
 
-    target = f.with_stem(stem)
+    target = f.with_stem(stem).with_suffix(fix_suffix(f.suffix))
 
     # Prévention d'un écrasement de fichier
     if target.exists() and f != target:
