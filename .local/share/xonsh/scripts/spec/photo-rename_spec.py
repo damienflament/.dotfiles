@@ -7,13 +7,13 @@ from pytest import fixture, mark
 @fixture
 def photo(lazy_shared_datadir) -> Path:
     """Une photo."""
-    return lazy_shared_datadir / "black.jpg"
+    return lazy_shared_datadir / "photo.jpg"
 
 
 @fixture
 def another_photo(lazy_shared_datadir) -> Path:
     """Une autre photo."""
-    return lazy_shared_datadir / "white.jpg"
+    return lazy_shared_datadir / "another_photo.jpg"
 
 
 def describe_command_photo_rename():
@@ -197,7 +197,7 @@ def describe_command_photo_rename():
     ):
         """continue avec le fichier suivant lorsque la sortie de exiftool est
         vide"""
-        cmd_mocker.patch("exiftool", outputs=["", "bar"])
+        cmd_mocker.patch("exiftool", outputs=["", "", "bar"])
 
         (
             assert_that(command("photo-rename", photo, another_photo))

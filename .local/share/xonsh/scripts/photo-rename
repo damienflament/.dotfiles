@@ -12,13 +12,26 @@ Options:
 """
 
 from my.scripting import docopt, check_available, exit_error, STATUS, ErrorManager
+from pathlib import Path
+from subprocess import CalledProcessError
 
-args = docopt(__doc__)
-filenames = args["<file>"]
+def get_datetime(filename: Path) -> str:
+    """Lit la date et l'heure de prise de vue.
 
-check_available("exiftool")
+    Utilise _exiftool_ pour obtenir la valeur du champ _DateTimeOriginal_.
+    Bascule sur le champ _CreateDate_ si le précédent n'est pas trouvé.
 
-em = ErrorManager()
+    Lève:
+        CalledProcessError  si _exiftool_ a rencontré une erreur
+        KeyError            si aucun des champs n'est trouvé
+        """
+    for tag in ("DateTimeOriginal", "CreateDate"):
+        date = $(exiftool -s3 -d "%Y-%m-%d_%H-%M-%S" -@(tag) @(f))
+
+        if len(date) > 0:
+            return date
+
+    raise KeyError
 
 def fix_suffix(suffix: str) -> str:
     """Corrige l'extension de fichier."""
@@ -27,6 +40,14 @@ def fix_suffix(suffix: str) -> str:
             return ".jpg"
         case _:
             return suffix
+
+
+args = docopt(__doc__)
+filenames = args["<file>"]
+
+check_available("exiftool")
+
+em = ErrorManager()
 
 for f in filenames:
     f = pf"{f}"
@@ -37,26 +58,25 @@ for f in filenames:
 
     # Extraction de la date et de l'heure depuis le fichier
     try:
-        stem = $(exiftool -s3 -d "%Y-%m-%d_%H-%M-%S" -CreateDate @(f))
-    except Exception:
+        stem = get_datetime(f)
+    except CalledProcessError:
         em.error(f"impossible de lire les métadonnées de la photo {f}", STATUS.SOFTWARE_ERR)
         continue
-
-    # Gestion d'une date vide
-    if (len(stem) == 0):
+    except KeyError:
         em.error(f"impossible de lire la date de la photo {f}", STATUS.SOFTWARE_ERR)
         continue
 
     target = f.with_stem(stem).with_suffix(fix_suffix(f.suffix))
 
-    # Prévention d'un écrasement de fichier
-    if target.exists() and f != target:
-        em.error(f"le fichier {target} existe déjà", STATUS.CANT_CREATE)
-        continue
-
     # Rien n'est fait si le fichier est déjà bien nommé
     if (target == f):
         continue
+
+    # Prévention d'un écrasement de fichier
+    if target.exists():
+        em.error(f"le fichier {target} existe déjà", STATUS.CANT_CREATE)
+        continue
+
 
     # Renommage
     print(f"{f} -> {target}")
